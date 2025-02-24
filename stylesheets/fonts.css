@@ -11,6 +11,12 @@
   font-weight: normal;
 }
 @font-face {
+  font-family: 'Roboto Condensed Medium';
+  src: url('../fonts/RobotoCondensed-Medium.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
   font-family: 'Roboto Condensed SemiBold';
   src: url('../fonts/RobotoCondensed-SemiBold.ttf') format('truetype');
   font-style: normal;
