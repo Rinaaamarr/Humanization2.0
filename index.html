@@ -6,6 +6,7 @@
     <title>Humanization.</title>
     <link rel="stylesheet" href="stylesheets/style.css" />
     <script src="javascripts/script.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
   </head>
   <body>
     <section class="desk">
@@ -37,28 +38,54 @@
       <div class="nail4"><img src="images/nail.svg" alt="" /></div>
       <p class="name">Humanization.</p>
       <p class="create">Создай своего робота!</p>
-      <div class="button-start"></div>
-      <p class="press-start">Начать</p>
-      <div class="drag">
-        <img class="path" src="images/path.svg" alt="" />
-        <img class="lever" src="images/lever.svg" alt="" />
+      <div class="button-start">
+        <p class="press-start">Начать</p>
       </div>
-      <div class="panel"><img src="images/panel.svg" alt="" /></div>
+      <div class="container-drag" id="container-drag">
+        <svg
+          id="path"
+          class="path"
+          width="168"
+          height="395"
+          viewBox="0 0 168 395"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M91 57.0161V7C91 4.23858 88.7614 2 86 2H75C72.2386 2 70 4.23857 70 6.99999V124.903C70 127.665 67.7614 129.903 65 129.903H39C36.2386 129.903 34 132.142 34 134.903V145.565C34 148.326 36.2386 150.565 39 150.565H65C67.7614 150.565 70 152.803 70 155.565V199.677C70 202.439 67.7614 204.677 65 204.677H20C17.2386 204.677 15 206.916 15 209.677V220.339C15 223.1 17.2386 225.339 20 225.339H65C67.7614 225.339 70 227.577 70 230.339V332.5C70 335.261 67.7614 337.5 65 337.5H7C4.23858 337.5 2 339.739 2 342.5V353.161C2 355.923 4.23858 358.161 7 358.161H65C67.7614 358.161 70 360.4 70 363.161V387.5C70 390.261 72.2386 392.5 75 392.5H86C88.7614 392.5 91 390.261 91 387.5V302.161C91 299.4 93.2386 297.161 96 297.161H131C133.761 297.161 136 294.923 136 292.161V281.5C136 278.739 133.761 276.5 131 276.5H96C93.2386 276.5 91 274.261 91 271.5V155.565C91 152.803 93.2386 150.565 96 150.565H123C125.761 150.565 128 148.326 128 145.565V134.903C128 132.142 125.761 129.903 123 129.903H96C93.2386 129.903 91 127.665 91 124.903V87.6774C91 84.916 93.2386 82.6774 96 82.6774H161C163.761 82.6774 166 80.4389 166 77.6774V67.0161C166 64.2547 163.761 62.0161 161 62.0161H96C93.2386 62.0161 91 59.7775 91 57.0161Z"
+            fill="#B3A497"
+            stroke="black"
+            stroke-width="4"
+          />
+        </svg>
+        <img id="lever" class="lever" src="images/lever.svg" alt="" />
+      </div>
+      <div class="panel">
+        <img class="panel-image" src="images/panel.svg" alt="" />
+        <span id="typewriter"></span>
+      </div>
     </section>
     <section class="sides">
       <img class="sidebar1" src="images/side1.svg" alt="" />
       <img class="sidebar2" src="images/side1.svg" alt="" />
     </section>
-    <section class="choose-character">
+    <section id="choose-character">
       <img class="heading1" src="images/heading1.svg" alt="" />
       <p class="choose">Выбери робота</p>
       <img class="hint" src="images/hint.svg" alt="" />
       <p class="question1">?</p>
+      <img class="explanation1" src="images/explanation1.svg" alt="" />
       <div class="characters">
         <img class="robo-girl" src="images/robo-girl.svg" alt="" />
-        <img class="robo-boy" src="images/robo-boy.svg" alt="" />
+        <img class="robo-boy" src="images/robot-boy.svg" alt="" />
         <img class="dog" src="images/doggie.svg" alt="" />
         <img class="robo-alien" src="images/robo-alien.svg" alt="" />
+      </div>
+      <div class="selection">
+        <img class="select1" src="images/selection.svg" alt="" />
+        <img class="select2" src="images/selection.svg" alt="" />
+        <img class="select3" src="images/selection.svg" alt="" />
+        <img class="select4" src="images/selection.svg" alt="" />
       </div>
       <div class="button-confirm">
         <p class="confirm">Подтвердить</p>

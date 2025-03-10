@@ -130,38 +130,73 @@
   font-size: 3.28vw;
   -webkit-text-fill-color: black;
   position: absolute;
-  margin-left: 45.1vw;
-  margin-top: 4.5vw;
+  margin-left: 5.2vw;
+  margin-top: 1.4vw;
+  cursor: pointer;
+}
+.container-drag {
+  position: relative;
+  width: 12.89vw; /* Adjust as needed */
+  height: 30.94vw; /* Adjust as needed */
+  opacity: 1; /* Make the container visible */
+  margin-top: -31vw; /* Keep your specific positioning */
+  margin-left: 6vw; /* Keep your specific positioning */
 }
 .path {
   width: 23vw;
   height: 31vw;
   position: absolute;
-  margin-top: -33.45vw;
-  margin-left: 0.1vw;
-  z-index: 2;
+  top: -3vw;
+  left: -5vw;
+  z-index: 1;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .lever {
   width: 8vw;
   height: 65vw;
-  margin-top: -64.7vw;
-  margin-left: 7.5vw;
-  z-index: 2;
   position: absolute;
+  top: -34.2vw;
+  left: 2.4vw;
+  z-index: 2;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.panel img {
+
+.panel {
   width: 58vw;
   height: 7.4vw;
   margin-top: -34vw;
-  margin-left: 19.7vw;
+  margin-left: 33.7vw;
   z-index: 3;
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
+}
+.panel-image {
+  width: 31.09vw;
+  height: 6.72vw;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  border-right: #252542 4px solid;
+  border-left: #252542 4px solid;
+  border-top: #252542 8px solid;
+  border-bottom: #252542 8px solid;
+}
+#typewriter {
+  font-family: 'Arame Mono Stencil', sans-serif;
+  font-size: 6.25vw;
+  color: #00ff7f;
+  white-space: nowrap;
+  position: absolute;
+  top: 48%;
+  left: 28%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
 }
 .mechanism1 img {
   width: 50vw;
@@ -172,6 +207,20 @@
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
+  animation: rotate1 1.5s infinite linear;
+  animation-play-state: paused;
+}
+.mechanism1 img:hover {
+  width: 50vw;
+  height: 11.1vw;
+  margin-top: 2.5vw;
+  margin-left: 55vw;
+  z-index: 2;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: rotate1 1.5s infinite linear;
+  animation-play-state: running;
 }
 .mechanism2 img {
   width: 50vw;
@@ -182,6 +231,20 @@
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
+  animation: rotate2 2s infinite linear;
+  animation-play-state: paused;
+}
+.mechanism2 img:hover {
+  width: 50vw;
+  height: 9.5vw;
+  margin-top: 8.5vw;
+  margin-left: 62.8vw;
+  z-index: 2;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: rotate2 2s infinite linear;
+  animation-play-state: running;
 }
 .mechanism3 img {
   width: 50vw;
@@ -192,8 +255,22 @@
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
+  animation: rotate3 2.5s infinite linear;
+  animation-play-state: paused;
 }
-.choose-character {
+.mechanism3 img:hover {
+  width: 50vw;
+  height: 11vw;
+  margin-top: 15.5vw;
+  margin-left: 62.25vw;
+  z-index: 2;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: rotate3 2.5s infinite linear;
+  animation-play-state: running;
+}
+#choose-character {
   width: 100vw;
   height: 120vw;
   overflow: hidden;
@@ -221,6 +298,7 @@
   margin-left: 8.5vw;
   z-index: 2;
   letter-spacing: 0.05vw;
+  height: 10vw;
 }
 .hint {
   background-repeat: no-repeat;
@@ -230,12 +308,48 @@
   margin-top: 55.5vw;
   margin-left: 6vw;
 }
+.hint:hover {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 5.5vw;
+  height: 11vw;
+  margin-top: 55.5vw;
+  margin-left: 6vw;
+  opacity: 0;
+}
 .question1 {
   font-family: 'Roboto Condensed Bold', serif;
   -webkit-text-fill-color: black;
   font-size: 4vw;
   margin-top: 59.2vw;
   margin-left: -3.6vw;
+  opacity: 1;
+}
+.question1:hover {
+  font-family: 'Roboto Condensed Bold', serif;
+  -webkit-text-fill-color: black;
+  font-size: 4vw;
+  margin-top: 59.2vw;
+  margin-left: -3.6vw;
+  opacity: 0;
+}
+.explanation1 {
+  width: 21.33vw;
+  height: 5.47vw;
+  margin-top: 58.3vw;
+  margin-left: 36.2vw;
+  position: absolute;
+  opacity: 0;
+}
+.explanation1:hover {
+  width: 21.33vw;
+  height: 5.47vw;
+  margin-top: 58.3vw;
+  margin-left: 36.2vw;
+  position: absolute;
+  opacity: 1;
+  animation: appear1 2s infinite;
+  animation-play-state: running;
 }
 .robo-girl {
   background-repeat: no-repeat;
@@ -244,6 +358,7 @@
   height: 31vw;
   margin-left: -37.5vw;
   margin-top: 70.8vw;
+  z-index: 2;
 }
 .robo-boy {
   background-repeat: no-repeat;
@@ -252,6 +367,7 @@
   height: 31vw;
   margin-top: 70.8vw;
   margin-left: -10.5vw;
+  z-index: 2;
 }
 .dog {
   background-repeat: no-repeat;
@@ -260,6 +376,7 @@
   height: 12.5vw;
   margin-top: 70.8vw;
   margin-left: -14.4vw;
+  z-index: 2;
 }
 .robo-alien {
   background-repeat: no-repeat;
@@ -269,6 +386,43 @@
   height: 28.3vw;
   margin-top: 70.8vw;
   margin-left: -12.6vw;
+  z-index: 2;
+}
+.select1 {
+  width: 20.3vw;
+  height: 36.25vw;
+  margin-top: 69vw;
+  margin-left: -89vw;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.select2 {
+  width: 19.3vw;
+  height: 36.25vw;
+  margin-top: 69vw;
+  margin-left: -66vw;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.select3 {
+  width: 19.3vw;
+  height: 36.25vw;
+  margin-top: 69vw;
+  margin-left: -46vw;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.select4 {
+  width: 19.3vw;
+  height: 36.25vw;
+  margin-top: 69vw;
+  margin-left: -26vw;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
 }
 .scan-robot {
   width: 100vw;
@@ -306,8 +460,8 @@
   font-family: 'Roboto Condensed Bold', serif;
   -webkit-text-fill-color: black;
   font-size: 4vw;
-  margin-top: 3.6vw;
-  margin-left: -3.8vw;
+  margin-top: 3.8vw;
+  margin-left: -3.65vw;
 }
 .scan-panel {
   background-repeat: no-repeat;
@@ -369,10 +523,10 @@
 .background-emotions {
   background-repeat: no-repeat;
   background-size: cover;
-  width: 92.7vw;
+  width: 92.4vw;
   height: 50vw;
   margin-top: 10.9vw;
-  margin-left: -24.4vw;
+  margin-left: -24.5vw;
   z-index: 0;
 }
 .preview1 {
@@ -380,7 +534,7 @@
   background-size: cover;
   width: 40.5vw;
   height: 40.5vw;
-  margin-top: 16.2vw;
+  margin-top: 15.6vw;
   margin-left: -91vw;
   z-index: 2;
 }
@@ -820,16 +974,17 @@ p6 {
   margin-top: 107.5vw;
   position: absolute;
 }
-.button-confirm:active {
+.button-confirm.active {
   width: 29.06vw;
   height: 6.64vw;
   background-color: #45eded;
   border: black 4px solid;
   border-radius: 300px;
-  display: none;
+  opacity: 1;
   margin-left: 35.5vw;
   margin-top: 107.5vw;
   position: absolute;
+  cursor: pointer;
 }
 .confirm {
   font-family: 'Roboto Condensed Medium', sans-serif;
