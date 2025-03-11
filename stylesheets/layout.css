@@ -142,7 +142,7 @@
   margin-top: -31vw; /* Keep your specific positioning */
   margin-left: 6vw; /* Keep your specific positioning */
 }
-.path {
+.path-back {
   width: 23vw;
   height: 31vw;
   position: absolute;
@@ -152,13 +152,23 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.path-moving {
+  width: 1.95vw;
+  height: 30.55vw;
+  position: absolute;
+  z-index: 2;
+  top: -2.8vw;
+  left: 5.3vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .lever {
   width: 8vw;
   height: 65vw;
   position: absolute;
   top: -34.2vw;
   left: 2.4vw;
-  z-index: 2;
+  z-index: 3;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -193,7 +203,7 @@
   color: #00ff7f;
   white-space: nowrap;
   position: absolute;
-  top: 48%;
+  top: 46%;
   left: 28%;
   transform: translate(-50%, -50%);
   z-index: 5;
@@ -481,6 +491,50 @@
   margin-left: -52.5vw;
   z-index: 2;
 }
+.boy-robo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 18.8vw;
+  margin-left: -42.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.girl-robo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 18.8vw;
+  margin-left: -42.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.dog-robo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 22.5vw;
+  margin-top: 22.8vw;
+  margin-left: -44vw;
+  z-index: 3;
+  opacity: 0;
+}
+.alien-robo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 20.8vw;
+  margin-left: -42.5vw;
+  z-index: 3;
+  opacity: 0;
+}
 .emotions {
   width: 100vw;
   height: 60vw;
@@ -537,6 +591,50 @@
   margin-top: 15.6vw;
   margin-left: -91vw;
   z-index: 2;
+}
+.boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.doggie {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 22.5vw;
+  margin-top: 23.8vw;
+  margin-left: -37vw;
+  z-index: 3;
+  opacity: 0;
+}
+.alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 22.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
 }
 .emotions-buttons {
   z-index: 3;
@@ -824,6 +922,50 @@ p6 {
   margin-top: 15.2vw;
   margin-left: 4vw;
 }
+.boy-final {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 16.8vw;
+  margin-left: -33.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.girl-final {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 16.8vw;
+  margin-left: -33.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.dog-final {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 24vw;
+  margin-top: 19.8vw;
+  margin-left: -33.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.alien-final {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 19.8vw;
+  margin-left: -33.5vw;
+  z-index: 3;
+  opacity: 0;
+}
 .button1 {
   width: 5.86vw;
   height: 5.86vw;
@@ -1089,4 +1231,67 @@ p6 {
   margin-top: 1.4vw;
   margin-left: 7.5vw;
   display: none;
+}
+/* Smooth fade-in/fade-out for characters */
+.boy-robo,
+.girl-robo,
+.dog-robo,
+.alien-robo,
+.boy,
+.girl,
+.doggie,
+.alien,
+.boy-final,
+.girl-final,
+.dog-final,
+.alien-final {
+  transition: opacity 0.5s ease; /* Smooth transition */
+}
+
+/* Ensure default opacity is 0 */
+.characters2 img,
+.characters3 img,
+.characters4 img {
+  opacity: 0;
+}
+
+.button-scan,
+.button-place_order {
+  background-color: #a3a3a3; /* Grayed out */
+  border: black 4px solid;
+  cursor: not-allowed;
+}
+
+.button-restart {
+  background-color: #35355f;
+  border: #a3a3a3 4px solid;
+  cursor: pointer;
+}
+
+.button-scan.active,
+.button-place_order.active {
+  background-color: #45eded; /* Bright blue */
+  border: black 4px solid;
+  cursor: pointer;
+}
+
+.button-restart.active {
+  background-color: #35355f;
+  border: #45eded 4px solid;
+  cursor: pointer;
+}
+.scan,
+.place-order {
+  -webkit-text-fill-color: black; /* Default text color */
+}
+
+.restart {
+  font-family: 'Roboto Condensed Medium', sans-serif;
+  font-size: 3.28vw;
+  -webkit-text-fill-color: #a3a3a3; /* Special gray for restart button */
+}
+
+/* Active state */
+.button-restart.active .restart {
+  -webkit-text-fill-color: #45eded !important;
 }

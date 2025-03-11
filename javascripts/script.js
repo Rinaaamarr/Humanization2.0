@@ -13,62 +13,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // drag-lever
 document.addEventListener('DOMContentLoaded', () => {
-  const path = document.querySelector('#path path') // Select the SVG path element
   const lever = document.getElementById('lever')
-
-  if (!path) {
-    console.error('Path element not found! Check your HTML structure.')
-    return
-  }
+  const pathMoving = document.getElementById('path-moving')
+  const containerDrag = document.getElementById('container-drag')
 
   let isDragging = false
-  let mouseX = 0,
-    mouseY = 0
-  let offsetX = 0,
-    offsetY = 0 // Track the initial offset
-
-  // Create an SVG point for calculations
-  const svgPoint = (x, y) => {
-    const pt = path.ownerSVGElement.createSVGPoint()
-    pt.x = x
-    pt.y = y
-
-    // Adjust for the path's CSS scaling and positioning
-    const pathRect = path.getBoundingClientRect()
-    pt.x -= pathRect.left
-    pt.y -= pathRect.top
-
-    const transformedPoint = pt.matrixTransform(path.getScreenCTM().inverse())
-    console.log('Transformed Point:', transformedPoint) // Debugging
-    return transformedPoint
-  }
-
-  // Function to constrain the lever's position
-  const constrainLeverPosition = (mouseX, mouseY) => {
-    // Transform the center of the lever to SVG coordinates
-    const centerPoint = svgPoint(mouseX, mouseY)
-
-    // Check if the center point is inside the path
-    const isValidCenter =
-      path.isPointInStroke(centerPoint) || path.isPointInFill(centerPoint)
-
-    console.log('Validation Result (Center):', isValidCenter) // Debugging
-
-    // Allow movement if the center is valid
-    return isValidCenter
-  }
+  let offsetY = 0 // Offset between mouse pointer and lever's top edge
 
   // Add event listeners for dragging
   lever.addEventListener('mousedown', (e) => {
-    e.preventDefault() // Prevent default behavior (e.g., text selection)
+    e.preventDefault() // Prevent default behavior
     isDragging = true
 
-    // Get the lever's bounding box for precise dimensions
+    // Calculate the initial offset between the mouse pointer and the lever's top edge
     const leverRect = lever.getBoundingClientRect()
+    offsetY = e.clientY - leverRect.top
 
-    // Calculate the initial offset between the mouse pointer and the lever's center
-    offsetX = e.clientX - (leverRect.left + leverRect.width / 2)
-    offsetY = e.clientY - (leverRect.top + leverRect.height / 2)
+    // Debugging: Log initial offset
+    console.log('Initial Offset:', offsetY)
 
     // Update the cursor style
     lever.style.cursor = 'grabbing'
@@ -77,32 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mousemove', (e) => {
     if (!isDragging) return
 
-    // Update mouse position
-    mouseX = e.clientX
-    mouseY = e.clientY
-
-    // Debugging: Log mouse position
-    console.log('Mouse Position:', mouseX, mouseY)
-
     // Use requestAnimationFrame for smoother updates
     requestAnimationFrame(() => {
-      // Validate the position
-      if (constrainLeverPosition(mouseX, mouseY)) {
-        // Calculate the lever's position using the initial offset
-        const leverLeft = mouseX - lever.offsetWidth / 2 - offsetX
-        const leverTop = mouseY - lever.offsetHeight / 2 - offsetY
+      // Get the bounding box of the container and path-moving
+      const containerRect = containerDrag.getBoundingClientRect()
+      const pathRect = pathMoving.getBoundingClientRect()
 
-        // Update the lever's position
-        lever.style.left = `${leverLeft}px`
-        lever.style.top = `${leverTop}px`
+      // Calculate the new Y position of the lever relative to the container
+      const newY = e.clientY - containerRect.top - offsetY
 
-        // Debugging: Log lever position and offset
-        console.log('Lever Position:', lever.style.left, lever.style.top)
-        console.log('Offset:', offsetX, offsetY)
-      } else {
-        // Snap the lever back to the last valid position
-        console.warn('Invalid position, snapping back!')
-      }
+      // Constrain the lever's movement within the path-moving boundaries
+      const leverHeight = lever.offsetHeight
+      const minY = pathRect.top - containerRect.top // Top boundary of path-moving relative to container
+      const maxY = pathRect.bottom - containerRect.top - leverHeight // Bottom boundary of path-moving relative to container
+
+      // Clamp the lever's position within the boundaries
+      const clampedY = Math.max(minY, Math.min(newY, maxY))
+
+      // Update the lever's position
+      lever.style.top = `${clampedY}px`
+
+      // Debugging: Log positions
+      console.log('New Y:', newY)
+      console.log('Clamped Y:', clampedY)
+      console.log('Lever Style Top:', lever.style.top)
     })
   })
 
@@ -128,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetSection = document.getElementById('choose-character')
 
     if (targetSection) {
-      const headerHeight = -800
+      const headerHeight = -830
 
       window.scrollTo({
         top: targetSection.offsetTop - headerHeight,
@@ -141,6 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // choosing the character
+// section synchronization
+// scrolling to the scan
 document.addEventListener('DOMContentLoaded', () => {
   let currentlySelected = null
 
@@ -179,4 +141,41 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCharacter('robo-boy', 'select2')
   setupCharacter('dog', 'select3')
   setupCharacter('robo-alien', 'select4')
+
+  buttonConfirm.addEventListener('click', () => {
+    if (!currentlySelected) {
+      alert('Пожалуйста, выберите персонажа сначала!')
+      return
+    }
+
+    const selectedClass = currentlySelected.classList[0]
+    const characterMap = {
+      select1: 'girl',
+      select2: 'boy',
+      select3: 'dog',
+      select4: 'alien'
+    }
+    const selectedCharacterAttribute = characterMap[selectedClass]
+
+    document
+      .querySelectorAll(
+        '.characters2 img[data-character], .characters3 img[data-character], .characters4 img[data-character]'
+      )
+      .forEach((img) => {
+        if (img.dataset.character === selectedCharacterAttribute) {
+          img.style.opacity = '1'
+          console.log('Setting opacity to 1 for:', img)
+        } else {
+          img.style.opacity = '0'
+          console.log('Setting opacity to 0 for:', img)
+        }
+      })
+
+    document.querySelector('.button-scan').classList.add('active')
+    document.querySelector('.button-place_order').classList.add('active')
+    document.querySelector('.button-restart').classList.add('active')
+
+    const scanRobotSection = document.querySelector('.scan-robot')
+    scanRobotSection.scrollIntoView({ behavior: 'smooth' })
+  })
 })
