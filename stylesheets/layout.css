@@ -465,6 +465,10 @@
   height: 11vw;
   margin-top: 0.3vw;
   margin-left: 5.9vw;
+  opacity: 1;
+}
+.hint2:hover {
+  opacity: 0;
 }
 .question2 {
   font-family: 'Roboto Condensed Bold', serif;
@@ -472,6 +476,29 @@
   font-size: 4vw;
   margin-top: 3.8vw;
   margin-left: -3.65vw;
+  opacity: 1;
+}
+.question2:hover {
+  opacity: 0;
+}
+.explanation2 {
+  width: 24vw;
+  height: 5.47vw;
+  position: absolute;
+  margin-top: 3.05vw;
+  margin-left: 43vw;
+  opacity: 0;
+}
+.hint2:hover + .question2 + .explanation2,
+.question2:hover + .explanation2 {
+  width: 24vw;
+  height: 5.47vw;
+  position: absolute;
+  margin-top: 3.05vw;
+  margin-left: 43vw;
+  opacity: 1;
+  animation: appear2 2s infinite;
+  animation-play-state: running;
 }
 .scan-panel {
   background-repeat: no-repeat;
@@ -1232,7 +1259,6 @@ p6 {
   margin-left: 7.5vw;
   display: none;
 }
-/* Smooth fade-in/fade-out for characters */
 .boy-robo,
 .girl-robo,
 .dog-robo,
@@ -1245,36 +1271,30 @@ p6 {
 .girl-final,
 .dog-final,
 .alien-final {
-  transition: opacity 0.5s ease; /* Smooth transition */
+  transition: opacity 0.5s ease;
 }
-
-/* Ensure default opacity is 0 */
 .characters2 img,
 .characters3 img,
 .characters4 img {
   opacity: 0;
 }
-
 .button-scan,
 .button-place_order {
-  background-color: #a3a3a3; /* Grayed out */
+  background-color: #a3a3a3;
   border: black 4px solid;
   cursor: not-allowed;
 }
-
 .button-restart {
   background-color: #35355f;
   border: #a3a3a3 4px solid;
   cursor: pointer;
 }
-
 .button-scan.active,
 .button-place_order.active {
-  background-color: #45eded; /* Bright blue */
+  background-color: #45eded;
   border: black 4px solid;
   cursor: pointer;
 }
-
 .button-restart.active {
   background-color: #35355f;
   border: #45eded 4px solid;
@@ -1282,16 +1302,13 @@ p6 {
 }
 .scan,
 .place-order {
-  -webkit-text-fill-color: black; /* Default text color */
+  -webkit-text-fill-color: black;
 }
-
 .restart {
   font-family: 'Roboto Condensed Medium', sans-serif;
   font-size: 3.28vw;
-  -webkit-text-fill-color: #a3a3a3; /* Special gray for restart button */
+  -webkit-text-fill-color: #a3a3a3;
 }
-
-/* Active state */
 .button-restart.active .restart {
   -webkit-text-fill-color: #45eded !important;
 }

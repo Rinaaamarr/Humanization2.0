@@ -71,3 +71,25 @@
     animation-timing-function: ease-out;
   }
 }
+@keyframes appear2 {
+  0% {
+    opacity: 0;
+    animation-timing-function: ease-in;
+  }
+  25% {
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 1;
+    animation-timing-function: ease;
+  }
+  75% {
+    opacity: 1;
+    animation-timing-function: ease-out;
+  }
+  100% {
+    opacity: 0;
+    animation-timing-function: ease-out;
+  }
+}
