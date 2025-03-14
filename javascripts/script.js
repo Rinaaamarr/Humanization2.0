@@ -228,10 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (scanCount === 1) {
       showBugs()
       alert(
-        'Attention! There are bugs in the system! Fix them as fast as you can!'
+        'Внимание! Были обнаружены неполадки в системе. Устрани их как можно скорее!'
       )
     } else if (scanCount === 2) {
-      alert('Good job! The character is now bug-free.')
+      alert('Неполадки устранены! Можно двигаться дальше.')
       hideAllBugs()
 
       scanCount = 0
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
     )
 
     if (remainingBugs.length === 0) {
-      alert('Nice, try scanning again.')
+      alert('Отлично! Попробуй просканировать персонажа снова.')
     }
   }
 
@@ -319,5 +319,186 @@ document.addEventListener('DOMContentLoaded', () => {
 
   buttonRestart.addEventListener('click', () => {
     resetGame()
+  })
+})
+
+// heart animation
+document.addEventListener('DOMContentLoaded', () => {
+  const hearts = document.querySelectorAll('.floating img')
+  const loveEmoji = document.querySelector('.love')
+
+  function showHearts(emotion) {
+    hearts.forEach((heart) => {
+      if (heart.dataset.emotion === emotion) {
+        heart.style.opacity = '1'
+      } else {
+        heart.style.opacity = '0'
+      }
+    })
+  }
+
+  loveEmoji.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector(
+      '.characters2 img.selected'
+    )?.dataset.character
+
+    const emotionMap = {
+      boy: 'floating-boy/alien',
+      alien: 'floating-boy/alien',
+      girl: 'floating-girl',
+      dog: 'floating-dog'
+    }
+
+    const selectedEmotion = emotionMap[selectedCharacter]
+
+    if (selectedEmotion) {
+      showHearts(selectedEmotion)
+    } else {
+      console.error('No character selected or invalid character!')
+    }
+
+    loveEmoji.style.transform = 'scale(1.1)'
+    setTimeout(() => {
+      loveEmoji.style.transform = 'scale(1)'
+    }, 200)
+  })
+
+  hearts.forEach((heart) => {
+    heart.style.opacity = '0'
+  })
+})
+
+// teardrop animation
+document.addEventListener('DOMContentLoaded', () => {
+  const sadnessEmoji = document.querySelector('.sadness')
+  const resetButton = document.querySelector('.button-restart')
+
+  function showTears(emotion) {
+    const tears = document.querySelectorAll('.teardrops img')
+    tears.forEach((tear) => {
+      if (tear.dataset.emotion === emotion) {
+        tear.style.opacity = '1'
+        tear.style.animationPlayState = 'running'
+      } else {
+        tear.style.opacity = '0'
+        tear.style.animationPlayState = 'paused'
+      }
+    })
+  }
+
+  sadnessEmoji.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector(
+      '.characters3 .character-display.selected'
+    )
+    if (!selectedCharacter) {
+      console.error('No character selected!')
+      return
+    }
+
+    const emotionMap = {
+      boy: 'crying-boy',
+      girl: 'crying-girl',
+      dog: 'crying-dog',
+      alien: 'crying-alien'
+    }
+
+    const selectedEmotion = emotionMap[selectedCharacter.dataset.character]
+
+    showTears(selectedEmotion)
+
+    switch (selectedCharacter.dataset.character) {
+      case 'boy':
+        document.querySelector('.boy').style.opacity = '0'
+        document.querySelector('.sad-boy').style.opacity = '1'
+        break
+
+      case 'girl':
+        document.querySelector('.girl').style.opacity = '0'
+        document.querySelector('.sad-girl').style.opacity = '1'
+        break
+
+      case 'alien':
+        document.querySelector('.alien').style.opacity = '0'
+        document.querySelector('.sad-alien').style.opacity = '1'
+        break
+
+      case 'dog':
+        break
+
+      default:
+        console.error('Invalid character selected!')
+    }
+  })
+
+  resetButton?.addEventListener('click', () => {
+    document.querySelector('.boy').style.opacity = '1'
+    document.querySelector('.girl').style.opacity = '1'
+    document.querySelector('.doggie').style.opacity = '1'
+    document.querySelector('.alien').style.opacity = '1'
+
+    document.querySelector('.sad-boy').style.opacity = '0'
+    document.querySelector('.sad-girl').style.opacity = '0'
+    document.querySelector('.sad-alien').style.opacity = '0'
+
+    const tears = document.querySelectorAll('.teardrops img')
+    tears.forEach((tear) => {
+      tear.style.opacity = '0'
+      tear.style.animationPlayState = 'paused'
+    })
+  })
+})
+
+// blush animation
+document.addEventListener('DOMContentLoaded', () => {
+  const blushEmoji = document.querySelector('.blush') // The blush emoji
+  const resetButton = document.querySelector('.button-restart') // Reset button
+
+  // Function to activate blushing animation for a specific character
+  function activateBlushing(character) {
+    const characterName = character.dataset.character
+
+    // Map characters to their corresponding blushing elements
+    const blushingElementsMap = {
+      boy: ['.left1', '.left2', '.left3', '.right1', '.right2', '.right3'],
+      girl: ['.left4', '.left5', '.left6', '.right4', '.right5', '.right6'],
+      dog: ['.right7', '.right8', '.right9'],
+      alien: ['.left7', '.left8', '.left9', '.right10', '.right11', '.right12']
+    }
+
+    // Get the blushing elements for the selected character
+    const blushingElements = blushingElementsMap[characterName]
+
+    if (blushingElements) {
+      blushingElements.forEach((selector) => {
+        const element = document.querySelector(selector)
+        if (element) {
+          element.style.opacity = '1' // Make the blushing element visible
+          element.style.animationPlayState = 'running' // Start the animation
+        }
+      })
+    }
+  }
+
+  // Add click event listener to the blush emoji
+  blushEmoji.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector(
+      '.characters2 img.selected'
+    )
+    if (!selectedCharacter) {
+      alert('Please select a character first!')
+      return
+    }
+
+    // Activate the blushing animation for the selected character
+    activateBlushing(selectedCharacter)
+  })
+
+  // Reset blushing animation when switching emotions or restarting
+  resetButton?.addEventListener('click', () => {
+    const allBlushingElements = document.querySelectorAll('.blushing img')
+    allBlushingElements.forEach((element) => {
+      element.style.opacity = '0' // Hide the blushing element
+      element.style.animationPlayState = 'paused' // Pause the animation
+    })
   })
 })

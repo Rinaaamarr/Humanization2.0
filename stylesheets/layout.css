@@ -717,6 +717,39 @@
   z-index: 3;
   opacity: 0;
 }
+.sad-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.sad-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.sad-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 22.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
 .emotions-buttons {
   z-index: 3;
 }
@@ -773,6 +806,7 @@
 }
 .emoji {
   z-index: 4;
+  cursor: not-allowed;
 }
 .love {
   background-repeat: no-repeat;
@@ -781,6 +815,7 @@
   height: 8vw;
   margin-top: 24.7vw;
   margin-left: -49vw;
+  cursor: pointer;
 }
 .sadness {
   background-repeat: no-repeat;
@@ -789,6 +824,7 @@
   height: 8vw;
   margin-top: 22.7vw;
   margin-left: 8.5vw;
+  cursor: pointer;
 }
 .blush {
   background-repeat: no-repeat;
@@ -797,6 +833,7 @@
   height: 8vw;
   margin-top: 24.7vw;
   margin-left: 8.5vw;
+  cursor: pointer;
 }
 .anger {
   background-repeat: no-repeat;
@@ -806,6 +843,7 @@
   margin-top: 7vw;
   margin-left: -48vw;
   display: block;
+  cursor: pointer;
 }
 .surprise {
   background-repeat: no-repeat;
@@ -815,6 +853,7 @@
   margin-top: -19.3vw;
   margin-left: -31.5vw;
   overflow: hidden;
+  cursor: pointer;
 }
 .disgust {
   background-repeat: no-repeat;
@@ -823,6 +862,442 @@
   height: 10vw;
   margin-top: -8.3vw;
   margin-left: 10vw;
+  cursor: pointer;
+}
+.floating img {
+  transition: opacity 0.5s ease-in-out;
+}
+.heart1 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-top: 21vw;
+  margin-left: -71vw;
+  z-index: 5;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0;
+}
+.heart2 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-top: 25vw;
+  margin-left: -80.3vw;
+  z-index: 5;
+  animation: float 4s ease-in-out infinite;
+  opacity: 0;
+}
+.heart3 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-top: 29.5vw;
+  margin-left: -71.4vw;
+  z-index: 5;
+  animation: float 3.5s ease-in-out infinite;
+  opacity: 0;
+}
+.heart4 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-left: -69.5vw;
+  margin-top: 25vw;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0;
+}
+.heart5 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-left: -81vw;
+  margin-top: 28vw;
+  animation: float 4s ease-in-out infinite;
+  opacity: 0;
+}
+.heart6 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-left: -71.5vw;
+  margin-top: 32.5vw;
+  animation: float 3.5s ease-in-out infinite;
+  opacity: 0;
+}
+.heart7 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-left: -81vw;
+  margin-top: 31.5vw;
+  animation: float 4s ease-in-out infinite;
+  opacity: 0;
+}
+.heart8 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.72vw;
+  height: 1.64vw;
+  margin-left: -86vw;
+  margin-top: 27.5vw;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0;
+}
+.teardrops img {
+  opacity: 0;
+  animation-play-state: paused;
+  transition: opacity 0.5s ease-in-out;
+}
+.teardrops img[data-emotion='crying-boy'],
+.teardrops img[data-emotion='crying-girl'],
+.teardrops img[data-emotion='crying-dog'],
+.teardrops img[data-emotion='crying-alien'] {
+  opacity: 1;
+}
+.tear1 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.72vw;
+  margin-left: -73.5vw;
+  margin-top: 30.1vw;
+  animation: drop-tear 2s ease-out infinite;
+}
+.tear2 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.72vw;
+  margin-left: -77vw;
+  margin-top: 28.9vw;
+  animation: drop-tear 2.8s ease-out infinite;
+}
+.tear3 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.72vw;
+  margin-left: -72.9vw;
+  margin-top: 30.8vw;
+  animation: drop-tear 2s ease-out infinite;
+}
+.tear4 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.72vw;
+  margin-left: -76.6vw;
+  margin-top: 30vw;
+  animation: drop-tear 3s ease-out infinite;
+}
+.tear5 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.72vw;
+  margin-left: -82.9vw;
+  margin-top: 31.3vw;
+  animation: drop-tear 2.5s ease-out infinite;
+}
+.tear6 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.72vw;
+  margin-left: -73.5vw;
+  margin-top: 26.8vw;
+  animation: drop-tear 3s ease-out infinite;
+}
+.left1,
+.left2,
+.left3,
+.left4,
+.left5,
+.left6,
+.left7,
+.left8,
+.left9 {
+  animation: left-stick-rotate 1s ease-in-out infinite;
+}
+.right1,
+.right2,
+.right3,
+.right4,
+.right5,
+.right6,
+.right7,
+.right8,
+.right9,
+.right10,
+.right11,
+.right12 {
+  animation: right-stick-rotate 1s ease-in-out infinite;
+}
+.blushing img {
+  transition: opacity 0.5s ease-in-out;
+}
+.left1 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 29.45vw;
+  margin-left: -79.3vw;
+  opacity: 0;
+}
+.left2 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 29.45vw;
+  margin-left: -78.5vw;
+  opacity: 0;
+}
+.left3 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 29.45vw;
+  margin-left: -77.8vw;
+  opacity: 0;
+}
+.right1 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 29.45vw;
+  margin-left: -71.7vw;
+  opacity: 0;
+}
+.right2 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 29.45vw;
+  margin-left: -72.5vw;
+  opacity: 0;
+}
+.right3 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 29.45vw;
+  margin-left: -73.3vw;
+  opacity: 0;
+}
+.left4 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 30.6vw;
+  margin-left: -79.5vw;
+  opacity: 0;
+}
+.left5 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 30.6vw;
+  margin-left: -78.7vw;
+  opacity: 0;
+}
+.left6 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 30.6vw;
+  margin-left: -77.9vw;
+  opacity: 0;
+}
+.right4 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 30.6vw;
+  margin-left: -70.1vw;
+  opacity: 0;
+}
+.right5 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 30.6vw;
+  margin-left: -70.9vw;
+  opacity: 0;
+}
+.right6 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 30.6vw;
+  margin-left: -71.7vw;
+  opacity: 0;
+}
+.right7 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 31.4vw;
+  margin-left: -82.9vw;
+  opacity: 0;
+}
+.right8 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 31.4vw;
+  margin-left: -82.1vw;
+  opacity: 0;
+}
+.right9 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 31.4vw;
+  margin-left: -81.3vw;
+  opacity: 0;
+}
+.left7 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 26.9vw;
+  margin-left: -77.9vw;
+  opacity: 0;
+}
+.left8 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 26.9vw;
+  margin-left: -77.1vw;
+  opacity: 0;
+}
+.left9 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 26.9vw;
+  margin-left: -76.3vw;
+  opacity: 0;
+}
+.right10 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 26.9vw;
+  margin-left: -73.3vw;
+  opacity: 0;
+}
+.right11 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 26.9vw;
+  margin-left: -72.5vw;
+  opacity: 0;
+}
+.right12 {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 0.94vw;
+  height: 1.48vw;
+  margin-top: 26.9vw;
+  margin-left: -71.7vw;
+  opacity: 0;
 }
 .humanize-robot {
   width: 100vw;
