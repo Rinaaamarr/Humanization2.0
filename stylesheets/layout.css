@@ -507,16 +507,65 @@
   height: 50vw;
   margin-top: 9.1vw;
   margin-left: -23.5vw;
-  z-index: 1;
+  position: relative;
+  overflow: hidden;
 }
 .scanner {
+  position: absolute;
+  top: 14vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 52.65vw;
+  height: 7vw;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 52.5vw;
-  height: 50vw;
-  margin-top: -7.3vw;
-  margin-left: -52.5vw;
+  background-image: url(../images/scanner.svg);
   z-index: 2;
+}
+.scanner.scanning {
+  animation: scan 2s ease-in-out forwards;
+}
+.character-display.selected {
+  z-index: 3;
+}
+.bug {
+  position: absolute;
+  width: 1.95vw;
+  height: 1.95vw;
+  background-color: #a259ff;
+  border: black 2px solid;
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulse 1.5s infinite;
+  z-index: 4;
+}
+.bug1[data-character='default'] {
+  top: 24vw;
+  left: 51.5vw;
+}
+.bug2[data-character='default'] {
+  top: 32vw;
+  left: 48vw;
+}
+.bug3[data-character='default'] {
+  top: 37vw;
+  left: 51vw;
+}
+.bug4[data-character='default'] {
+  top: 42vw;
+  left: 46.5vw;
+}
+.bug5[data-character='dog'] {
+  top: 30vw;
+  left: 42vw;
+}
+.bug6[data-character='dog'] {
+  top: 35vw;
+  left: 49vw;
+}
+.bug7[data-character='dog'] {
+  top: 41vw;
+  left: 55.2vw;
 }
 .boy-robo {
   background-repeat: no-repeat;
@@ -1020,6 +1069,15 @@ p6 {
   margin-top: 41.2vw;
   margin-left: -5.9vw;
 }
+.stripes {
+  width: 5.86vw;
+  height: 5.6vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  margin-top: 17.85vw;
+  margin-left: -5.8vw;
+}
 .polka-dot {
   width: 4.45vw;
   height: 5.16vw;
@@ -1174,16 +1232,10 @@ p6 {
   position: absolute;
 }
 .button-scan:active {
-  width: 28.83vw;
-  height: 6.64vw;
-  background-color: #45eded;
-  border: black 4px solid;
-  border-radius: 300px;
-  display: none;
-  margin-left: 35.5vw;
-  margin-top: 57.1vw;
-  position: absolute;
+  cursor: pointer;
+  background-color: #5cb85c;
 }
+
 .scan {
   font-family: 'Roboto Condensed Medium', sans-serif;
   font-size: 3.28vw;

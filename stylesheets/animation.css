@@ -93,3 +93,25 @@
     animation-timing-function: ease-out;
   }
 }
+@keyframes scan {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(30vw); /* Move to bottom */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0); /* Return to top */
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

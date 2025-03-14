@@ -69,14 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mouseup', () => {
     isDragging = false
     lever.style.cursor = 'grab'
-
-    // Debugging: Log end of drag
-    console.log('Drag ended')
-  })
-
-  // Prevent accidental dragging when clicking outside the lever
-  document.addEventListener('dragstart', (e) => {
-    e.preventDefault()
   })
 })
 
@@ -105,10 +97,21 @@ document.addEventListener('DOMContentLoaded', () => {
 // scrolling to the scan
 document.addEventListener('DOMContentLoaded', () => {
   let currentlySelected = null
+  let isCharacterConfirmed = false
+  let scanCount = 0 // Track the number of scans
 
   const buttonConfirm = document.querySelector('.button-confirm')
   const confirmText = document.querySelector('.confirm')
+  const buttonScan = document.querySelector('.button-scan')
+  const scanner = document.querySelector('.scanner')
 
+  // Ensure required elements exist
+  if (!buttonConfirm || !confirmText || !buttonScan || !scanner) {
+    console.error('Required elements not found in the DOM!')
+    return
+  }
+
+  // Function to set up character selection
   function setupCharacter(characterClass, selectionClass) {
     const character = document.querySelector(`.${characterClass}`)
     const selection = document.querySelector(`.${selectionClass}`)
@@ -121,9 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (selection.style.opacity === '1') {
         selection.style.opacity = '0'
+        character.classList.remove('selected')
         currentlySelected = null
       } else {
         selection.style.opacity = '1'
+        character.classList.add('selected')
         currentlySelected = selection
       }
 
@@ -142,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCharacter('dog', 'select3')
   setupCharacter('robo-alien', 'select4')
 
+  // Confirm button functionality
   buttonConfirm.addEventListener('click', () => {
     if (!currentlySelected) {
       alert('Пожалуйста, выберите персонажа сначала!')
@@ -157,25 +163,148 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const selectedCharacterAttribute = characterMap[selectedClass]
 
-    document
-      .querySelectorAll(
-        '.characters2 img[data-character], .characters3 img[data-character], .characters4 img[data-character]'
-      )
-      .forEach((img) => {
+    // Update visibility of characters in all sections EXCEPT choose-character
+    document.querySelectorAll('.character-display').forEach((img) => {
+      if (img.closest('#choose-character')) {
+        // Do NOT change opacity in the choose-character section
+        img.style.opacity = '1' // Ensure all characters are visible
+      } else {
         if (img.dataset.character === selectedCharacterAttribute) {
           img.style.opacity = '1'
-          console.log('Setting opacity to 1 for:', img)
+          img.classList.add('selected') // Add 'selected' class
+
+          // Dynamically position the scanner behind the selected character
+          const scanPanel = document.querySelector('.scan-panel')
+          const characterPosition = img.getBoundingClientRect()
+          const panelPosition = scanPanel.getBoundingClientRect()
+
+          // Calculate the scanner's position relative to the scan panel
+          const scannerTop =
+            characterPosition.top - panelPosition.top - scanner.offsetHeight / 2 // Adjust for scanner height
+          const scannerLeft =
+            characterPosition.left - panelPosition.left + img.offsetWidth / 2
+
+          scanner.style.top = `${scannerTop}vw`
+          scanner.style.left = `${scannerLeft}vw`
+          scanner.style.transform = 'translateX(-50%)' // Center horizontally
         } else {
           img.style.opacity = '0'
-          console.log('Setting opacity to 0 for:', img)
+          img.classList.remove('selected') // Remove 'selected' class
         }
-      })
+      }
+    })
 
-    document.querySelector('.button-scan').classList.add('active')
-    document.querySelector('.button-place_order').classList.add('active')
-    document.querySelector('.button-restart').classList.add('active')
+    // Enable the scan button
+    buttonScan.classList.add('active')
+    buttonScan.style.cursor = 'pointer'
+    isCharacterConfirmed = true
 
     const scanRobotSection = document.querySelector('.scan-robot')
     scanRobotSection.scrollIntoView({ behavior: 'smooth' })
   })
+
+  // Event delegation for the button-scan
+  document.body.addEventListener('click', (event) => {
+    const buttonScan = event.target.closest('.button-scan.active')
+    if (buttonScan && isCharacterConfirmed) {
+      startScan()
+    }
+  })
+
+  // Function to start the scanning animation
+  function startScan() {
+    scanner.classList.add('scanning') // Trigger the animation
+    scanCount++ // Increment the scan count
+    console.log('Scanning started!', `Scan Count: ${scanCount}`)
+  }
+
+  // Listen for the end of the scanning animation
+  scanner.addEventListener('animationend', () => {
+    console.log('Animation ended!')
+    scanner.classList.remove('scanning') // Reset the animation
+
+    if (scanCount === 1) {
+      // Show bugs only after the first scan
+      showBugs()
+      alert(
+        'Attention! There are bugs in the system! Fix them as fast as you can!'
+      )
+    } else if (scanCount === 2) {
+      // After the second scan, remove bugs and show the clean character
+      alert('Good job! The character is now bug-free.')
+      hideAllBugs()
+    } else if (scanCount === 3) {
+      // After the third scan, allow restarting the game
+      resetGame()
+    }
+  })
+
+  // Function to show bugs based on selected character
+  function showBugs() {
+    const selectedImage = document.querySelector('.characters img.selected')
+    if (!selectedImage) {
+      console.error('No selected image found in .characters')
+      return
+    }
+
+    const selectedCharacter = selectedImage.dataset.character
+
+    // Show bugs based on the selected character
+    document.querySelectorAll('.bug').forEach((bug) => {
+      if (
+        bug.dataset.character === selectedCharacter ||
+        bug.dataset.character === 'default'
+      ) {
+        bug.style.opacity = '1'
+      }
+    })
+
+    // Add click event listeners to bugs
+    document.querySelectorAll('.bug').forEach((bug) => {
+      bug.addEventListener('click', () => {
+        bug.style.opacity = '0' // Hide the bug
+        checkAllBugsFixed() // Check if all bugs are fixed
+      })
+    })
+  }
+
+  // Function to hide all bugs
+  function hideAllBugs() {
+    document.querySelectorAll('.bug').forEach((bug) => {
+      bug.style.opacity = '0'
+    })
+  }
+
+  // Function to check if all bugs are fixed
+  function checkAllBugsFixed() {
+    const remainingBugs = Array.from(document.querySelectorAll('.bug')).filter(
+      (bug) => bug.style.opacity === '1'
+    )
+
+    if (remainingBugs.length === 0) {
+      alert('Nice, try scanning again.')
+      // Allow the user to scan again
+    }
+  }
+
+  // Function to reset only specific parts of the game
+  function resetGame() {
+    // Reset bugs
+    hideAllBugs()
+
+    // Reset the scanner state
+    scanner.style.top = '-7vw' // Reset scanner position
+    scanner.style.left = '50%'
+    scanner.style.transform = 'translateX(-50%)'
+
+    // Reset variables
+    scanCount = 0
+
+    // Disable the scan button
+    buttonScan.classList.remove('active')
+    buttonScan.style.cursor = 'not-allowed'
+
+    // Removed the scroll to the top
+    // Removed the alert for game reset
+  }
 })
