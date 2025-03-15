@@ -98,10 +98,10 @@
     transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(30vw); /* Move to bottom */
+    transform: translateX(-50%) translateY(30vw);
   }
   100% {
-    transform: translateX(-50%) translateY(0); /* Return to top */
+    transform: translateX(-50%) translateY(0);
   }
 }
 @keyframes pulse {
@@ -150,23 +150,56 @@
 }
 @keyframes left-stick-rotate {
   0% {
-    transform: rotate(-5deg); /* Slightly tilt to the left */
+    transform: rotate(-5deg);
   }
   50% {
-    transform: rotate(5deg); /* Slightly tilt to the right */
+    transform: rotate(5deg);
   }
   100% {
-    transform: rotate(-5deg); /* Return to the left */
+    transform: rotate(-5deg);
   }
 }
 @keyframes right-stick-rotate {
   0% {
-    transform: rotate(5deg); /* Slightly tilt to the right */
+    transform: rotate(5deg);
   }
   50% {
-    transform: rotate(-5deg); /* Slightly tilt to the left */
+    transform: rotate(-5deg);
   }
   100% {
-    transform: rotate(5deg); /* Return to the right */
+    transform: rotate(5deg);
+  }
+}
+@keyframes eyebrow-move {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.3vw);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes surprise-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes disgust-mouth {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1);
   }
 }

@@ -750,6 +750,105 @@
   z-index: 3;
   opacity: 0;
 }
+.angry-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.angry-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.angry-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 22.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.surprised-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.surprised-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.surprised-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 22.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.disgusted-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.disgusted-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 31vw;
+  margin-top: 19.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
+.disgusted-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 33vw;
+  height: 28.3vw;
+  margin-top: 22.8vw;
+  margin-left: -36.5vw;
+  z-index: 3;
+  opacity: 0;
+}
 .emotions-buttons {
   z-index: 3;
 }
@@ -1299,6 +1398,192 @@
   margin-left: -71.7vw;
   opacity: 0;
 }
+.left-boy,
+.right-boy,
+.left-girl,
+.right-girl,
+.angry-dog,
+.curved-alien {
+  animation: eyebrow-move 1s ease-in-out infinite;
+  animation-play-state: paused;
+  transition: opacity 0.5s ease-in-out;
+}
+.angry-boy,
+.angry-girl,
+.angry-alien {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.left-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 2.33vw;
+  height: 2.03vw;
+  margin-top: 25.5vw;
+  margin-left: -78.3vw;
+  opacity: 0;
+}
+.right-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 2.33vw;
+  height: 2.03vw;
+  margin-top: 25.5vw;
+  margin-left: -74vw;
+  opacity: 0;
+}
+.left-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 2.33vw;
+  height: 2.03vw;
+  margin-top: 25.8vw;
+  margin-left: -78vw;
+  opacity: 0;
+}
+.right-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 2.33vw;
+  height: 2.03vw;
+  margin-top: 25.8vw;
+  margin-left: -73.2vw;
+  opacity: 0;
+}
+.angry-dog {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.5vw;
+  height: 30.16vw;
+  margin-top: 13.7vw;
+  margin-left: -83.1vw;
+  opacity: 0;
+}
+.curved-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 3.59vw;
+  height: 1.78vw;
+  margin-top: 22.4vw;
+  margin-left: -76vw;
+  opacity: 0;
+}
+.surprise-boy,
+.surprise-girl,
+.surprise-dog,
+.surprise-alien {
+  animation: surprise-scale 1.5s ease-in-out infinite;
+  animation-play-state: paused;
+  transition: opacity 0.5s ease-in-out;
+}
+.surprise-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.17vw;
+  height: 1.17vw;
+  margin-top: 29.5vw;
+  margin-left: -75.5vw;
+  opacity: 0;
+}
+.surprise-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.17vw;
+  height: 1.17vw;
+  margin-top: 30.8vw;
+  margin-left: -75vw;
+  opacity: 0;
+}
+.surprise-dog {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 1.3vw;
+  height: 1.3vw;
+  margin-top: 31.5vw;
+  margin-left: -86vw;
+  opacity: 0;
+}
+.surprise-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 4.38vw;
+  height: 1.88vw;
+  margin-top: 27.5vw;
+  margin-left: -76.4vw;
+  opacity: 0;
+}
+.disgust-boy,
+.disgust-girl,
+.disgust-dog,
+.disgust-alien {
+  animation: disgust-mouth 1s ease-in-out infinite;
+  animation-play-state: paused;
+  transition: opacity 0.5s ease-in-out;
+}
+.disgust-boy {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 5.39vw;
+  height: 0.78vw;
+  margin-top: 29.7vw;
+  margin-left: -77.7vw;
+  opacity: 0;
+}
+.disgust-girl {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 5.39vw;
+  height: 1.78vw;
+  margin-top: 30.8vw;
+  margin-left: -77vw;
+  opacity: 0;
+}
+.disgust-dog {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 3.42vw;
+  height: 1.47vw;
+  margin-top: 31.8vw;
+  margin-left: -86vw;
+  opacity: 0;
+}
+.disgust-alien {
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: 5;
+  width: 5.39vw;
+  height: 1.78vw;
+  margin-top: 27.5vw;
+  margin-left: -77vw;
+  opacity: 0;
+}
 .humanize-robot {
   width: 100vw;
   height: 80vw;
@@ -1718,8 +2003,9 @@ p6 {
   cursor: pointer;
   background-color: #45eded;
 }
-.button-scan:active:hover {
+.button-scan.active:hover {
   background-color: #38c2c2;
+  cursor: pointer;
 }
 .scan {
   font-family: 'Roboto Condensed Medium', sans-serif;

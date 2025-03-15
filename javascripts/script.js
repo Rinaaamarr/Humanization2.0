@@ -450,14 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // blush animation
 document.addEventListener('DOMContentLoaded', () => {
-  const blushEmoji = document.querySelector('.blush') // The blush emoji
-  const resetButton = document.querySelector('.button-restart') // Reset button
+  const blushEmoji = document.querySelector('.blush')
+  const resetButton = document.querySelector('.button-restart')
 
-  // Function to activate blushing animation for a specific character
   function activateBlushing(character) {
     const characterName = character.dataset.character
 
-    // Map characters to their corresponding blushing elements
     const blushingElementsMap = {
       boy: ['.left1', '.left2', '.left3', '.right1', '.right2', '.right3'],
       girl: ['.left4', '.left5', '.left6', '.right4', '.right5', '.right6'],
@@ -465,40 +463,247 @@ document.addEventListener('DOMContentLoaded', () => {
       alien: ['.left7', '.left8', '.left9', '.right10', '.right11', '.right12']
     }
 
-    // Get the blushing elements for the selected character
     const blushingElements = blushingElementsMap[characterName]
 
     if (blushingElements) {
       blushingElements.forEach((selector) => {
         const element = document.querySelector(selector)
         if (element) {
-          element.style.opacity = '1' // Make the blushing element visible
-          element.style.animationPlayState = 'running' // Start the animation
+          element.style.opacity = '1'
+          element.style.animationPlayState = 'running'
         }
       })
     }
   }
 
-  // Add click event listener to the blush emoji
   blushEmoji.addEventListener('click', () => {
     const selectedCharacter = document.querySelector(
       '.characters2 img.selected'
     )
     if (!selectedCharacter) {
-      alert('Please select a character first!')
+      alert('Сначала выберите персонажа!')
       return
     }
 
-    // Activate the blushing animation for the selected character
     activateBlushing(selectedCharacter)
   })
 
-  // Reset blushing animation when switching emotions or restarting
   resetButton?.addEventListener('click', () => {
     const allBlushingElements = document.querySelectorAll('.blushing img')
     allBlushingElements.forEach((element) => {
-      element.style.opacity = '0' // Hide the blushing element
-      element.style.animationPlayState = 'paused' // Pause the animation
+      element.style.opacity = '0'
+      element.style.animationPlayState = 'paused'
     })
+  })
+})
+
+// anger animation
+document.addEventListener('DOMContentLoaded', () => {
+  const angerButton = document.querySelector('.anger')
+  const resetButton = document.querySelector('.button-restart')
+
+  function activateAnger(character) {
+    const characterName = character.dataset.character
+
+    const angerImagesMap = {
+      boy: '.angry-boy',
+      girl: '.angry-girl',
+      alien: '.angry-alien'
+    }
+
+    const eyebrowElementsMap = {
+      boy: ['.left-boy', '.right-boy'],
+      girl: ['.left-girl', '.right-girl'],
+      dog: ['.angry-dog'],
+      alien: ['.curved-alien']
+    }
+
+    const angryImageSelector = angerImagesMap[characterName]
+    if (angryImageSelector) {
+      const angryImage = document.querySelector(angryImageSelector)
+      if (angryImage) {
+        angryImage.style.opacity = '1'
+      }
+    }
+
+    const eyebrowElements = eyebrowElementsMap[characterName]
+    if (eyebrowElements) {
+      eyebrowElements.forEach((selector) => {
+        const element = document.querySelector(selector)
+        if (element) {
+          element.style.opacity = '1'
+          element.style.animationPlayState = 'running'
+        }
+      })
+    }
+  }
+
+  angerButton.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector(
+      '.characters2 img.selected'
+    )
+    if (!selectedCharacter) {
+      alert('Сначала выберите персонажа!')
+      return
+    }
+
+    activateAnger(selectedCharacter)
+  })
+
+  resetButton?.addEventListener('click', () => {
+    document
+      .querySelectorAll('.angry-boy, .angry-girl, .angry-alien')
+      .forEach((image) => {
+        image.style.opacity = '0'
+      })
+
+    document
+      .querySelectorAll(
+        '.left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien'
+      )
+      .forEach((element) => {
+        element.style.opacity = '0'
+        element.style.animationPlayState = 'paused'
+      })
+  })
+})
+
+// surprised animation
+document.addEventListener('DOMContentLoaded', () => {
+  const surpriseButton = document.querySelector('.surprise')
+  const resetButton = document.querySelector('.button-restart')
+
+  function activateSurprise(character) {
+    const characterName = character.dataset.character
+
+    const surpriseImagesMap = {
+      boy: '.surprised-boy',
+      girl: '.surprised-girl',
+      alien: '.surprised-alien'
+    }
+
+    const surpriseElementsMap = {
+      boy: '.surprise-boy',
+      girl: '.surprise-girl',
+      dog: '.surprise-dog',
+      alien: '.surprise-alien'
+    }
+
+    const surprisedImageSelector = surpriseImagesMap[characterName]
+    if (surprisedImageSelector) {
+      const surprisedImage = document.querySelector(surprisedImageSelector)
+      if (surprisedImage) {
+        surprisedImage.style.opacity = '1'
+      }
+    }
+
+    const surpriseElementSelector = surpriseElementsMap[characterName]
+    if (surpriseElementSelector) {
+      const surpriseElement = document.querySelector(surpriseElementSelector)
+      if (surpriseElement) {
+        surpriseElement.style.opacity = '1'
+        surpriseElement.style.animationPlayState = 'running'
+      }
+    }
+  }
+
+  surpriseButton.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector(
+      '.characters2 img.selected'
+    )
+    if (!selectedCharacter) {
+      alert('Сначала выберите персонажа!')
+      return
+    }
+
+    activateSurprise(selectedCharacter)
+  })
+
+  resetButton?.addEventListener('click', () => {
+    document
+      .querySelectorAll('.surprised-boy, .surprised-girl, .surprised-alien')
+      .forEach((image) => {
+        image.style.opacity = '0'
+      })
+
+    document
+      .querySelectorAll(
+        '.surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien'
+      )
+      .forEach((element) => {
+        element.style.opacity = '0'
+        element.style.animationPlayState = 'paused'
+      })
+  })
+})
+
+// disgust animation
+document.addEventListener('DOMContentLoaded', () => {
+  const disgustButton = document.querySelector('.disgust')
+  const resetButton = document.querySelector('.button-restart')
+
+  function activateDisgust(character) {
+    const characterName = character.dataset.character
+
+    const disgustImagesMap = {
+      boy: '.disgusted-boy',
+      girl: '.disgusted-girl',
+      alien: '.disgusted-alien'
+    }
+
+    const disgustMouthElementsMap = {
+      boy: '.disgust-boy',
+      girl: '.disgust-girl',
+      dog: '.disgust-dog',
+      alien: '.disgust-alien'
+    }
+
+    const disgustedImageSelector = disgustImagesMap[characterName]
+    if (disgustedImageSelector) {
+      const disgustedImage = document.querySelector(disgustedImageSelector)
+      if (disgustedImage) {
+        disgustedImage.style.opacity = '1'
+      }
+    }
+
+    const disgustMouthElementSelector = disgustMouthElementsMap[characterName]
+    if (disgustMouthElementSelector) {
+      const disgustMouthElement = document.querySelector(
+        disgustMouthElementSelector
+      )
+      if (disgustMouthElement) {
+        disgustMouthElement.style.opacity = '1'
+        disgustMouthElement.style.animationPlayState = 'running'
+      }
+    }
+  }
+
+  disgustButton.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector(
+      '.characters2 img.selected'
+    )
+    if (!selectedCharacter) {
+      alert('Сначала выберите персонажа!')
+      return
+    }
+
+    activateDisgust(selectedCharacter)
+  })
+
+  resetButton?.addEventListener('click', () => {
+    document
+      .querySelectorAll('.disgusted-boy, .disgusted-girl, .disgusted-alien')
+      .forEach((image) => {
+        image.style.opacity = '0'
+      })
+
+    document
+      .querySelectorAll(
+        '.disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
+      )
+      .forEach((element) => {
+        element.style.opacity = '0'
+        element.style.animationPlayState = 'paused'
+      })
   })
 })
