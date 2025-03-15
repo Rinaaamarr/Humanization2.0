@@ -707,3 +707,194 @@ document.addEventListener('DOMContentLoaded', () => {
       })
   })
 })
+
+// contenteditable text
+document.addEventListener('DOMContentLoaded', () => {
+  const blankSpace = document.querySelector('.blank-space') // The contenteditable div
+  const characters = document.querySelectorAll(
+    '#choose-character .characters img'
+  )
+  let selectedCharacter = null
+
+  blankSpace.setAttribute('contenteditable', 'false')
+  console.log('Initial state: contenteditable is disabled.')
+
+  if (characters.length === 0) {
+    console.error(
+      'No character elements found in #choose-character! Check your HTML structure.'
+    )
+    return
+  }
+
+  console.log(`Found ${characters.length} characters in #choose-character.`)
+
+  characters.forEach((character) => {
+    console.log(
+      `Adding click listener to character: ${character.dataset.character}`
+    )
+    character.addEventListener('click', () => {
+      console.log(`Character clicked: ${character.dataset.character}`)
+
+      characters.forEach((char) => char.classList.remove('selected'))
+
+      character.classList.add('selected')
+      selectedCharacter = character.dataset.character
+
+      blankSpace.setAttribute('contenteditable', 'true')
+      console.log(`Selected character: ${selectedCharacter}`)
+      console.log('contenteditable is now enabled.')
+
+      if (window.getComputedStyle(blankSpace).cursor === 'not-allowed') {
+        console.error('Cursor is still "not-allowed". Check CSS rules.')
+      }
+    })
+  })
+
+  blankSpace.addEventListener('input', () => {
+    let content = blankSpace.textContent.trim()
+
+    if (content.length > 20) {
+      blankSpace.textContent = content.slice(0, 20)
+      alert(`Достигнуто максимальное количество символов.`)
+    }
+
+    placeCaretAtEnd(blankSpace)
+  })
+
+  blankSpace.addEventListener('paste', (event) => {
+    event.preventDefault()
+    const pastedText = (event.clipboardData || window.clipboardData).getData(
+      'text'
+    )
+    const currentText = blankSpace.textContent.trim()
+    const newLength = currentText.length + pastedText.length
+
+    if (newLength <= 20) {
+      blankSpace.textContent += pastedText
+    } else {
+      alert(`Достигнуто максимальное количество символов.`)
+    }
+
+    placeCaretAtEnd(blankSpace)
+  })
+
+  blankSpace.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      console.log('"Enter" key pressed but suppressed.')
+
+      blankSpace.blur()
+      console.log('Focus removed from .blank-space.')
+    }
+  })
+})
+
+// choosing qualities
+document.addEventListener('DOMContentLoaded', () => {
+  const crosses = document.querySelectorAll(
+    '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
+  )
+  const characters = document.querySelectorAll(
+    '#choose-character .characters img'
+  )
+  let selectedCharacter = null
+
+  crosses.forEach((cross) => {
+    cross.classList.remove('enabled')
+  })
+
+  characters.forEach((character) => {
+    character.addEventListener('click', () => {
+      characters.forEach((char) => char.classList.remove('selected'))
+
+      character.classList.add('selected')
+      selectedCharacter = character.dataset.character
+
+      console.log(`Selected character: ${selectedCharacter}`)
+
+      crosses.forEach((cross) => {
+        cross.classList.add('enabled')
+      })
+    })
+  })
+
+  function countVisibleCrosses() {
+    return Array.from(crosses).filter((cross) =>
+      cross.classList.contains('visible')
+    ).length
+  }
+
+  crosses.forEach((cross) => {
+    cross.addEventListener('click', () => {
+      if (!cross.classList.contains('enabled')) {
+        console.log(`Cross not enabled: ${cross.className}`)
+        return
+      }
+
+      console.log(`Cross clicked: ${cross.className}`)
+
+      const visibleCount = countVisibleCrosses()
+
+      if (cross.classList.contains('visible')) {
+        cross.classList.remove('visible')
+        console.log(`Cross hidden: ${cross.className}`)
+      } else {
+        if (visibleCount < 3) {
+          cross.classList.add('visible')
+          console.log(`Cross shown: ${cross.className}`)
+        } else {
+          alert('Ты можешь выбрать только 3 качества.')
+        }
+      }
+    })
+  })
+})
+
+// backgrounds
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons') // All buttons
+  const backgrounds = document.querySelectorAll(
+    '.back-stripes, .back-polka-dot, .back-polygons'
+  )
+  const characters = document.querySelectorAll(
+    '#choose-character .characters img'
+  )
+  let isCharacterSelected = false
+
+  buttons.forEach((button) => {
+    button.classList.remove('enabled')
+  })
+
+  characters.forEach((character) => {
+    character.addEventListener('click', () => {
+      characters.forEach((char) => char.classList.remove('selected'))
+
+      character.classList.add('selected')
+      isCharacterSelected = true
+
+      console.log(`Selected character: ${character.dataset.character}`)
+
+      buttons.forEach((button) => {
+        button.classList.add('enabled')
+      })
+    })
+  })
+
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      if (!isCharacterSelected) {
+        console.log('No character selected. Please select a character first.')
+        return
+      }
+
+      console.log(`Button clicked: button${index + 1}`)
+
+      backgrounds.forEach((background) => {
+        background.classList.remove('visible')
+      })
+
+      const selectedBackground = backgrounds[index]
+      selectedBackground.classList.add('visible')
+    })
+  })
+})
