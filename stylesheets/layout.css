@@ -139,18 +139,18 @@
 }
 .container-drag {
   position: relative;
-  width: 12.89vw; /* Adjust as needed */
-  height: 30.94vw; /* Adjust as needed */
-  opacity: 1; /* Make the container visible */
-  margin-top: -31vw; /* Keep your specific positioning */
-  margin-left: 6vw; /* Keep your specific positioning */
+  width: 12.89vw;
+  height: 30.94vw;
+  opacity: 1;
+  margin-top: -31vw;
+  margin-left: 6vw;
 }
 .path-back {
-  width: 23vw;
-  height: 31vw;
+  width: 11.33vw;
+  height: 30.55vw;
   position: absolute;
   top: -3vw;
-  left: -5vw;
+  left: 0.3vw;
   z-index: 1;
   background-repeat: no-repeat;
   background-size: cover;
@@ -160,8 +160,8 @@
   height: 30.55vw;
   position: absolute;
   z-index: 2;
-  top: -2.8vw;
-  left: 5.3vw;
+  top: -3vw;
+  left: 5.45vw;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -169,13 +169,17 @@
   width: 8vw;
   height: 65vw;
   position: absolute;
-  top: -34.2vw;
+  top: -34.5vw;
   left: 2.4vw;
   z-index: 3;
   background-repeat: no-repeat;
   background-size: cover;
+  cursor: grab;
+  user-select: none;
 }
-
+.lever:active {
+  cursor: grabbing;
+}
 .panel {
   width: 58vw;
   height: 7.4vw;
@@ -2190,6 +2194,15 @@ p6 {
   margin-left: 12.5vw;
   margin-top: 55.1vw;
   position: absolute;
+  cursor: not-allowed;
+  pointer-events: none;
+  transition: opacity 0.3s ease, cursor 0.3s ease;
+}
+.button-place_order.active {
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: auto;
+  background-color: #45eded;
 }
 .button-place_order:active {
   width: 35.63vw;
@@ -2197,12 +2210,13 @@ p6 {
   background-color: #45eded;
   border: black 4px solid;
   border-radius: 300px;
-  display: none;
   margin-left: 12.5vw;
   margin-top: 55.1vw;
   position: absolute;
+  pointer-events: auto;
+  opacity: 1;
 }
-.button-place_order:active:hover {
+.button-place_order.active:hover {
   background-color: #38c2c2;
 }
 .place-order {
@@ -2222,6 +2236,7 @@ p6 {
   margin-left: 52.2vw;
   margin-top: 55.1vw;
   position: absolute;
+  pointer-events: none;
 }
 .button-restart:active {
   width: 35.63vw;
@@ -2229,13 +2244,13 @@ p6 {
   background-color: #35355f;
   border: #45eded 4px solid;
   border-radius: 300px;
-  display: none;
   margin-left: 52.2vw;
   margin-top: 55.1vw;
   position: absolute;
+  pointer-events: auto;
 }
-.button-restart:active:hover {
-  background-color: #38c2c2;
+.button-restart.active:hover {
+  border-color: #38c2c2;
 }
 .restart {
   font-family: 'Roboto Condensed Medium', sans-serif;
@@ -2252,7 +2267,9 @@ p6 {
   position: absolute;
   margin-top: 1.4vw;
   margin-left: 7.5vw;
-  display: none;
+}
+.restart.active:hover {
+  -webkit-text-fill-color: #38c2c2;
 }
 .boy-robo,
 .girl-robo,
@@ -2294,10 +2311,6 @@ p6 {
   background-color: #35355f;
   border: #45eded 4px solid;
   cursor: pointer;
-}
-.button-restart.active:hover {
-  border-color: #38c2c2;
-  -webkit-text-fill-color: #38c2c2;
 }
 .scan,
 .place-order {

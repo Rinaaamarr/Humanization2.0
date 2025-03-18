@@ -12,65 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // drag-lever
-document.addEventListener('DOMContentLoaded', () => {
-  const lever = document.getElementById('lever')
-  const pathMoving = document.getElementById('path-moving')
-  const containerDrag = document.getElementById('container-drag')
-
-  let isDragging = false
-  let offsetY = 0 // Offset between mouse pointer and lever's top edge
-
-  // Add event listeners for dragging
-  lever.addEventListener('mousedown', (e) => {
-    e.preventDefault() // Prevent default behavior
-    isDragging = true
-
-    // Calculate the initial offset between the mouse pointer and the lever's top edge
-    const leverRect = lever.getBoundingClientRect()
-    offsetY = e.clientY - leverRect.top
-
-    // Debugging: Log initial offset
-    console.log('Initial Offset:', offsetY)
-
-    // Update the cursor style
-    lever.style.cursor = 'grabbing'
-  })
-
-  document.addEventListener('mousemove', (e) => {
-    if (!isDragging) return
-
-    // Use requestAnimationFrame for smoother updates
-    requestAnimationFrame(() => {
-      // Get the bounding box of the container and path-moving
-      const containerRect = containerDrag.getBoundingClientRect()
-      const pathRect = pathMoving.getBoundingClientRect()
-
-      // Calculate the new Y position of the lever relative to the container
-      const newY = e.clientY - containerRect.top - offsetY
-
-      // Constrain the lever's movement within the path-moving boundaries
-      const leverHeight = lever.offsetHeight
-      const minY = pathRect.top - containerRect.top // Top boundary of path-moving relative to container
-      const maxY = pathRect.bottom - containerRect.top - leverHeight // Bottom boundary of path-moving relative to container
-
-      // Clamp the lever's position within the boundaries
-      const clampedY = Math.max(minY, Math.min(newY, maxY))
-
-      // Update the lever's position
-      lever.style.top = `${clampedY}px`
-
-      // Debugging: Log positions
-      console.log('New Y:', newY)
-      console.log('Clamped Y:', clampedY)
-      console.log('Lever Style Top:', lever.style.top)
-    })
-  })
-
-  document.addEventListener('mouseup', () => {
-    isDragging = false
-    lever.style.cursor = 'grab'
-  })
-})
 
 // scrolling
 document.addEventListener('DOMContentLoaded', () => {
@@ -760,6 +701,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     placeCaretAtEnd(blankSpace)
   })
+  function placeCaretAtEnd(element) {
+    if (
+      typeof window.getSelection !== 'undefined' &&
+      typeof document.createRange !== 'undefined'
+    ) {
+      const range = document.createRange()
+      const selection = window.getSelection()
+
+      range.selectNodeContents(element)
+      range.collapse(false)
+
+      selection.removeAllRanges()
+      selection.addRange(range)
+
+      element.focus() // Ensure the element is focused
+    } else if (typeof document.body.createTextRange !== 'undefined') {
+      // For older versions of IE
+      const textRange = document.body.createTextRange()
+      textRange.moveToElementText(element)
+      textRange.collapse(false)
+      textRange.select()
+    }
+  }
+
+  document.querySelector('.blank-space').addEventListener('click', function () {
+    placeCaretAtEnd(this)
+  })
 
   blankSpace.addEventListener('paste', (event) => {
     event.preventDefault()
@@ -896,5 +864,59 @@ document.addEventListener('DOMContentLoaded', () => {
       const selectedBackground = backgrounds[index]
       selectedBackground.classList.add('visible')
     })
+  })
+})
+
+// place order button
+document.addEventListener('DOMContentLoaded', () => {
+  const placeOrderButton = document.querySelector('.button-place_order')
+  const blankSpace = document.querySelector('.blank-space')
+  let isCharacterSelected = false
+
+  function detectLanguage(name) {
+    const russianRegex = /[а-яА-Я]/
+    return russianRegex.test(name) ? 'ru' : 'en'
+  }
+
+  const confirmButton = document.querySelector('.button-confirm')
+  confirmButton.addEventListener('click', () => {
+    const selectedCharacter = document.querySelector('.characters img.selected')
+    if (!selectedCharacter) {
+      alert('Пожалуйста, выберите персонажа сначала!')
+      return
+    }
+
+    isCharacterSelected = true
+    placeOrderButton.classList.add('active')
+
+    console.log('Character confirmed. Button enabled.')
+  })
+
+  placeOrderButton.addEventListener('click', () => {
+    if (
+      !isCharacterSelected ||
+      !placeOrderButton.classList.contains('active')
+    ) {
+      alert('Пожалуйста, выберите персонажа сначала!')
+      return
+    }
+
+    const name = blankSpace.textContent.trim()
+
+    if (!name) {
+      alert('Please enter a robot name before placing an order.')
+      return
+    }
+
+    const language = detectLanguage(name)
+
+    let alertMessage
+    if (language === 'ru') {
+      alertMessage = `Спасибо за заказ! Ваш робот ${name} отправлен на сборку. Мы с вами свяжемся. С любовью, А.`
+    } else {
+      alertMessage = `Thank you for your order! Your robot ${name} has been sent for assembly. We will contact you soon. With love, A.`
+    }
+
+    alert(alertMessage)
   })
 })
