@@ -1,5 +1,23 @@
-// typewriter
 document.addEventListener('DOMContentLoaded', () => {
+  drag_lever()
+  typewriter()
+  scroll()
+  synchronization()
+  //   heartAnimation()
+  //   teardropAnimation()
+  //   blushAnimation()
+  //   angerAnimation()
+  //   surprisedAnimation()
+  //   disgustAnimation()
+  contenteditable()
+  chooseQualities()
+  backgrounds()
+  placeOrder()
+  activateEmotion(emotion, character)
+})
+
+// typewriter
+function typewriter() {
   var typed = new Typed('#typewriter', {
     strings: ['Hi!', 'Welcome!'],
     typeSpeed: 200,
@@ -9,12 +27,77 @@ document.addEventListener('DOMContentLoaded', () => {
     showCursor: true,
     cursorChar: '|'
   })
-})
+}
 
 // drag-lever
+function drag_lever() {
+  const slider = createSlider(
+    0,
+    100,
+    document.querySelector('.path-moving'),
+    document.querySelector('.lever')
+  )
+  slider.setValue(100)
+}
+
+function createSlider(min, max, element, thumb) {
+  const slider = {
+    min: 0,
+    max: 100,
+    value: min,
+    element: document.querySelector('.path-moving'),
+    thumb: document.querySelector('.lever'),
+    shift: document.querySelector('.lever').offsetHeight / 2
+  }
+
+  const mouseDownCallback = (evt) => {
+    let thumbYOffset = evt.clientY - thumb.offsetTop
+
+    const mouseMoveCallback = (evt) => {
+      let yRange = element.offsetHeight
+      let y = Math.max(0, Math.min(yRange, evt.clientY - thumbYOffset))
+      thumb.style.top = ((y - slider.shift) / window.innerWidth) * 100 + 'vw'
+      slider.value = max - (y / yRange) * (max - min)
+      evt.preventDefault()
+    }
+
+    const mouseUpCallback = (evt) => {
+      document.removeEventListener('mousemove', mouseMoveCallback, false)
+      document.removeEventListener('mouseup', mouseUpCallback, false)
+    }
+
+    document.addEventListener('mousemove', mouseMoveCallback, false)
+    document.addEventListener('mouseup', mouseUpCallback, false)
+
+    evt.preventDefault()
+  }
+
+  thumb.addEventListener('mousedown', mouseDownCallback, false)
+
+  slider.setValue = function (value) {
+    value = Math.max(slider.min, Math.min(slider.max, value))
+    let yRange = slider.element.clientHeight
+    let y = Math.floor(
+      ((slider.max - value) / (slider.max - slider.min)) * yRange
+    )
+    slider.thumb.style.top =
+      ((y - slider.shift) / window.innerWidth) * 100 + 'vw'
+    slider.value = value
+  }
+
+  slider.getValue = function () {
+    return slider.value
+  }
+
+  slider.getId = function () {
+    return slider.element.id
+  }
+
+  return slider
+}
 
 // scrolling
-document.addEventListener('DOMContentLoaded', () => {
+function scroll() {
   const buttonStart = document.querySelector('.button-start')
 
   buttonStart.addEventListener('click', () => {
@@ -31,10 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("Target section 'choose-character' not found!")
     }
   })
-})
+}
 
 // choosing, synchronization, scan
-document.addEventListener('DOMContentLoaded', () => {
+function synchronization() {
   let currentlySelected = null
   let isCharacterConfirmed = false
   let scanCount = 0
@@ -257,400 +340,328 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonConfirm.classList.remove('active')
     confirmText.style.cursor = 'not-allowed'
   }
+}
 
-  buttonRestart.addEventListener('click', () => {
-    resetGame()
-  })
-})
+// // heart animation
+// function heartAnimation() {
+//   const hearts = document.querySelectorAll('.floating img')
+//   const loveEmoji = document.querySelector('.love')
 
-// heart animation
-document.addEventListener('DOMContentLoaded', () => {
-  const hearts = document.querySelectorAll('.floating img')
-  const loveEmoji = document.querySelector('.love')
+//   function showHearts(emotion) {
+//     hearts.forEach((heart) => {
+//       if (heart.dataset.emotion === emotion) {
+//         heart.style.opacity = '1'
+//       } else {
+//         heart.style.opacity = '0'
+//       }
+//     })
+//   }
 
-  function showHearts(emotion) {
-    hearts.forEach((heart) => {
-      if (heart.dataset.emotion === emotion) {
-        heart.style.opacity = '1'
-      } else {
-        heart.style.opacity = '0'
-      }
-    })
-  }
+//   loveEmoji.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters2 img.selected'
+//     )?.dataset.character
 
-  loveEmoji.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector(
-      '.characters2 img.selected'
-    )?.dataset.character
+//     const emotionMap = {
+//       boy: 'floating-boy/alien',
+//       alien: 'floating-boy/alien',
+//       girl: 'floating-girl',
+//       dog: 'floating-dog'
+//     }
 
-    const emotionMap = {
-      boy: 'floating-boy/alien',
-      alien: 'floating-boy/alien',
-      girl: 'floating-girl',
-      dog: 'floating-dog'
-    }
+//     const selectedEmotion = emotionMap[selectedCharacter]
 
-    const selectedEmotion = emotionMap[selectedCharacter]
+//     if (selectedEmotion) {
+//       showHearts(selectedEmotion)
+//     } else {
+//       console.error('No character selected or invalid character!')
+//     }
 
-    if (selectedEmotion) {
-      showHearts(selectedEmotion)
-    } else {
-      console.error('No character selected or invalid character!')
-    }
+//     loveEmoji.style.transform = 'scale(1.1)'
+//     setTimeout(() => {
+//       loveEmoji.style.transform = 'scale(1)'
+//     }, 200)
+//   })
 
-    loveEmoji.style.transform = 'scale(1.1)'
-    setTimeout(() => {
-      loveEmoji.style.transform = 'scale(1)'
-    }, 200)
-  })
+//   hearts.forEach((heart) => {
+//     heart.style.opacity = '0'
+//   })
+// }
 
-  hearts.forEach((heart) => {
-    heart.style.opacity = '0'
-  })
-})
+// // teardrop animation
+// function teardropAnimation() {
+//   const sadnessEmoji = document.querySelector('.sadness')
+//   const resetButton = document.querySelector('.button-restart')
 
-// teardrop animation
-document.addEventListener('DOMContentLoaded', () => {
-  const sadnessEmoji = document.querySelector('.sadness')
-  const resetButton = document.querySelector('.button-restart')
+//   function showTears(emotion) {
+//     const tears = document.querySelectorAll('.teardrops img')
+//     tears.forEach((tear) => {
+//       if (tear.dataset.emotion === emotion) {
+//         tear.style.opacity = '1'
+//         tear.style.animationPlayState = 'running'
+//       } else {
+//         tear.style.opacity = '0'
+//         tear.style.animationPlayState = 'paused'
+//       }
+//     })
+//   }
 
-  function showTears(emotion) {
-    const tears = document.querySelectorAll('.teardrops img')
-    tears.forEach((tear) => {
-      if (tear.dataset.emotion === emotion) {
-        tear.style.opacity = '1'
-        tear.style.animationPlayState = 'running'
-      } else {
-        tear.style.opacity = '0'
-        tear.style.animationPlayState = 'paused'
-      }
-    })
-  }
+//   sadnessEmoji.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters3 .character-display.selected'
+//     )
+//     if (!selectedCharacter) {
+//       console.error('No character selected!')
+//       return
+//     }
 
-  sadnessEmoji.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector(
-      '.characters3 .character-display.selected'
-    )
-    if (!selectedCharacter) {
-      console.error('No character selected!')
-      return
-    }
+//     const emotionMap = {
+//       boy: 'crying-boy',
+//       girl: 'crying-girl',
+//       dog: 'crying-dog',
+//       alien: 'crying-alien'
+//     }
 
-    const emotionMap = {
-      boy: 'crying-boy',
-      girl: 'crying-girl',
-      dog: 'crying-dog',
-      alien: 'crying-alien'
-    }
+//     const selectedEmotion = emotionMap[selectedCharacter.dataset.character]
 
-    const selectedEmotion = emotionMap[selectedCharacter.dataset.character]
+//     showTears(selectedEmotion)
 
-    showTears(selectedEmotion)
+//     switch (selectedCharacter.dataset.character) {
+//       case 'boy':
+//         document.querySelector('.boy').style.opacity = '0'
+//         document.querySelector('.sad-boy').style.opacity = '1'
+//         break
 
-    switch (selectedCharacter.dataset.character) {
-      case 'boy':
-        document.querySelector('.boy').style.opacity = '0'
-        document.querySelector('.sad-boy').style.opacity = '1'
-        break
+//       case 'girl':
+//         document.querySelector('.girl').style.opacity = '0'
+//         document.querySelector('.sad-girl').style.opacity = '1'
+//         break
 
-      case 'girl':
-        document.querySelector('.girl').style.opacity = '0'
-        document.querySelector('.sad-girl').style.opacity = '1'
-        break
+//       case 'alien':
+//         document.querySelector('.alien').style.opacity = '0'
+//         document.querySelector('.sad-alien').style.opacity = '1'
+//         break
 
-      case 'alien':
-        document.querySelector('.alien').style.opacity = '0'
-        document.querySelector('.sad-alien').style.opacity = '1'
-        break
+//       case 'dog':
+//         break
 
-      case 'dog':
-        break
+//       default:
+//         console.error('Invalid character selected!')
+//     }
+//   })
+// }
 
-      default:
-        console.error('Invalid character selected!')
-    }
-  })
+// // blush animation
+// function blushAnimation() {
+//   const blushEmoji = document.querySelector('.blush')
+//   const resetButton = document.querySelector('.button-restart')
 
-  resetButton?.addEventListener('click', () => {
-    document.querySelector('.boy').style.opacity = '1'
-    document.querySelector('.girl').style.opacity = '1'
-    document.querySelector('.doggie').style.opacity = '1'
-    document.querySelector('.alien').style.opacity = '1'
+//   function activateBlushing(character) {
+//     const characterName = character.dataset.character
 
-    document.querySelector('.sad-boy').style.opacity = '0'
-    document.querySelector('.sad-girl').style.opacity = '0'
-    document.querySelector('.sad-alien').style.opacity = '0'
+//     const blushingElementsMap = {
+//       boy: ['.left1', '.left2', '.left3', '.right1', '.right2', '.right3'],
+//       girl: ['.left4', '.left5', '.left6', '.right4', '.right5', '.right6'],
+//       dog: ['.right7', '.right8', '.right9'],
+//       alien: ['.left7', '.left8', '.left9', '.right10', '.right11', '.right12']
+//     }
 
-    const tears = document.querySelectorAll('.teardrops img')
-    tears.forEach((tear) => {
-      tear.style.opacity = '0'
-      tear.style.animationPlayState = 'paused'
-    })
-  })
-})
+//     const blushingElements = blushingElementsMap[characterName]
 
-// blush animation
-document.addEventListener('DOMContentLoaded', () => {
-  const blushEmoji = document.querySelector('.blush')
-  const resetButton = document.querySelector('.button-restart')
+//     if (blushingElements) {
+//       blushingElements.forEach((selector) => {
+//         const element = document.querySelector(selector)
+//         if (element) {
+//           element.style.opacity = '1'
+//           element.style.animationPlayState = 'running'
+//         }
+//       })
+//     }
+//   }
 
-  function activateBlushing(character) {
-    const characterName = character.dataset.character
+//   blushEmoji.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters2 img.selected'
+//     )
+//     if (!selectedCharacter) {
+//       alert('Сначала выберите персонажа!')
+//       return
+//     }
 
-    const blushingElementsMap = {
-      boy: ['.left1', '.left2', '.left3', '.right1', '.right2', '.right3'],
-      girl: ['.left4', '.left5', '.left6', '.right4', '.right5', '.right6'],
-      dog: ['.right7', '.right8', '.right9'],
-      alien: ['.left7', '.left8', '.left9', '.right10', '.right11', '.right12']
-    }
+//     activateBlushing(selectedCharacter)
+//   })
 
-    const blushingElements = blushingElementsMap[characterName]
+//   resetButton?.addEventListener('click', () => {
+//     const allBlushingElements = document.querySelectorAll('.blushing img')
+//     allBlushingElements.forEach((element) => {
+//       element.style.opacity = '0'
+//       element.style.animationPlayState = 'paused'
+//     })
+//   })
+// }
 
-    if (blushingElements) {
-      blushingElements.forEach((selector) => {
-        const element = document.querySelector(selector)
-        if (element) {
-          element.style.opacity = '1'
-          element.style.animationPlayState = 'running'
-        }
-      })
-    }
-  }
+// // anger animation
+// function angerAnimation() {
+//   const angerButton = document.querySelector('.anger')
+//   const resetButton = document.querySelector('.button-restart')
 
-  blushEmoji.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector(
-      '.characters2 img.selected'
-    )
-    if (!selectedCharacter) {
-      alert('Сначала выберите персонажа!')
-      return
-    }
+//   function activateAnger(character) {
+//     const characterName = character.dataset.character
 
-    activateBlushing(selectedCharacter)
-  })
+//     const angerImagesMap = {
+//       boy: '.angry-boy',
+//       girl: '.angry-girl',
+//       alien: '.angry-alien'
+//     }
 
-  resetButton?.addEventListener('click', () => {
-    const allBlushingElements = document.querySelectorAll('.blushing img')
-    allBlushingElements.forEach((element) => {
-      element.style.opacity = '0'
-      element.style.animationPlayState = 'paused'
-    })
-  })
-})
+//     const eyebrowElementsMap = {
+//       boy: ['.left-boy', '.right-boy'],
+//       girl: ['.left-girl', '.right-girl'],
+//       dog: ['.angry-dog'],
+//       alien: ['.curved-alien']
+//     }
 
-// anger animation
-document.addEventListener('DOMContentLoaded', () => {
-  const angerButton = document.querySelector('.anger')
-  const resetButton = document.querySelector('.button-restart')
+//     const angryImageSelector = angerImagesMap[characterName]
+//     if (angryImageSelector) {
+//       const angryImage = document.querySelector(angryImageSelector)
+//       if (angryImage) {
+//         angryImage.style.opacity = '1'
+//       }
+//     }
 
-  function activateAnger(character) {
-    const characterName = character.dataset.character
+//     const eyebrowElements = eyebrowElementsMap[characterName]
+//     if (eyebrowElements) {
+//       eyebrowElements.forEach((selector) => {
+//         const element = document.querySelector(selector)
+//         if (element) {
+//           element.style.opacity = '1'
+//           element.style.animationPlayState = 'running'
+//         }
+//       })
+//     }
+//   }
 
-    const angerImagesMap = {
-      boy: '.angry-boy',
-      girl: '.angry-girl',
-      alien: '.angry-alien'
-    }
+//   angerButton.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters2 img.selected'
+//     )
+//     if (!selectedCharacter) {
+//       alert('Сначала выберите персонажа!')
+//       return
+//     }
 
-    const eyebrowElementsMap = {
-      boy: ['.left-boy', '.right-boy'],
-      girl: ['.left-girl', '.right-girl'],
-      dog: ['.angry-dog'],
-      alien: ['.curved-alien']
-    }
+//     activateAnger(selectedCharacter)
+//   })
+// }
 
-    const angryImageSelector = angerImagesMap[characterName]
-    if (angryImageSelector) {
-      const angryImage = document.querySelector(angryImageSelector)
-      if (angryImage) {
-        angryImage.style.opacity = '1'
-      }
-    }
+// // surprised animation
+// function surprisedAnimation() {
+//   const surpriseButton = document.querySelector('.surprise')
+//   const resetButton = document.querySelector('.button-restart')
 
-    const eyebrowElements = eyebrowElementsMap[characterName]
-    if (eyebrowElements) {
-      eyebrowElements.forEach((selector) => {
-        const element = document.querySelector(selector)
-        if (element) {
-          element.style.opacity = '1'
-          element.style.animationPlayState = 'running'
-        }
-      })
-    }
-  }
+//   function activateSurprise(character) {
+//     const characterName = character.dataset.character
 
-  angerButton.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector(
-      '.characters2 img.selected'
-    )
-    if (!selectedCharacter) {
-      alert('Сначала выберите персонажа!')
-      return
-    }
+//     const surpriseImagesMap = {
+//       boy: '.surprised-boy',
+//       girl: '.surprised-girl',
+//       alien: '.surprised-alien'
+//     }
 
-    activateAnger(selectedCharacter)
-  })
+//     const surpriseElementsMap = {
+//       boy: '.surprise-boy',
+//       girl: '.surprise-girl',
+//       dog: '.surprise-dog',
+//       alien: '.surprise-alien'
+//     }
 
-  resetButton?.addEventListener('click', () => {
-    document
-      .querySelectorAll('.angry-boy, .angry-girl, .angry-alien')
-      .forEach((image) => {
-        image.style.opacity = '0'
-      })
+//     const surprisedImageSelector = surpriseImagesMap[characterName]
+//     if (surprisedImageSelector) {
+//       const surprisedImage = document.querySelector(surprisedImageSelector)
+//       if (surprisedImage) {
+//         surprisedImage.style.opacity = '1'
+//       }
+//     }
 
-    document
-      .querySelectorAll(
-        '.left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien'
-      )
-      .forEach((element) => {
-        element.style.opacity = '0'
-        element.style.animationPlayState = 'paused'
-      })
-  })
-})
+//     const surpriseElementSelector = surpriseElementsMap[characterName]
+//     if (surpriseElementSelector) {
+//       const surpriseElement = document.querySelector(surpriseElementSelector)
+//       if (surpriseElement) {
+//         surpriseElement.style.opacity = '1'
+//         surpriseElement.style.animationPlayState = 'running'
+//       }
+//     }
+//   }
 
-// surprised animation
-document.addEventListener('DOMContentLoaded', () => {
-  const surpriseButton = document.querySelector('.surprise')
-  const resetButton = document.querySelector('.button-restart')
+//   surpriseButton.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters2 img.selected'
+//     )
+//     if (!selectedCharacter) {
+//       alert('Сначала выберите персонажа!')
+//       return
+//     }
 
-  function activateSurprise(character) {
-    const characterName = character.dataset.character
+//     activateSurprise(selectedCharacter)
+//   })
+// }
 
-    const surpriseImagesMap = {
-      boy: '.surprised-boy',
-      girl: '.surprised-girl',
-      alien: '.surprised-alien'
-    }
+// // disgust animation
+// function disgustAnimation() {
+//   const disgustButton = document.querySelector('.disgust')
+//   const resetButton = document.querySelector('.button-restart')
 
-    const surpriseElementsMap = {
-      boy: '.surprise-boy',
-      girl: '.surprise-girl',
-      dog: '.surprise-dog',
-      alien: '.surprise-alien'
-    }
+//   function activateDisgust(character) {
+//     const characterName = character.dataset.character
 
-    const surprisedImageSelector = surpriseImagesMap[characterName]
-    if (surprisedImageSelector) {
-      const surprisedImage = document.querySelector(surprisedImageSelector)
-      if (surprisedImage) {
-        surprisedImage.style.opacity = '1'
-      }
-    }
+//     const disgustImagesMap = {
+//       boy: '.disgusted-boy',
+//       girl: '.disgusted-girl',
+//       alien: '.disgusted-alien'
+//     }
 
-    const surpriseElementSelector = surpriseElementsMap[characterName]
-    if (surpriseElementSelector) {
-      const surpriseElement = document.querySelector(surpriseElementSelector)
-      if (surpriseElement) {
-        surpriseElement.style.opacity = '1'
-        surpriseElement.style.animationPlayState = 'running'
-      }
-    }
-  }
+//     const disgustMouthElementsMap = {
+//       boy: '.disgust-boy',
+//       girl: '.disgust-girl',
+//       dog: '.disgust-dog',
+//       alien: '.disgust-alien'
+//     }
 
-  surpriseButton.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector(
-      '.characters2 img.selected'
-    )
-    if (!selectedCharacter) {
-      alert('Сначала выберите персонажа!')
-      return
-    }
+//     const disgustedImageSelector = disgustImagesMap[characterName]
+//     if (disgustedImageSelector) {
+//       const disgustedImage = document.querySelector(disgustedImageSelector)
+//       if (disgustedImage) {
+//         disgustedImage.style.opacity = '1'
+//       }
+//     }
 
-    activateSurprise(selectedCharacter)
-  })
+//     const disgustMouthElementSelector = disgustMouthElementsMap[characterName]
+//     if (disgustMouthElementSelector) {
+//       const disgustMouthElement = document.querySelector(
+//         disgustMouthElementSelector
+//       )
+//       if (disgustMouthElement) {
+//         disgustMouthElement.style.opacity = '1'
+//         disgustMouthElement.style.animationPlayState = 'running'
+//       }
+//     }
+//   }
 
-  resetButton?.addEventListener('click', () => {
-    document
-      .querySelectorAll('.surprised-boy, .surprised-girl, .surprised-alien')
-      .forEach((image) => {
-        image.style.opacity = '0'
-      })
+//   disgustButton.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters2 img.selected'
+//     )
+//     if (!selectedCharacter) {
+//       alert('Сначала выберите персонажа!')
+//       return
+//     }
 
-    document
-      .querySelectorAll(
-        '.surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien'
-      )
-      .forEach((element) => {
-        element.style.opacity = '0'
-        element.style.animationPlayState = 'paused'
-      })
-  })
-})
-
-// disgust animation
-document.addEventListener('DOMContentLoaded', () => {
-  const disgustButton = document.querySelector('.disgust')
-  const resetButton = document.querySelector('.button-restart')
-
-  function activateDisgust(character) {
-    const characterName = character.dataset.character
-
-    const disgustImagesMap = {
-      boy: '.disgusted-boy',
-      girl: '.disgusted-girl',
-      alien: '.disgusted-alien'
-    }
-
-    const disgustMouthElementsMap = {
-      boy: '.disgust-boy',
-      girl: '.disgust-girl',
-      dog: '.disgust-dog',
-      alien: '.disgust-alien'
-    }
-
-    const disgustedImageSelector = disgustImagesMap[characterName]
-    if (disgustedImageSelector) {
-      const disgustedImage = document.querySelector(disgustedImageSelector)
-      if (disgustedImage) {
-        disgustedImage.style.opacity = '1'
-      }
-    }
-
-    const disgustMouthElementSelector = disgustMouthElementsMap[characterName]
-    if (disgustMouthElementSelector) {
-      const disgustMouthElement = document.querySelector(
-        disgustMouthElementSelector
-      )
-      if (disgustMouthElement) {
-        disgustMouthElement.style.opacity = '1'
-        disgustMouthElement.style.animationPlayState = 'running'
-      }
-    }
-  }
-
-  disgustButton.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector(
-      '.characters2 img.selected'
-    )
-    if (!selectedCharacter) {
-      alert('Сначала выберите персонажа!')
-      return
-    }
-
-    activateDisgust(selectedCharacter)
-  })
-
-  resetButton?.addEventListener('click', () => {
-    document
-      .querySelectorAll('.disgusted-boy, .disgusted-girl, .disgusted-alien')
-      .forEach((image) => {
-        image.style.opacity = '0'
-      })
-
-    document
-      .querySelectorAll(
-        '.disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
-      )
-      .forEach((element) => {
-        element.style.opacity = '0'
-        element.style.animationPlayState = 'paused'
-      })
-  })
-})
+//     activateDisgust(selectedCharacter)
+//   })
+// }
 
 // contenteditable text
-document.addEventListener('DOMContentLoaded', () => {
+function contenteditable() {
   const blankSpace = document.querySelector('.blank-space')
   const characters = document.querySelectorAll(
     '#choose-character .characters img'
@@ -754,10 +765,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Focus removed from .blank-space.')
     }
   })
-})
+}
 
 // choosing qualities
-document.addEventListener('DOMContentLoaded', () => {
+function chooseQualities() {
   const crosses = document.querySelectorAll(
     '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
   )
@@ -815,10 +826,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   })
-})
+}
 
 // backgrounds
-document.addEventListener('DOMContentLoaded', () => {
+function backgrounds() {
   const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
   const backgrounds = document.querySelectorAll(
     '.back-stripes, .back-polka-dot, .back-polygons'
@@ -864,10 +875,10 @@ document.addEventListener('DOMContentLoaded', () => {
       selectedBackground.classList.add('visible')
     })
   })
-})
+}
 
 // place order button
-document.addEventListener('DOMContentLoaded', () => {
+function placeOrder() {
   const placeOrderButton = document.querySelector('.button-place_order')
   const blankSpace = document.querySelector('.blank-space')
   let isCharacterSelected = false
@@ -918,4 +929,242 @@ document.addEventListener('DOMContentLoaded', () => {
 
     alert(alertMessage)
   })
-})
+}
+
+// const emotionButtons = {
+//   love: document.querySelector('.love'),
+//   sadness: document.querySelector('.sadness'),
+//   blush: document.querySelector('.blush'),
+//   anger: document.querySelector('.anger'),
+//   surprise: document.querySelector('.surprise'),
+//   disgust: document.querySelector('.disgust')
+// }
+
+// // Reset all emotions and character images
+// function resetAllEmotions() {
+//   // Reset character images
+//   document.querySelectorAll('.boy, .girl, .doggie, .alien').forEach((img) => {
+//     img.style.opacity = '1'
+//   })
+//   document
+//     .querySelectorAll(
+//       '.sad-boy, .sad-girl, .sad-alien, .angry-boy, .angry-girl, .angry-alien, .surprised-boy, .surprised-girl, .surprised-alien, .disgusted-boy, .disgusted-girl, .disgusted-alien'
+//     )
+//     .forEach((img) => {
+//       img.style.opacity = '0'
+//     })
+
+//   // Reset all animations
+//   document
+//     .querySelectorAll(
+//       '.floating img, .teardrops img, .blushing img, .left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien, .surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien, .disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
+//     )
+//     .forEach((el) => {
+//       el.style.opacity = '0'
+//       el.style.animationPlayState = 'paused'
+//     })
+// }
+
+// // Handle emotion activation
+// function activateEmotion(emotion, character) {
+//   // First reset all emotions
+//   resetAllEmotions()
+
+//   // Get the character name
+//   const characterName = character.dataset.character
+
+//   // Define emotion-specific actions
+//   const emotionActions = {
+//     love: () => {
+//       const emotionMap = {
+//         boy: 'floating-boy/alien',
+//         alien: 'floating-boy/alien',
+//         girl: 'floating-girl',
+//         dog: 'floating-dog'
+//       }
+//       const selectedEmotion = emotionMap[characterName]
+//       if (selectedEmotion) {
+//         document.querySelectorAll('.floating img').forEach((heart) => {
+//           if (heart.dataset.emotion === selectedEmotion) {
+//             heart.style.opacity = '1'
+//           }
+//         })
+//       }
+//     },
+//     sadness: () => {
+//       const emotionMap = {
+//         boy: 'crying-boy',
+//         girl: 'crying-girl',
+//         dog: 'crying-dog',
+//         alien: 'crying-alien'
+//       }
+//       const selectedEmotion = emotionMap[characterName]
+//       if (selectedEmotion) {
+//         document.querySelectorAll('.teardrops img').forEach((tear) => {
+//           if (tear.dataset.emotion === selectedEmotion) {
+//             tear.style.opacity = '1'
+//             tear.style.animationPlayState = 'running'
+//           }
+//         })
+//       }
+//       // Update character image
+//       const baseImage = document.querySelector(`.${characterName}`)
+//       const sadImage = document.querySelector(`.sad-${characterName}`)
+//       if (baseImage && sadImage) {
+//         baseImage.style.opacity = '0'
+//         sadImage.style.opacity = '1'
+//       }
+//     },
+//     blush: () => {
+//       const blushingElementsMap = {
+//         boy: ['.left1', '.left2', '.left3', '.right1', '.right2', '.right3'],
+//         girl: ['.left4', '.left5', '.left6', '.right4', '.right5', '.right6'],
+//         dog: ['.right7', '.right8', '.right9'],
+//         alien: [
+//           '.left7',
+//           '.left8',
+//           '.left9',
+//           '.right10',
+//           '.right11',
+//           '.right12'
+//         ]
+//       }
+//       const blushingElements = blushingElementsMap[characterName]
+//       if (blushingElements) {
+//         blushingElements.forEach((selector) => {
+//           const element = document.querySelector(selector)
+//           if (element) {
+//             element.style.opacity = '1'
+//             element.style.animationPlayState = 'running'
+//           }
+//         })
+//       }
+//     },
+//     anger: () => {
+//       const angerImagesMap = {
+//         boy: '.angry-boy',
+//         girl: '.angry-girl',
+//         alien: '.angry-alien'
+//       }
+//       const eyebrowElementsMap = {
+//         boy: ['.left-boy', '.right-boy'],
+//         girl: ['.left-girl', '.right-girl'],
+//         dog: ['.angry-dog'],
+//         alien: ['.curved-alien']
+//       }
+//       // Update character image
+//       const angryImageSelector = angerImagesMap[characterName]
+//       if (angryImageSelector) {
+//         const angryImage = document.querySelector(angryImageSelector)
+//         if (angryImage) {
+//           angryImage.style.opacity = '1'
+//         }
+//       }
+//       // Update eyebrows
+//       const eyebrowElements = eyebrowElementsMap[characterName]
+//       if (eyebrowElements) {
+//         eyebrowElements.forEach((selector) => {
+//           const element = document.querySelector(selector)
+//           if (element) {
+//             element.style.opacity = '1'
+//             element.style.animationPlayState = 'running'
+//           }
+//         })
+//       }
+//     },
+//     surprise: () => {
+//       const surpriseImagesMap = {
+//         boy: '.surprised-boy',
+//         girl: '.surprised-girl',
+//         alien: '.surprised-alien'
+//       }
+//       const surpriseElementsMap = {
+//         boy: '.surprise-boy',
+//         girl: '.surprise-girl',
+//         dog: '.surprise-dog',
+//         alien: '.surprise-alien'
+//       }
+//       // Update character image
+//       const surprisedImageSelector = surpriseImagesMap[characterName]
+//       if (surprisedImageSelector) {
+//         const surprisedImage = document.querySelector(surprisedImageSelector)
+//         if (surprisedImage) {
+//           surprisedImage.style.opacity = '1'
+//         }
+//       }
+//       // Update surprise elements
+//       const surpriseElementSelector = surpriseElementsMap[characterName]
+//       if (surpriseElementSelector) {
+//         const surpriseElement = document.querySelector(surpriseElementSelector)
+//         if (surpriseElement) {
+//           surpriseElement.style.opacity = '1'
+//           surpriseElement.style.animationPlayState = 'running'
+//         }
+//       }
+//     },
+//     disgust: () => {
+//       const disgustImagesMap = {
+//         boy: '.disgusted-boy',
+//         girl: '.disgusted-girl',
+//         alien: '.disgusted-alien'
+//       }
+//       const disgustMouthElementsMap = {
+//         boy: '.disgust-boy',
+//         girl: '.disgust-girl',
+//         dog: '.disgust-dog',
+//         alien: '.disgust-alien'
+//       }
+//       // Update character image
+//       const disgustedImageSelector = disgustImagesMap[characterName]
+//       if (disgustedImageSelector) {
+//         const disgustedImage = document.querySelector(disgustedImageSelector)
+//         if (disgustedImage) {
+//           disgustedImage.style.opacity = '1'
+//         }
+//       }
+//       // Update mouth elements
+//       const disgustMouthElementSelector = disgustMouthElementsMap[characterName]
+//       if (disgustMouthElementSelector) {
+//         const disgustMouthElement = document.querySelector(
+//           disgustMouthElementSelector
+//         )
+//         if (disgustMouthElement) {
+//           disgustMouthElement.style.opacity = '1'
+//           disgustMouthElement.style.animationPlayState = 'running'
+//         }
+//       }
+//     }
+//   }
+
+//   // Execute the emotion-specific action
+//   if (emotionActions[emotion]) {
+//     emotionActions[emotion]()
+//   }
+// }
+
+// // Add click handlers for each emotion button
+// Object.entries(emotionButtons).forEach(([emotion, button]) => {
+//   button.addEventListener('click', () => {
+//     const selectedCharacter = document.querySelector(
+//       '.characters2 img.selected'
+//     )
+//     if (!selectedCharacter) {
+//       alert('Сначала выберите персонажа!')
+//       return
+//     }
+
+//     // Add button animation
+//     button.style.transform = 'scale(1.1)'
+//     setTimeout(() => {
+//       button.style.transform = 'scale(1)'
+//     }, 200)
+
+//     activateEmotion(emotion, selectedCharacter)
+//   })
+// })
+
+// // Reset button handler
+// resetButton?.addEventListener('click', resetAllEmotions)
+
+// // Initial reset
+// resetAllEmotions()

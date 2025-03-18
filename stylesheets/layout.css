@@ -162,12 +162,13 @@
   z-index: 2;
   top: -3vw;
   left: 5.45vw;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #b3a497;
+  border: 3.3px black solid;
+  border-radius: 5px;
 }
 .lever {
   width: 8vw;
-  height: 65vw;
+  height: 15vw;
   position: absolute;
   top: -34.5vw;
   left: 2.4vw;
@@ -2286,9 +2287,13 @@ p6 {
   transition: opacity 0.5s ease;
 }
 .characters2 img,
-.characters3 img,
 .characters4 img {
   opacity: 0;
+}
+.characters3 img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  position: absolute;
 }
 .button-scan,
 .button-place_order {
