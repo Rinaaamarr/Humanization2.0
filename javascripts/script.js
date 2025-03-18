@@ -651,7 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // contenteditable text
 document.addEventListener('DOMContentLoaded', () => {
-  const blankSpace = document.querySelector('.blank-space') // The contenteditable div
+  const blankSpace = document.querySelector('.blank-space')
   const characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
@@ -715,9 +715,8 @@ document.addEventListener('DOMContentLoaded', () => {
       selection.removeAllRanges()
       selection.addRange(range)
 
-      element.focus() // Ensure the element is focused
+      element.focus()
     } else if (typeof document.body.createTextRange !== 'undefined') {
-      // For older versions of IE
       const textRange = document.body.createTextRange()
       textRange.moveToElementText(element)
       textRange.collapse(false)
@@ -820,7 +819,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // backgrounds
 document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons') // All buttons
+  const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
   const backgrounds = document.querySelectorAll(
     '.back-stripes, .back-polka-dot, .back-polygons'
   )
