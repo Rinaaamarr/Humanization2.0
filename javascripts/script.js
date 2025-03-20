@@ -191,7 +191,7 @@ function synchronization() {
 
   elements.buttonConfirm.addEventListener('click', () => {
     if (!currentlySelected) {
-      alert('Пожалуйста, выберите персонажа сначала!')
+      alert('Пожалуйста, сначала выберите персонажа!')
       return
     }
 
@@ -256,7 +256,7 @@ function synchronization() {
     if (scanCount === 1) {
       showBugs()
       alert(
-        'Внимание! Были обнаружены неполадки в системе. Устрани их как можно скорее!'
+        'Внимание! Были обнаружены неполадки в системе. Устраните их как можно скорее!'
       )
     } else if (scanCount === 2) {
       alert('Неполадки устранены! Можно двигаться дальше.')
@@ -310,7 +310,7 @@ function synchronization() {
     )
 
     if (remainingBugs.length === 0) {
-      alert('Отлично! Попробуй просканировать персонажа снова.')
+      alert('Отлично! Попробуйте просканировать персонажа снова.')
     }
   }
 
@@ -819,7 +819,7 @@ function setupCrossSelection() {
           console.log('New visible count:', visibleCount + 1)
         } else {
           console.log('Maximum qualities (3) already selected')
-          alert('Ты можешь выбрать только 3 качества.')
+          alert('Вы можете выбрать только 3 качества.')
         }
       }
     })
@@ -942,7 +942,7 @@ function placeOrder() {
   confirmButton?.addEventListener('click', () => {
     const selectedCharacter = document.querySelector('.characters img.selected')
     if (!selectedCharacter) {
-      alert('Пожалуйста, выберите персонажа сначала!')
+      alert('Пожалуйста, сначала выберите персонажа!')
       return
     }
 
@@ -953,7 +953,7 @@ function placeOrder() {
 
   placeOrderButton.addEventListener('click', () => {
     if (!isCharacterSelected) {
-      alert('Пожалуйста, выберите персонажа сначала!')
+      alert('Пожалуйста, сначала выберите персонажа!')
       return
     }
 
