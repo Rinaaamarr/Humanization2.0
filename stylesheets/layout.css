@@ -318,14 +318,10 @@
   height: 11vw;
   margin-top: 55.5vw;
   margin-left: 6vw;
+  position: relative;
+  transition: opacity 0.3s ease;
 }
 .hint:hover {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 5.5vw;
-  height: 11vw;
-  margin-top: 55.5vw;
-  margin-left: 6vw;
   opacity: 0;
 }
 .question1 {
@@ -335,13 +331,12 @@
   margin-top: 59.2vw;
   margin-left: -3.6vw;
   opacity: 1;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: opacity 0.1s ease;
 }
 .question1:hover {
-  font-family: 'Roboto Condensed Bold', serif;
-  -webkit-text-fill-color: black;
-  font-size: 4vw;
-  margin-top: 59.2vw;
-  margin-left: -3.6vw;
   opacity: 0;
 }
 .explanation1 {
@@ -351,23 +346,19 @@
   margin-left: 36.2vw;
   position: absolute;
   opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
 }
-.explanation1:hover {
-  width: 21.33vw;
-  height: 5.47vw;
-  margin-top: 58.3vw;
-  margin-left: 36.2vw;
-  position: absolute;
+.hint:hover ~ .explanation1,
+.question1:hover ~ .explanation1 {
   opacity: 1;
-  animation: appear1 2s infinite;
-  animation-play-state: running;
 }
 .robo-girl {
   background-repeat: no-repeat;
   background-size: cover;
   width: 33vw;
   height: 31vw;
-  margin-left: -37.5vw;
+  margin-left: -38vw;
   margin-top: 70.8vw;
   z-index: 2;
 }
@@ -377,7 +368,7 @@
   width: 33vw;
   height: 31vw;
   margin-top: 70.8vw;
-  margin-left: -10.5vw;
+  margin-left: -12.5vw;
   z-index: 2;
 }
 .dog {
@@ -386,7 +377,7 @@
   width: 33vw;
   height: 12.5vw;
   margin-top: 70.8vw;
-  margin-left: -14.4vw;
+  margin-left: -13.4vw;
   z-index: 2;
 }
 .robo-alien {
@@ -403,7 +394,7 @@
   width: 20.3vw;
   height: 36.25vw;
   margin-top: 69vw;
-  margin-left: -89vw;
+  margin-left: -88vw;
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -412,7 +403,7 @@
   width: 19.3vw;
   height: 36.25vw;
   margin-top: 69vw;
-  margin-left: -66vw;
+  margin-left: -67vw;
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -421,7 +412,7 @@
   width: 19.3vw;
   height: 36.25vw;
   margin-top: 69vw;
-  margin-left: -46vw;
+  margin-left: -46.5vw;
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -467,6 +458,7 @@
   margin-top: 0.3vw;
   margin-left: 5.9vw;
   opacity: 1;
+  transition: opacity 0.3s ease;
 }
 .hint2:hover {
   opacity: 0;
@@ -478,6 +470,8 @@
   margin-top: 3.8vw;
   margin-left: -3.65vw;
   opacity: 1;
+  transition: opacity 0.1s ease;
+  cursor: pointer;
 }
 .question2:hover {
   opacity: 0;
@@ -487,19 +481,13 @@
   height: 5.47vw;
   position: absolute;
   margin-top: 3.05vw;
-  margin-left: 43vw;
+  margin-left: 42.8vw;
   opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .hint2:hover + .question2 + .explanation2,
 .question2:hover + .explanation2 {
-  width: 24vw;
-  height: 5.47vw;
-  position: absolute;
-  margin-top: 3.05vw;
-  margin-left: 43vw;
   opacity: 1;
-  animation: appear2 2s infinite;
-  animation-play-state: running;
 }
 .scan-panel {
   background-repeat: no-repeat;
@@ -645,13 +633,39 @@
   height: 11vw;
   margin-top: 1vw;
   margin-left: 5.6vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.hint3:hover {
+  opacity: 0;
 }
 .question3 {
   font-family: 'Roboto Condensed Bold', serif;
   -webkit-text-fill-color: black;
   font-size: 4vw;
-  margin-top: 4.5vw;
-  margin-left: -3.7vw;
+  margin-top: 4.6vw;
+  margin-left: -3.65vw;
+  opacity: 1;
+  transition: opacity 0.1s ease;
+  cursor: pointer;
+}
+.question3:hover {
+  opacity: 0;
+}
+.explanation3 {
+  width: 17.5vw;
+  height: 5.47vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  margin-left: 24.7vw;
+  margin-top: 3.76vw;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.hint3:hover + .question3 + .explanation3,
+.question3:hover + .explanation3 {
+  opacity: 1;
 }
 .background-emotions {
   background-repeat: no-repeat;
@@ -948,7 +962,7 @@
   width: 5vw;
   height: 10vw;
   margin-top: -19.3vw;
-  margin-left: -31.5vw;
+  margin-left: -31.7vw;
   overflow: hidden;
   cursor: pointer;
 }
@@ -1613,6 +1627,11 @@
   height: 11vw;
   margin-top: 1vw;
   margin-left: 5.6vw;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+.hint4:hover {
+  opacity: 0;
 }
 .question4 {
   font-family: 'Roboto Condensed Bold', serif;
@@ -1620,6 +1639,27 @@
   font-size: 4vw;
   margin-top: 4.5vw;
   margin-left: -3.7vw;
+  opacity: 1;
+  transition: opacity 0.1s ease;
+  cursor: pointer;
+}
+.question4:hover {
+  opacity: 0;
+}
+.explanation4 {
+  width: 19.77vw;
+  height: 5.47vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  margin-left: 39.1vw;
+  margin-top: 3.8vw;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.hint4:hover + .question4 + .explanation4,
+.question4:hover + .explanation4 {
+  opacity: 1;
 }
 .choose-name {
   font-family: 'Roboto Condensed SemiBold', serif;
@@ -1641,25 +1681,24 @@
   font-family: 'Roboto Condensed';
   font-size: 2vw;
   outline: none;
-  overflow: hidden; /* Prevent text from overflowing */
-  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
   cursor: not-allowed;
 }
 .blank-space[contenteditable='true'] {
-  cursor: text; /* Enable typing interaction */
+  cursor: text;
 }
 .blank-space::before {
-  content: attr(placeholder); /* Simulate placeholder text */
-  color: #aaa; /* Light gray color for placeholder */
-  pointer-events: none; /* Ensure it doesn't interfere with typing */
-  display: block; /* Make it a block element for better control */
+  content: attr(placeholder);
+  color: #aaa;
+  pointer-events: none;
+  display: block;
   font-family: 'Roboto Condensed';
   font-size: 1.5vw;
   padding-top: 0.5vw;
   cursor: inherit;
 }
-
 .blank-space:not(:empty)::before {
   display: none;
 }

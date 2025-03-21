@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEmotions()
 })
 
+let isCharacterConfirmed = false
+
 // typewriter
 function typewriter() {
   const typed = new Typed('#typewriter', {
@@ -129,10 +131,9 @@ function scroll() {
 // choosing, synchronization, scan
 function synchronization() {
   let currentlySelected = null
-  let isCharacterConfirmed = false
   let scanCount = 0
 
-  const elements = {
+  let elements = {
     buttonConfirm: document.querySelector('.button-confirm'),
     confirmText: document.querySelector('.confirm'),
     buttonScan: document.querySelector('.button-scan'),
@@ -150,9 +151,76 @@ function synchronization() {
     return
   }
 
+  function handleCharacterChange(newCharacter) {
+    // Reset all states and animations
+    document.querySelectorAll('.character-display').forEach((img) => {
+      if (img.closest('#choose-character')) {
+        img.style.opacity = '1'
+      } else {
+        const isSelected = img.dataset.character === newCharacter
+        img.style.opacity = isSelected ? '1' : '0'
+        img.classList.toggle('selected', isSelected)
+      }
+    })
+
+    // Reset scan count
+    scanCount = 0
+
+    // Reset scanner position
+    if (elements.scanner) {
+      elements.scanner.classList.remove('scanning')
+      elements.scanner.style.top = '14vw'
+      elements.scanner.style.left = '50%'
+      elements.scanner.style.transform = 'translateX(-50%)'
+    }
+
+    // Reset emotions
+    document
+      .querySelectorAll(
+        '.floating img, .teardrops img, .blushing img, .left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien, .surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien, .disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
+      )
+      .forEach((el) => {
+        el.style.opacity = '0'
+        el.style.animationPlayState = 'paused'
+      })
+
+    // Reset qualities
+    document
+      .querySelectorAll('.cross1, .cross2, .cross3, .cross4, .cross5, .cross6')
+      .forEach((cross) => {
+        cross.classList.remove('visible')
+        cross.classList.remove('enabled')
+      })
+
+    // Reset backgrounds
+    document
+      .querySelectorAll('.back-stripes, .back-polka-dot, .back-polygons')
+      .forEach((background) => {
+        background.classList.remove('visible')
+      })
+
+    // Update the selected character in the emotions section
+    let emotionsCharacter = document.querySelector(
+      '.characters3 .character-display.selected'
+    )
+    if (emotionsCharacter) {
+      emotionsCharacter.dataset.character = newCharacter
+    }
+  }
+
+  function handleCharacterSelection() {
+    if (isCharacterConfirmed) {
+      alert(
+        'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
+      )
+      return true
+    }
+    return false
+  }
+
   function setupCharacter(characterClass, selectionClass) {
-    const character = document.querySelector(`.${characterClass}`)
-    const selection = document.querySelector(`.${selectionClass}`)
+    let character = document.querySelector(`.${characterClass}`)
+    let selection = document.querySelector(`.${selectionClass}`)
 
     if (!character || !selection) {
       console.error(
@@ -162,24 +230,40 @@ function synchronization() {
     }
 
     character.addEventListener('click', () => {
-      if (currentlySelected && currentlySelected !== selection) {
-        alert('Вы не можете выбрать двух персонажей одновременно.')
-        return
+      if (handleCharacterSelection()) return
+
+      document
+        .querySelectorAll('.select1, .select2, .select3, .select4')
+        .forEach((select) => {
+          select.style.opacity = '0'
+        })
+
+      selection.style.opacity = '1'
+
+      document
+        .querySelectorAll('.robo-girl, .robo-boy, .dog, .robo-alien')
+        .forEach((char) => {
+          char.classList.remove('selected')
+        })
+
+      character.classList.add('selected')
+      currentlySelected = selection
+
+      elements.buttonConfirm.classList.add('active')
+      elements.confirmText.style.cursor = 'pointer'
+
+      let characterMap = {
+        select1: 'girl',
+        select2: 'boy',
+        select3: 'dog',
+        select4: 'alien'
       }
-
-      const isSelected = selection.style.opacity === '1'
-      selection.style.opacity = isSelected ? '0' : '1'
-      character.classList.toggle('selected', !isSelected)
-      currentlySelected = isSelected ? null : selection
-
-      elements.buttonConfirm.classList.toggle('active', !!currentlySelected)
-      elements.confirmText.style.cursor = currentlySelected
-        ? 'pointer'
-        : 'not-allowed'
+      let newCharacter = characterMap[selectionClass]
+      handleCharacterChange(newCharacter)
     })
   }
 
-  const characterSelections = [
+  let characterSelections = [
     ['robo-girl', 'select1'],
     ['robo-boy', 'select2'],
     ['dog', 'select3'],
@@ -191,17 +275,17 @@ function synchronization() {
 
   elements.buttonConfirm.addEventListener('click', () => {
     if (!currentlySelected) {
-      alert('Пожалуйста, сначала выберите персонажа!')
+      alert('Пожалуйста, выберите персонажа сначала!')
       return
     }
 
-    const characterMap = {
+    let characterMap = {
       select1: 'girl',
       select2: 'boy',
       select3: 'dog',
       select4: 'alien'
     }
-    const selectedCharacterAttribute =
+    let selectedCharacterAttribute =
       characterMap[currentlySelected.classList[0]]
 
     updateCharacterDisplays(selectedCharacterAttribute)
@@ -214,7 +298,7 @@ function synchronization() {
       if (img.closest('#choose-character')) {
         img.style.opacity = '1'
       } else {
-        const isSelected = img.dataset.character === selectedCharacterAttribute
+        let isSelected = img.dataset.character === selectedCharacterAttribute
         img.style.opacity = isSelected ? '1' : '0'
         img.classList.toggle('selected', isSelected)
       }
@@ -232,12 +316,12 @@ function synchronization() {
   }
 
   function scrollToScanSection() {
-    const scanRobotSection = document.querySelector('.scan-robot')
+    let scanRobotSection = document.querySelector('.scan-robot')
     scanRobotSection?.scrollIntoView({ behavior: 'smooth' })
   }
 
   document.body.addEventListener('click', (event) => {
-    const buttonScan = event.target.closest('.button-scan.active')
+    let buttonScan = event.target.closest('.button-scan.active')
     if (buttonScan && isCharacterConfirmed) {
       startScan()
     }
@@ -246,17 +330,15 @@ function synchronization() {
   function startScan() {
     elements.scanner.classList.add('scanning')
     scanCount++
-    console.log('Scanning started!', `Scan Count: ${scanCount}`)
   }
 
   elements.scanner.addEventListener('animationend', () => {
-    console.log('Animation ended!')
     elements.scanner.classList.remove('scanning')
 
     if (scanCount === 1) {
       showBugs()
       alert(
-        'Внимание! Были обнаружены неполадки в системе. Устраните их как можно скорее!'
+        'Внимание! Были обнаружены неполадки в системе. Устрани их как можно скорее!'
       )
     } else if (scanCount === 2) {
       alert('Неполадки устранены! Можно двигаться дальше.')
@@ -266,26 +348,34 @@ function synchronization() {
   })
 
   function showBugs() {
-    const selectedImage = document.querySelector('.characters img.selected')
+    let selectedImage = document.querySelector('.characters img.selected')
     if (!selectedImage) {
       console.error('No selected image found in .characters')
       return
     }
 
-    const selectedCharacter = selectedImage.dataset.character
-    updateBugVisibility(selectedCharacter)
-    setupBugClickHandlers()
-  }
+    let selectedCharacter = selectedImage.dataset.character
 
-  function updateBugVisibility(selectedCharacter) {
     document.querySelectorAll('.bug').forEach((bug) => {
-      const shouldShow =
+      bug.style.opacity = '0'
+    })
+
+    document.querySelectorAll('.bug').forEach((bug) => {
+      let shouldShow =
         bug.dataset.character === selectedCharacter ||
         (bug.dataset.character === 'default' &&
           !document.querySelector(
             `.bug[data-character="${selectedCharacter}"]`
           ))
       bug.style.opacity = shouldShow ? '1' : '0'
+    })
+
+    setupBugClickHandlers()
+  }
+
+  function hideAllBugs() {
+    document.querySelectorAll('.bug').forEach((bug) => {
+      bug.style.opacity = '0'
     })
   }
 
@@ -298,29 +388,21 @@ function synchronization() {
     })
   }
 
-  function hideAllBugs() {
-    document.querySelectorAll('.bug').forEach((bug) => {
-      bug.style.opacity = '0'
-    })
-  }
-
   function checkAllBugsFixed() {
-    const remainingBugs = Array.from(document.querySelectorAll('.bug')).filter(
+    let remainingBugs = Array.from(document.querySelectorAll('.bug')).filter(
       (bug) => bug.style.opacity === '1'
     )
 
     if (remainingBugs.length === 0) {
-      alert('Отлично! Попробуйте просканировать персонажа снова.')
+      alert('Отлично! Попробуй просканировать персонажа снова.')
     }
   }
 
   function resetGame() {
     if (!elements.buttonRestart.classList.contains('active')) {
-      console.log('Reset button is not active')
       return
     }
 
-    console.log('Resetting game...')
     window.location.replace(window.location.pathname)
   }
 
@@ -373,6 +455,34 @@ function setupEmotions() {
     surprise: document.querySelector('.surprise'),
     disgust: document.querySelector('.disgust')
   }
+
+  // Add character change listener
+  document
+    .querySelectorAll('#choose-character .characters img')
+    .forEach((character) => {
+      character.addEventListener('click', () => {
+        const newCharacter = character.dataset.character
+        console.log('Character changed to:', newCharacter)
+
+        // Reset all emotion states
+        document
+          .querySelectorAll(
+            '.floating img, .teardrops img, .blushing img, .left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien, .surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien, .disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
+          )
+          .forEach((el) => {
+            el.style.opacity = '0'
+            el.style.animationPlayState = 'paused'
+          })
+
+        // Update the selected character in the emotions section
+        const emotionsCharacter = document.querySelector(
+          '.characters3 .character-display.selected'
+        )
+        if (emotionsCharacter) {
+          emotionsCharacter.dataset.character = newCharacter
+        }
+      })
+    })
 
   function resetAllEmotions() {
     const selectedCharacter = document.querySelector(
@@ -664,11 +774,9 @@ function setupContenteditableCharacterSelection() {
   )
 
   characters.forEach((character) => {
-    console.log(
-      `Adding click listener to character: ${character.dataset.character}`
-    )
     character.addEventListener('click', () => {
-      console.log(`Character clicked: ${character.dataset.character}`)
+      if (handleCharacterSelection()) return
+
       document
         .querySelectorAll('#choose-character .characters img')
         .forEach((char) => char.classList.remove('selected'))
@@ -676,8 +784,6 @@ function setupContenteditableCharacterSelection() {
       selectedCharacter = character.dataset.character
       blankSpace.setAttribute('contenteditable', 'true')
       blankSpace.style.cursor = 'text'
-      console.log(`Selected character: ${selectedCharacter}`)
-      console.log('contenteditable is now enabled.')
     })
   })
 }
@@ -781,10 +887,11 @@ function setupQualitiesCharacterSelection() {
 
   characters.forEach((character) => {
     character.addEventListener('click', () => {
+      if (handleCharacterSelection()) return
+
       characters.forEach((char) => char.classList.remove('selected'))
       character.classList.add('selected')
       selectedCharacter = character.dataset.character
-      console.log(`Selected character: ${selectedCharacter}`)
       crosses.forEach((cross) => cross.classList.add('enabled'))
     })
   })
@@ -819,7 +926,7 @@ function setupCrossSelection() {
           console.log('New visible count:', visibleCount + 1)
         } else {
           console.log('Maximum qualities (3) already selected')
-          alert('Вы можете выбрать только 3 качества.')
+          alert('Ты можешь выбрать только 3 качества.')
         }
       }
     })
@@ -856,10 +963,11 @@ function setupBackgroundsCharacterSelection() {
 
   characters.forEach((character) => {
     character.addEventListener('click', () => {
+      if (handleCharacterSelection()) return
+
       characters.forEach((char) => char.classList.remove('selected'))
       character.classList.add('selected')
       isCharacterSelected = true
-      console.log(`Selected character: ${character.dataset.character}`)
       buttons.forEach((button) => button.classList.add('enabled'))
     })
   })
@@ -942,7 +1050,7 @@ function placeOrder() {
   confirmButton?.addEventListener('click', () => {
     const selectedCharacter = document.querySelector('.characters img.selected')
     if (!selectedCharacter) {
-      alert('Пожалуйста, сначала выберите персонажа!')
+      alert('Пожалуйста, выберите персонажа сначала!')
       return
     }
 
@@ -953,7 +1061,7 @@ function placeOrder() {
 
   placeOrderButton.addEventListener('click', () => {
     if (!isCharacterSelected) {
-      alert('Пожалуйста, сначала выберите персонажа!')
+      alert('Пожалуйста, выберите персонажа сначала!')
       return
     }
 
