@@ -447,8 +447,8 @@
   -webkit-text-fill-color: black;
   font-size: 3.3vw;
   letter-spacing: 0.05vw;
-  margin-top: 4vw;
-  margin-left: -32.5vw;
+  margin-top: 3.8vw;
+  margin-left: -32.65vw;
 }
 .hint2 {
   background-repeat: no-repeat;
@@ -1617,7 +1617,7 @@
   -webkit-text-fill-color: black;
   font-size: 3.3vw;
   letter-spacing: 0.05vw;
-  margin-top: 4.8vw;
+  margin-top: 4.9vw;
   margin-left: -29.3vw;
 }
 .hint4 {
@@ -2177,7 +2177,7 @@ p6 {
   line-height: 2.6vw;
   position: absolute;
   margin-top: 11.8vw;
-  margin-left: 78.3vw;
+  margin-left: 77.9vw;
   text-align: center;
   z-index: 22;
   rotate: -3.41deg;
@@ -2273,8 +2273,6 @@ p6 {
   margin-left: 12.5vw;
   margin-top: 55.1vw;
   position: absolute;
-  cursor: not-allowed;
-  pointer-events: none;
   transition: opacity 0.3s ease, cursor 0.3s ease;
 }
 .button-place_order.active {
@@ -2315,8 +2313,6 @@ p6 {
   margin-left: 52.2vw;
   margin-top: 55.1vw;
   position: absolute;
-  pointer-events: none;
-  cursor: not-allowed;
 }
 .button-restart:active {
   width: 35.63vw;
