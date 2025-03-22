@@ -345,16 +345,6 @@ function synchronization() {
     window.location.replace(window.location.pathname)
   }
 
-  function resetScannerPosition() {
-    elements.scanner.style.top = '-7vw'
-    elements.scanner.style.left = '50%'
-    elements.scanner.style.transform = 'translateX(-50%)'
-  }
-
-  function resetScanCount() {
-    scanCount = 0
-  }
-
   function resetButtons() {
     elements.buttonScan.classList.add('active')
     elements.buttonScan.style.cursor = 'pointer'
@@ -682,11 +672,6 @@ function contenteditable() {
   setupEnterKeyHandler()
 
   function setupContenteditableCharacterSelection() {
-    let blankSpace = document.querySelector('.blank-space')
-    let characters = document.querySelectorAll(
-      '#choose-character .characters img'
-    )
-
     characters.forEach((character) => {
       console.log(
         `Adding click listener to character: ${character.dataset.character}`
@@ -705,8 +690,6 @@ function contenteditable() {
   }
 
   function setupTextInput() {
-    let blankSpace = document.querySelector('.blank-space')
-
     blankSpace.addEventListener('input', () => {
       let content = blankSpace.textContent.trim()
       if (content.length > 20) {
@@ -720,8 +703,6 @@ function contenteditable() {
   }
 
   function setupPasteHandler() {
-    let blankSpace = document.querySelector('.blank-space')
-
     blankSpace.addEventListener('paste', (event) => {
       event.preventDefault()
       let pastedText = (event.clipboardData || window.clipboardData).getData(
@@ -740,8 +721,6 @@ function contenteditable() {
   }
 
   function setupEnterKeyHandler() {
-    let blankSpace = document.querySelector('.blank-space')
-
     blankSpace.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         event.preventDefault()
@@ -789,13 +768,6 @@ function chooseQualities() {
   setupCrossSelection()
 
   function setupQualitiesCharacterSelection() {
-    let characters = document.querySelectorAll(
-      '#choose-character .characters img'
-    )
-    let crosses = document.querySelectorAll(
-      '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
-    )
-
     characters.forEach((character) => {
       character.addEventListener('click', () => {
         characters.forEach((character) =>
@@ -995,15 +967,4 @@ function placeOrder() {
 
     alert(alertMessage)
   })
-}
-
-// refreshing the page
-function resetGame() {
-  if (!elements.buttonRestart.classList.contains('active')) {
-    console.log('Reset button is not active')
-    return
-  }
-
-  console.log('Resetting game...')
-  window.location.replace(window.location.pathname)
 }
