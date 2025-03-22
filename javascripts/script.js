@@ -10,24 +10,20 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEmotions()
 })
 
-let isCharacterConfirmed = false
-
 // typewriter
 function typewriter() {
-  const typed = new Typed('#typewriter', {
+  let typed = new Typed('#typewriter', {
     strings: ['Hi!', 'Welcome!'],
     typeSpeed: 200,
     backSpeed: 100,
     backDelay: 1000,
-    loop: true,
-    showCursor: true,
-    cursorChar: '|'
+    loop: true
   })
 }
 
 // drag-lever
 function drag_lever() {
-  const slider = createSlider(
+  let slider = createSlider(
     0,
     100,
     document.querySelector('.path-moving'),
@@ -37,7 +33,7 @@ function drag_lever() {
 }
 
 function createSlider(min, max, element, thumb) {
-  const slider = {
+  let slider = {
     min: 0,
     max: 100,
     value: min,
@@ -47,14 +43,14 @@ function createSlider(min, max, element, thumb) {
 
   let currentMoveHandler = null
 
-  const handleMouseMove = (evt) => {
-    const pathRect = element.getBoundingClientRect()
+  let handleMouseMove = (evt) => {
+    let pathRect = element.getBoundingClientRect()
 
     let y = evt.clientY - pathRect.top
 
-    const leverHeight = thumb.offsetHeight
-    const maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
-    const minY = -(leverHeight * 0.67)
+    let leverHeight = thumb.offsetHeight
+    let maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
+    let minY = -(leverHeight * 0.67)
     y = Math.max(minY, Math.min(maxY, y))
 
     thumb.style.top = `${(y * 100) / window.innerWidth}vw`
@@ -66,7 +62,7 @@ function createSlider(min, max, element, thumb) {
     evt.preventDefault()
   }
 
-  const handleMouseUp = () => {
+  let handleMouseUp = () => {
     if (currentMoveHandler) {
       document.removeEventListener('mousemove', currentMoveHandler)
       document.removeEventListener('mouseup', handleMouseUp)
@@ -74,7 +70,7 @@ function createSlider(min, max, element, thumb) {
     }
   }
 
-  const handleMouseDown = (evt) => {
+  let handleMouseDown = (evt) => {
     currentMoveHandler = handleMouseMove
     document.addEventListener('mousemove', currentMoveHandler)
     document.addEventListener('mouseup', handleMouseUp)
@@ -85,11 +81,11 @@ function createSlider(min, max, element, thumb) {
 
   slider.setValue = (value) => {
     value = Math.max(slider.min, Math.min(slider.max, value))
-    const pathRect = element.getBoundingClientRect()
-    const leverHeight = thumb.offsetHeight
-    const maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
-    const minY = -(leverHeight * 0.67)
-    const y =
+    let pathRect = element.getBoundingClientRect()
+    let leverHeight = thumb.offsetHeight
+    let maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
+    let minY = -(leverHeight * 0.67)
+    let y =
       ((slider.max - value) / (slider.max - slider.min)) * (maxY - minY) + minY
 
     thumb.style.top = `${(y * 100) / window.innerWidth}vw`
@@ -107,19 +103,19 @@ function createSlider(min, max, element, thumb) {
 
 // scrolling
 function scroll() {
-  const buttonStart = document.querySelector('.button-start')
+  let buttonStart = document.querySelector('.button-start')
 
   if (!buttonStart) return
 
   buttonStart.addEventListener('click', () => {
-    const targetSection = document.getElementById('choose-character')
+    let targetSection = document.getElementById('choose-character')
 
     if (!targetSection) {
       console.error("Target section 'choose-character' not found!")
       return
     }
 
-    const headerHeight = -830
+    let headerHeight = -830
 
     window.scrollTo({
       top: targetSection.offsetTop - headerHeight,
@@ -131,6 +127,7 @@ function scroll() {
 // choosing, synchronization, scan
 function synchronization() {
   let currentlySelected = null
+  let isCharacterConfirmed = false
   let scanCount = 0
 
   let elements = {
@@ -151,73 +148,6 @@ function synchronization() {
     return
   }
 
-  function handleCharacterChange(newCharacter) {
-    // Reset all states and animations
-    document.querySelectorAll('.character-display').forEach((img) => {
-      if (img.closest('#choose-character')) {
-        img.style.opacity = '1'
-      } else {
-        const isSelected = img.dataset.character === newCharacter
-        img.style.opacity = isSelected ? '1' : '0'
-        img.classList.toggle('selected', isSelected)
-      }
-    })
-
-    // Reset scan count
-    scanCount = 0
-
-    // Reset scanner position
-    if (elements.scanner) {
-      elements.scanner.classList.remove('scanning')
-      elements.scanner.style.top = '14vw'
-      elements.scanner.style.left = '50%'
-      elements.scanner.style.transform = 'translateX(-50%)'
-    }
-
-    // Reset emotions
-    document
-      .querySelectorAll(
-        '.floating img, .teardrops img, .blushing img, .left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien, .surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien, .disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
-      )
-      .forEach((el) => {
-        el.style.opacity = '0'
-        el.style.animationPlayState = 'paused'
-      })
-
-    // Reset qualities
-    document
-      .querySelectorAll('.cross1, .cross2, .cross3, .cross4, .cross5, .cross6')
-      .forEach((cross) => {
-        cross.classList.remove('visible')
-        cross.classList.remove('enabled')
-      })
-
-    // Reset backgrounds
-    document
-      .querySelectorAll('.back-stripes, .back-polka-dot, .back-polygons')
-      .forEach((background) => {
-        background.classList.remove('visible')
-      })
-
-    // Update the selected character in the emotions section
-    let emotionsCharacter = document.querySelector(
-      '.characters3 .character-display.selected'
-    )
-    if (emotionsCharacter) {
-      emotionsCharacter.dataset.character = newCharacter
-    }
-  }
-
-  function handleCharacterSelection() {
-    if (isCharacterConfirmed) {
-      alert(
-        'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
-      )
-      return true
-    }
-    return false
-  }
-
   function setupCharacter(characterClass, selectionClass) {
     let character = document.querySelector(`.${characterClass}`)
     let selection = document.querySelector(`.${selectionClass}`)
@@ -230,8 +160,12 @@ function synchronization() {
     }
 
     character.addEventListener('click', () => {
-      if (handleCharacterSelection()) return
-
+      if (isCharacterConfirmed) {
+        alert(
+          'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
+        )
+        return
+      }
       document
         .querySelectorAll('.select1, .select2, .select3, .select4')
         .forEach((select) => {
@@ -275,7 +209,7 @@ function synchronization() {
 
   elements.buttonConfirm.addEventListener('click', () => {
     if (!currentlySelected) {
-      alert('Пожалуйста, выберите персонажа сначала!')
+      alert('Пожалуйста, сначала выберите персонажа!')
       return
     }
 
@@ -330,9 +264,11 @@ function synchronization() {
   function startScan() {
     elements.scanner.classList.add('scanning')
     scanCount++
+    console.log('Scanning started!', `Scan Count: ${scanCount}`)
   }
 
   elements.scanner.addEventListener('animationend', () => {
+    console.log('Animation ended!')
     elements.scanner.classList.remove('scanning')
 
     if (scanCount === 1) {
@@ -355,6 +291,7 @@ function synchronization() {
     }
 
     let selectedCharacter = selectedImage.dataset.character
+    console.log('Showing bugs for character:', selectedCharacter)
 
     document.querySelectorAll('.bug').forEach((bug) => {
       bug.style.opacity = '0'
@@ -368,6 +305,7 @@ function synchronization() {
             `.bug[data-character="${selectedCharacter}"]`
           ))
       bug.style.opacity = shouldShow ? '1' : '0'
+      console.log(`Bug ${bug.className}: ${shouldShow ? 'shown' : 'hidden'}`)
     })
 
     setupBugClickHandlers()
@@ -400,9 +338,11 @@ function synchronization() {
 
   function resetGame() {
     if (!elements.buttonRestart.classList.contains('active')) {
+      console.log('Reset button is not active')
       return
     }
 
+    console.log('Resetting game...')
     window.location.replace(window.location.pathname)
   }
 
@@ -447,7 +387,7 @@ function synchronization() {
 
 // emotions
 function setupEmotions() {
-  const emotionButtons = {
+  let emotionButtons = {
     love: document.querySelector('.love'),
     sadness: document.querySelector('.sadness'),
     blush: document.querySelector('.blush'),
@@ -456,40 +396,12 @@ function setupEmotions() {
     disgust: document.querySelector('.disgust')
   }
 
-  // Add character change listener
-  document
-    .querySelectorAll('#choose-character .characters img')
-    .forEach((character) => {
-      character.addEventListener('click', () => {
-        const newCharacter = character.dataset.character
-        console.log('Character changed to:', newCharacter)
-
-        // Reset all emotion states
-        document
-          .querySelectorAll(
-            '.floating img, .teardrops img, .blushing img, .left-boy, .right-boy, .left-girl, .right-girl, .angry-dog, .curved-alien, .surprise-boy, .surprise-girl, .surprise-dog, .surprise-alien, .disgust-boy, .disgust-girl, .disgust-dog, .disgust-alien'
-          )
-          .forEach((el) => {
-            el.style.opacity = '0'
-            el.style.animationPlayState = 'paused'
-          })
-
-        // Update the selected character in the emotions section
-        const emotionsCharacter = document.querySelector(
-          '.characters3 .character-display.selected'
-        )
-        if (emotionsCharacter) {
-          emotionsCharacter.dataset.character = newCharacter
-        }
-      })
-    })
-
   function resetAllEmotions() {
-    const selectedCharacter = document.querySelector(
+    let selectedCharacter = document.querySelector(
       '.characters3 .character-display.selected'
     )
     if (selectedCharacter) {
-      const selectedCharacterName = selectedCharacter.dataset.character
+      let selectedCharacterName = selectedCharacter.dataset.character
       document
         .querySelectorAll('.characters3 .character-display')
         .forEach((img) => {
@@ -503,7 +415,7 @@ function setupEmotions() {
   }
 
   function resetEmotionImages() {
-    const emotionImageSelectors = [
+    let emotionImageSelectors = [
       '.sad-boy, .sad-girl, .sad-alien',
       '.angry-boy, .angry-girl, .angry-alien',
       '.surprised-boy, .surprised-girl, .surprised-alien',
@@ -518,7 +430,7 @@ function setupEmotions() {
   }
 
   function resetEmotionAnimations() {
-    const animationSelectors = [
+    let animationSelectors = [
       '.floating img, .teardrops img, .blushing img',
       '.left-boy, .right-boy, .left-girl, .right-girl',
       '.angry-dog, .curved-alien',
@@ -541,9 +453,9 @@ function setupEmotions() {
 
   function activateEmotion(emotion, character) {
     resetAllEmotions()
-    const characterName = character.dataset.character
+    let characterName = character.dataset.character
 
-    const emotionActions = {
+    let emotionActions = {
       love: () => handleLoveEmotion(characterName),
       sadness: () => handleSadnessEmotion(characterName),
       blush: () => handleBlushEmotion(characterName),
@@ -558,13 +470,13 @@ function setupEmotions() {
   }
 
   function handleLoveEmotion(characterName) {
-    const emotionMap = {
+    let emotionMap = {
       boy: 'floating-boy/alien',
       alien: 'floating-boy/alien',
       girl: 'floating-girl',
       dog: 'floating-dog'
     }
-    const selectedEmotion = emotionMap[characterName]
+    let selectedEmotion = emotionMap[characterName]
     if (selectedEmotion) {
       document.querySelectorAll('.floating img').forEach((heart) => {
         if (heart.dataset.emotion === selectedEmotion) {
@@ -575,13 +487,13 @@ function setupEmotions() {
   }
 
   function handleSadnessEmotion(characterName) {
-    const emotionMap = {
+    let emotionMap = {
       boy: 'crying-boy',
       girl: 'crying-girl',
       dog: 'crying-dog',
       alien: 'crying-alien'
     }
-    const selectedEmotion = emotionMap[characterName]
+    let selectedEmotion = emotionMap[characterName]
     if (selectedEmotion) {
       document.querySelectorAll('.teardrops').forEach((container) => {
         container.style.opacity = '1'
@@ -596,8 +508,8 @@ function setupEmotions() {
       })
     }
 
-    const baseImage = document.querySelector(`.${characterName}`)
-    const sadImage = document.querySelector(`.sad-${characterName}`)
+    let baseImage = document.querySelector(`.${characterName}`)
+    let sadImage = document.querySelector(`.sad-${characterName}`)
     if (baseImage && sadImage) {
       baseImage.style.opacity = '0'
       sadImage.style.opacity = '1'
@@ -605,16 +517,16 @@ function setupEmotions() {
   }
 
   function handleBlushEmotion(characterName) {
-    const blushingElementsMap = {
+    let blushingElementsMap = {
       boy: ['.left1', '.left2', '.left3', '.right1', '.right2', '.right3'],
       girl: ['.left4', '.left5', '.left6', '.right4', '.right5', '.right6'],
       dog: ['.right7', '.right8', '.right9'],
       alien: ['.left7', '.left8', '.left9', '.right10', '.right11', '.right12']
     }
-    const blushingElements = blushingElementsMap[characterName]
+    let blushingElements = blushingElementsMap[characterName]
     if (blushingElements) {
       blushingElements.forEach((selector) => {
-        const element = document.querySelector(selector)
+        let element = document.querySelector(selector)
         if (element) {
           element.style.opacity = '1'
           element.style.animationPlayState = 'running'
@@ -624,30 +536,30 @@ function setupEmotions() {
   }
 
   function handleAngerEmotion(characterName) {
-    const angerImagesMap = {
+    let angerImagesMap = {
       boy: '.angry-boy',
       girl: '.angry-girl',
       alien: '.angry-alien'
     }
-    const eyebrowElementsMap = {
+    let eyebrowElementsMap = {
       boy: ['.left-boy', '.right-boy'],
       girl: ['.left-girl', '.right-girl'],
       dog: ['.angry-dog'],
       alien: ['.curved-alien']
     }
 
-    const angryImageSelector = angerImagesMap[characterName]
+    let angryImageSelector = angerImagesMap[characterName]
     if (angryImageSelector) {
-      const angryImage = document.querySelector(angryImageSelector)
+      let angryImage = document.querySelector(angryImageSelector)
       if (angryImage) {
         angryImage.style.opacity = '1'
       }
     }
 
-    const eyebrowElements = eyebrowElementsMap[characterName]
+    let eyebrowElements = eyebrowElementsMap[characterName]
     if (eyebrowElements) {
       eyebrowElements.forEach((selector) => {
-        const element = document.querySelector(selector)
+        let element = document.querySelector(selector)
         if (element) {
           element.style.opacity = '1'
           element.style.animationPlayState = 'running'
@@ -657,29 +569,29 @@ function setupEmotions() {
   }
 
   function handleSurpriseEmotion(characterName) {
-    const surpriseImagesMap = {
+    let surpriseImagesMap = {
       boy: '.surprised-boy',
       girl: '.surprised-girl',
       alien: '.surprised-alien'
     }
-    const surpriseElementsMap = {
+    let surpriseElementsMap = {
       boy: '.surprise-boy',
       girl: '.surprise-girl',
       dog: '.surprise-dog',
       alien: '.surprise-alien'
     }
 
-    const surprisedImageSelector = surpriseImagesMap[characterName]
+    let surprisedImageSelector = surpriseImagesMap[characterName]
     if (surprisedImageSelector) {
-      const surprisedImage = document.querySelector(surprisedImageSelector)
+      let surprisedImage = document.querySelector(surprisedImageSelector)
       if (surprisedImage) {
         surprisedImage.style.opacity = '1'
       }
     }
 
-    const surpriseElementSelector = surpriseElementsMap[characterName]
+    let surpriseElementSelector = surpriseElementsMap[characterName]
     if (surpriseElementSelector) {
-      const surpriseElement = document.querySelector(surpriseElementSelector)
+      let surpriseElement = document.querySelector(surpriseElementSelector)
       if (surpriseElement) {
         surpriseElement.style.opacity = '1'
         surpriseElement.style.animationPlayState = 'running'
@@ -688,29 +600,29 @@ function setupEmotions() {
   }
 
   function handleDisgustEmotion(characterName) {
-    const disgustImagesMap = {
+    let disgustImagesMap = {
       boy: '.disgusted-boy',
       girl: '.disgusted-girl',
       alien: '.disgusted-alien'
     }
-    const disgustMouthElementsMap = {
+    let disgustMouthElementsMap = {
       boy: '.disgust-boy',
       girl: '.disgust-girl',
       dog: '.disgust-dog',
       alien: '.disgust-alien'
     }
 
-    const disgustedImageSelector = disgustImagesMap[characterName]
+    let disgustedImageSelector = disgustImagesMap[characterName]
     if (disgustedImageSelector) {
-      const disgustedImage = document.querySelector(disgustedImageSelector)
+      let disgustedImage = document.querySelector(disgustedImageSelector)
       if (disgustedImage) {
         disgustedImage.style.opacity = '1'
       }
     }
 
-    const disgustMouthElementSelector = disgustMouthElementsMap[characterName]
+    let disgustMouthElementSelector = disgustMouthElementsMap[characterName]
     if (disgustMouthElementSelector) {
-      const disgustMouthElement = document.querySelector(
+      let disgustMouthElement = document.querySelector(
         disgustMouthElementSelector
       )
       if (disgustMouthElement) {
@@ -722,7 +634,7 @@ function setupEmotions() {
 
   Object.entries(emotionButtons).forEach(([emotion, button]) => {
     button.addEventListener('click', () => {
-      const selectedCharacter = document.querySelector(
+      let selectedCharacter = document.querySelector(
         '.characters3 .character-display.selected'
       )
       if (!selectedCharacter) {
@@ -744,8 +656,8 @@ function setupEmotions() {
 
 // contenteditable text
 function contenteditable() {
-  const blankSpace = document.querySelector('.blank-space')
-  const characters = document.querySelectorAll(
+  let blankSpace = document.querySelector('.blank-space')
+  let characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
   let selectedCharacter = null
@@ -768,28 +680,31 @@ function contenteditable() {
 }
 
 function setupContenteditableCharacterSelection() {
-  const blankSpace = document.querySelector('.blank-space')
-  const characters = document.querySelectorAll(
+  let blankSpace = document.querySelector('.blank-space')
+  let characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
 
   characters.forEach((character) => {
-    character.addEventListener('click', () => {
-      if (handleCharacterSelection()) return
+    console.log(
+      `Adding click listener to character: ${character.dataset.character}`
+    )
 
-      document
-        .querySelectorAll('#choose-character .characters img')
-        .forEach((char) => char.classList.remove('selected'))
-      character.classList.add('selected')
-      selectedCharacter = character.dataset.character
-      blankSpace.setAttribute('contenteditable', 'true')
-      blankSpace.style.cursor = 'text'
-    })
+    console.log(`Character clicked: ${character.dataset.character}`)
+    document
+      .querySelectorAll('#choose-character .characters img')
+      .forEach((char) => char.classList.remove('selected'))
+    character.classList.add('selected')
+    selectedCharacter = character.dataset.character
+    blankSpace.setAttribute('contenteditable', 'true')
+    blankSpace.style.cursor = 'text'
+    console.log(`Selected character: ${selectedCharacter}`)
+    console.log('contenteditable is now enabled.')
   })
 }
 
 function setupTextInput() {
-  const blankSpace = document.querySelector('.blank-space')
+  let blankSpace = document.querySelector('.blank-space')
 
   blankSpace.addEventListener('input', () => {
     let content = blankSpace.textContent.trim()
@@ -804,15 +719,15 @@ function setupTextInput() {
 }
 
 function setupPasteHandler() {
-  const blankSpace = document.querySelector('.blank-space')
+  let blankSpace = document.querySelector('.blank-space')
 
   blankSpace.addEventListener('paste', (event) => {
     event.preventDefault()
-    const pastedText = (event.clipboardData || window.clipboardData).getData(
+    let pastedText = (event.clipboardData || window.clipboardData).getData(
       'text'
     )
-    const currentText = blankSpace.textContent.trim()
-    const newLength = currentText.length + pastedText.length
+    let currentText = blankSpace.textContent.trim()
+    let newLength = currentText.length + pastedText.length
 
     if (newLength <= 20) {
       blankSpace.textContent += pastedText
@@ -824,7 +739,7 @@ function setupPasteHandler() {
 }
 
 function setupEnterKeyHandler() {
-  const blankSpace = document.querySelector('.blank-space')
+  let blankSpace = document.querySelector('.blank-space')
 
   blankSpace.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -841,15 +756,15 @@ function placeCaretAtEnd(element) {
     typeof window.getSelection !== 'undefined' &&
     typeof document.createRange !== 'undefined'
   ) {
-    const range = document.createRange()
-    const selection = window.getSelection()
+    let range = document.createRange()
+    let selection = window.getSelection()
     range.selectNodeContents(element)
     range.collapse(false)
     selection.removeAllRanges()
     selection.addRange(range)
     element.focus()
   } else if (typeof document.body.createTextRange !== 'undefined') {
-    const textRange = document.body.createTextRange()
+    let textRange = document.body.createTextRange()
     textRange.moveToElementText(element)
     textRange.collapse(false)
     textRange.select()
@@ -858,10 +773,10 @@ function placeCaretAtEnd(element) {
 
 // choosing qualities
 function chooseQualities() {
-  const crosses = document.querySelectorAll(
+  let crosses = document.querySelectorAll(
     '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
   )
-  const characters = document.querySelectorAll(
+  let characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
   let selectedCharacter = null
@@ -878,27 +793,26 @@ function chooseQualities() {
 }
 
 function setupQualitiesCharacterSelection() {
-  const characters = document.querySelectorAll(
+  let characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
-  const crosses = document.querySelectorAll(
+  let crosses = document.querySelectorAll(
     '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
   )
 
   characters.forEach((character) => {
     character.addEventListener('click', () => {
-      if (handleCharacterSelection()) return
-
       characters.forEach((char) => char.classList.remove('selected'))
       character.classList.add('selected')
       selectedCharacter = character.dataset.character
+      console.log(`Selected character: ${selectedCharacter}`)
       crosses.forEach((cross) => cross.classList.add('enabled'))
     })
   })
 }
 
 function setupCrossSelection() {
-  const crosses = document.querySelectorAll(
+  let crosses = document.querySelectorAll(
     '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
   )
 
@@ -909,10 +823,10 @@ function setupCrossSelection() {
         return
       }
 
-      const visibleCrosses = Array.from(crosses).filter((c) =>
+      let visibleCrosses = Array.from(crosses).filter((c) =>
         c.classList.contains('visible')
       )
-      const visibleCount = visibleCrosses.length
+      let visibleCount = visibleCrosses.length
       console.log('Currently visible crosses:', visibleCount)
 
       if (cross.classList.contains('visible')) {
@@ -935,11 +849,11 @@ function setupCrossSelection() {
 
 // backgrounds
 function backgrounds() {
-  const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
-  const backgrounds = document.querySelectorAll(
+  let buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
+  let backgrounds = document.querySelectorAll(
     '.back-stripes, .back-polka-dot, .back-polygons'
   )
-  const characters = document.querySelectorAll(
+  let characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
   let isCharacterSelected = false
@@ -956,26 +870,25 @@ function backgrounds() {
 }
 
 function setupBackgroundsCharacterSelection() {
-  const characters = document.querySelectorAll(
+  let characters = document.querySelectorAll(
     '#choose-character .characters img'
   )
-  const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
+  let buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
 
   characters.forEach((character) => {
     character.addEventListener('click', () => {
-      if (handleCharacterSelection()) return
-
       characters.forEach((char) => char.classList.remove('selected'))
       character.classList.add('selected')
       isCharacterSelected = true
+      console.log(`Selected character: ${character.dataset.character}`)
       buttons.forEach((button) => button.classList.add('enabled'))
     })
   })
 }
 
 function setupBackgroundSelection() {
-  const buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
-  const backgrounds = document.querySelectorAll(
+  let buttons = document.querySelectorAll('.stripes, .polka-dot, .polygons')
+  let backgrounds = document.querySelectorAll(
     '.back-stripes, .back-polka-dot, .back-polygons'
   )
 
@@ -997,8 +910,8 @@ function setupBackgroundSelection() {
 
 // place order button
 function placeOrder() {
-  const placeOrderButton = document.querySelector('.button-place_order')
-  const blankSpace = document.querySelector('.blank-space')
+  let placeOrderButton = document.querySelector('.button-place_order')
+  let blankSpace = document.querySelector('.blank-space')
   let isCharacterSelected = false
 
   if (!placeOrderButton || !blankSpace) {
@@ -1007,27 +920,27 @@ function placeOrder() {
   }
 
   function detectLanguage(name) {
-    const russianRegex = /[а-яА-Я]/
+    let russianRegex = /[а-яА-Я]/
     return russianRegex.test(name) ? 'ru' : 'en'
   }
 
   function checkOrderRequirements() {
-    const name = blankSpace.textContent.trim()
-    const hasName = name.length > 0
+    let name = blankSpace.textContent.trim()
+    let hasName = name.length > 0
 
-    const allCrosses = document.querySelectorAll(
+    let allCrosses = document.querySelectorAll(
       '.cross1, .cross2, .cross3, .cross4, .cross5, .cross6'
     )
-    const visibleCrosses = Array.from(allCrosses).filter((cross) =>
+    let visibleCrosses = Array.from(allCrosses).filter((cross) =>
       cross.classList.contains('visible')
     )
-    const selectedQualities = visibleCrosses.length
-    const hasQualities = selectedQualities === 3
+    let selectedQualities = visibleCrosses.length
+    let hasQualities = selectedQualities === 3
 
-    const selectedBackground = document.querySelector(
+    let selectedBackground = document.querySelector(
       '.back-stripes.visible, .back-polka-dot.visible, .back-polygons.visible'
     )
-    const hasBackground = !!selectedBackground
+    let hasBackground = !!selectedBackground
 
     console.log('Order requirements check:')
     console.log('- Name:', name)
@@ -1035,7 +948,7 @@ function placeOrder() {
     console.log('- Visible crosses:', selectedQualities)
     console.log('- Has background:', hasBackground)
 
-    const missingRequirements = []
+    let missingRequirements = []
     if (!hasName) missingRequirements.push('имя робота')
     if (!hasQualities) missingRequirements.push('3 качества')
     if (!hasBackground) missingRequirements.push('фон')
@@ -1046,9 +959,9 @@ function placeOrder() {
     }
   }
 
-  const confirmButton = document.querySelector('.button-confirm')
+  let confirmButton = document.querySelector('.button-confirm')
   confirmButton?.addEventListener('click', () => {
-    const selectedCharacter = document.querySelector('.characters img.selected')
+    let selectedCharacter = document.querySelector('.characters img.selected')
     if (!selectedCharacter) {
       alert('Пожалуйста, выберите персонажа сначала!')
       return
@@ -1065,7 +978,7 @@ function placeOrder() {
       return
     }
 
-    const { isComplete, missingRequirements } = checkOrderRequirements()
+    let { isComplete, missingRequirements } = checkOrderRequirements()
 
     if (!isComplete) {
       alert(
@@ -1076,9 +989,9 @@ function placeOrder() {
       return
     }
 
-    const name = blankSpace.textContent.trim()
-    const language = detectLanguage(name)
-    const alertMessage =
+    let name = blankSpace.textContent.trim()
+    let language = detectLanguage(name)
+    let alertMessage =
       language === 'ru'
         ? `Спасибо за заказ! Ваш робот ${name} отправлен на сборку. Мы с вами свяжемся. С любовью, А.`
         : `Thank you for your order! Your robot ${name} has been sent for assembly. We will contact you soon. With love, A.`
