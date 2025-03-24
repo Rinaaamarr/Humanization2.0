@@ -16,6 +16,8 @@
     margin-left: 0;
     opacity: 0.2;
   } */
+
+  /* SECTION 1 */
   .desk-1024 {
     width: 100vw;
     height: 133.5vw;
@@ -188,7 +190,6 @@
   .nails-1024 {
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
   }
   .nail1-1024 {
     width: 5.65vw;
@@ -275,12 +276,155 @@
     transform: translate(-50%, -50%);
     z-index: 5;
   }
+
+  /* SECTION 2 */
   #choose-character-1024 {
     width: 100vw;
-    height: 252.7vw;
+    height: 269.7vw;
     background-color: #3e3e6b;
     display: flex;
     position: relative;
     overflow: hidden;
+    z-index: -2;
+  }
+  .heading1-1024 {
+    width: 39.75vw;
+    height: 11.72vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    margin-top: 137.2vw;
+    margin-left: 6.7vw;
+  }
+  .choose-1024 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 4.9vw;
+    -webkit-text-fill-color: black;
+    position: absolute;
+    z-index: 3;
+    margin-top: 140.7vw;
+    margin-left: 10.9vw;
+  }
+  .hint-1024 {
+    width: 7.4vw;
+    height: 7.4vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 139.4vw;
+    margin-left: 49.8vw;
+  }
+  .question1-1024 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 4.88vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 140.8vw;
+    margin-left: -4.8vw;
+    z-index: 5;
+  }
+  .robo-girl-1024 {
+    width: 29.71vw;
+    height: 43.07vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 154.6vw;
+    margin-left: -40.49vw;
+    z-index: 2;
+  }
+  .robo-boy-1024 {
+    width: 26.2vw;
+    height: 43.07vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 154vw;
+    margin-left: 12.5vw;
+    z-index: 2;
+  }
+  .dog-1024 {
+    width: 21.58vw;
+    height: 18.65vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 29vw;
+    margin-left: -36.49vw;
+    z-index: 2;
+    display: block;
+  }
+  .robo-alien-1024 {
+    width: 28.81vw;
+    height: 39.45vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -39vw;
+    margin-left: 0.5vw;
+    z-index: 2;
+    display: block;
+  }
+  .select1-1024 {
+    width: 24.12vw;
+    height: 45.31vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    margin-top: 155vw;
+    margin-left: -67vw;
+    position: absolute;
+    opacity: 0;
+  }
+  .select2-1024 {
+    width: 24.12vw;
+    height: 45.31vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    position: absolute;
+    margin-top: 155vw;
+    margin-left: -26.5vw;
+    opacity: 0;
+  }
+  .select3-1024 {
+    width: 24.12vw;
+    height: 45.31vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    margin-top: 204vw;
+    margin-left: -67vw;
+    display: block;
+    position: absolute;
+    opacity: 0;
+  }
+  .select4-1024 {
+    width: 24.12vw;
+    height: 45.31vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    margin-top: 204vw;
+    margin-left: -26.45vw;
+    display: block;
+    position: absolute;
+    opacity: 0;
+  }
+  .button-confirm-1024 {
+    width: 36.13vw;
+    height: 8.3vw;
+    background-color: #a3a3a3;
+    border: black 4px solid;
+    border-radius: 300px;
+    position: absolute;
+    margin-top: 254.3vw;
+    margin-left: 32vw;
+  }
+  .confirm-1024 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 4.39vw;
+    -webkit-text-fill-color: black;
+    position: absolute;
+    z-index: 3;
+    margin-top: 1.5vw;
+    margin-left: 5.6vw;
   }
 }

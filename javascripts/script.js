@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   chooseQualities()
   backgrounds()
   placeOrder()
+  //  Adaptives' functions
   typewriter_1024()
   drag_lever_1024()
   scroll_1024()
@@ -1073,7 +1074,7 @@ function scroll_1024() {
   buttonStart.addEventListener('click', () => {
     let targetSection = document.getElementById('choose-character-1024')
 
-    let headerHeight = -830
+    let headerHeight = -1700
 
     window.scrollTo({
       top: targetSection.offsetTop - headerHeight,
