@@ -27,7 +27,7 @@
 .desk-side1 img {
   width: 3.83vw;
   height: 270vw;
-  margin-top: -169vw;
+  margin-top: -169.5vw;
   z-index: 1;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,7 +35,7 @@
 .desk-side2 img {
   width: 3.58vw;
   height: 275vw;
-  margin-top: -274vw;
+  margin-top: -274.5vw;
   margin-left: 96.465vw;
   z-index: 1;
   background-repeat: no-repeat;
@@ -46,7 +46,7 @@
   width: 100vw;
   height: 94vw;
   margin-left: 0.49vw;
-  margin-top: -181vw;
+  margin-top: -181.5vw;
   z-index: -1;
   background-repeat: no-repeat;
   background-size: cover;
@@ -2393,4 +2393,15 @@ p6 {
 }
 .button-restart.active .restart {
   -webkit-text-fill-color: #45eded;
+}
+
+/* ADAPTIVES */
+/* 1024 */
+.desk-1024,
+.sides-1024,
+#choose-character-1024,
+.scan-robot-1024,
+.emotions-1024,
+.humanize-robot-1024 {
+  display: none;
 }

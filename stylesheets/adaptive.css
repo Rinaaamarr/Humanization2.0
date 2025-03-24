@@ -1,0 +1,286 @@
+@media screen and (max-width: 1024px) {
+  .desk,
+  .sides,
+  #choose-character,
+  .scan-robot,
+  .emotions,
+  .humanize-robot {
+    display: none;
+  }
+  /* body {
+    background-image: url('../images/Factory\ Final\ 1024.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    margin-top: 0;
+    margin-left: 0;
+    opacity: 0.2;
+  } */
+  .desk-1024 {
+    width: 100vw;
+    height: 133.5vw;
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+  }
+  .desk-background-1024 img {
+    width: 100.2vw;
+    height: 124.32vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -2;
+    position: absolute;
+    margin-top: 0vw;
+    margin-left: 0vw;
+  }
+  .table-1024 {
+    width: 100vw;
+    height: 131.24vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: -3.5vw;
+    margin-left: 0;
+  }
+  .desk-side1-1024 {
+    width: 3.81vw;
+    height: 72.85vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 0vw;
+    margin-left: 0vw;
+  }
+  .desk-side2-1024 {
+    width: 3.81vw;
+    height: 72.85vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 0vw;
+    margin-left: 96.3vw;
+  }
+  .desk-close-1024 {
+    width: 100vw;
+    height: 9.77vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 119.5vw;
+    margin-left: 0vw;
+  }
+  .sides-1024 {
+    display: flex;
+    position: absolute;
+  }
+  .sidebar1-1024 {
+    width: 3.81vw;
+    height: 401.66vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 20;
+    overflow: hidden;
+    margin-left: 0vw;
+    margin-top: 72vw;
+  }
+  .sidebar2-1024 {
+    width: 3.52vw;
+    height: 401.66vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 20;
+    overflow: hidden;
+    margin-left: 96.45vw;
+    margin-top: 72vw;
+  }
+  .mechanism1-1024 {
+    width: 19.75vw;
+    height: 19.26vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 27vw;
+    margin-left: 61vw;
+    animation: rotate1 1.5s infinite linear;
+    animation-play-state: paused;
+  }
+  .mechanism1-1024:hover {
+    animation-play-state: running;
+  }
+  .mechanism2-1024 {
+    width: 16.82vw;
+    height: 16.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 38vw;
+    margin-left: 75vw;
+    animation: rotate2 2s infinite linear;
+    animation-play-state: paused;
+  }
+  .mechanism2-1024:hover {
+    animation-play-state: running;
+  }
+  .mechanism3-1024 {
+    width: 14.57vw;
+    height: 14.38vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 52vw;
+    margin-left: 75vw;
+    rotate: 25deg;
+    animation: rotate3 2.5s infinite linear;
+    animation-play-state: paused;
+  }
+  .mechanism3-1024:hover {
+    animation-play-state: running;
+  }
+  .path-back-1024 {
+    width: 19.53vw;
+    height: 47.07vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 24vw;
+    margin-left: 7vw;
+  }
+  .path-moving-1024 {
+    width: 19.53vw;
+    height: 47.07vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 4;
+    margin-top: 24vw;
+    margin-left: 7.8vw;
+  }
+  .lever-1024 {
+    width: 14.67vw;
+    height: 5.88vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    margin-top: 21vw;
+    margin-left: 10.5vw;
+  }
+  .panel-1024 {
+    width: 43.09vw;
+    height: 11.94vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 9vw;
+    margin-left: 28vw;
+  }
+  .nails-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+  }
+  .nail1-1024 {
+    width: 5.65vw;
+    height: 5.65vw;
+    margin-top: 116.5vw;
+    margin-left: 2.7vw;
+    position: absolute;
+    z-index: 22;
+  }
+  .nail2-1024 {
+    width: 5.65vw;
+    height: 5.65vw;
+    margin-top: 126.5vw;
+    margin-left: 2.7vw;
+    position: absolute;
+    z-index: 22;
+  }
+  .nail3-1024 {
+    width: 5.65vw;
+    height: 5.65vw;
+    margin-top: 116.5vw;
+    margin-left: 92.5vw;
+    position: absolute;
+    z-index: 22;
+  }
+  .nail4-1024 {
+    width: 5.65vw;
+    height: 5.65vw;
+    margin-top: 126.5vw;
+    margin-left: 92.5vw;
+    position: absolute;
+    z-index: 22;
+  }
+  .name-1024 {
+    font-family: 'Roboto Condensed SemiBold';
+    font-size: 10.8vw;
+    -webkit-text-fill-color: white;
+    position: absolute;
+    z-index: 4;
+    margin-top: 78.5vw;
+    margin-left: 18.5vw;
+  }
+  .create-1024 {
+    font-family: 'Roboto Condensed';
+    font-size: 4.9vw;
+    -webkit-text-fill-color: white;
+    position: absolute;
+    z-index: 4;
+    margin-top: 90vw;
+    margin-left: 26.4vw;
+  }
+  .button-start-1024 {
+    width: 25.29vw;
+    height: 8.11vw;
+    background-color: #45eded;
+    border: black 4px solid;
+    border-radius: 300px;
+    position: absolute;
+    margin-top: 103.4vw;
+    margin-left: 37.7vw;
+    z-index: 5;
+  }
+  .button-start-1024:hover {
+    background-color: #38c2c2;
+  }
+  .press-start-1024 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 4.9vw;
+    -webkit-text-fill-color: black;
+    position: absolute;
+    z-index: 6;
+    margin-top: 1.2vw;
+    margin-left: 5vw;
+    cursor: pointer;
+  }
+  #typewriter-1024 {
+    font-family: 'Arame Mono Stencil', sans-serif;
+    font-size: 9vw;
+    color: #00ff7f;
+    white-space: nowrap;
+    position: absolute;
+    top: 11.5%;
+    left: 50.5%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+  #choose-character-1024 {
+    width: 100vw;
+    height: 252.7vw;
+    background-color: #3e3e6b;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+}

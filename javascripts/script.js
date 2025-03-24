@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   chooseQualities()
   backgrounds()
   placeOrder()
+  typewriter_1024()
+  drag_lever_1024()
+  scroll_1024()
 })
 
 // typewriter
@@ -966,5 +969,115 @@ function placeOrder() {
         : `Thank you for your order! Your robot ${name} has been sent for assembly. We will contact you soon. With love, A.`
 
     alert(alertMessage)
+  })
+}
+
+// ADAPTIVES
+// typewriter-adaptives
+function typewriter_1024() {
+  let typed = new Typed('#typewriter-1024', {
+    strings: ['Hi!', 'Welcome!'],
+    typeSpeed: 200,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true
+  })
+}
+
+// drag lever
+function drag_lever_1024() {
+  let slider = createSlider(
+    0,
+    100,
+    document.querySelector('.path-moving-1024'),
+    document.querySelector('.lever-1024')
+  )
+  slider.setValue(100)
+
+  function createSlider(min, max, element, thumb) {
+    let slider = {
+      min: 0,
+      max: 100,
+      value: min,
+      element: document.querySelector('.path-moving-1024'),
+      thumb: document.querySelector('.lever-1024')
+    }
+
+    let currentMoveHandler = null
+
+    let handleMouseMove = (event) => {
+      let pathRect = element.getBoundingClientRect()
+
+      let y = event.clientY - pathRect.top
+
+      let leverHeight = thumb.offsetHeight
+      let maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
+      let minY = -(leverHeight * 0.1)
+      y = Math.max(minY, Math.min(maxY, y))
+
+      thumb.style.top = `${(y * 100) / window.innerWidth}vw`
+
+      thumb.style.left = '0.2vw'
+
+      slider.value = max - ((y - minY) / (maxY - minY)) * (max - min)
+
+      event.preventDefault()
+    }
+
+    let handleMouseUp = () => {
+      if (currentMoveHandler) {
+        document.removeEventListener('mousemove', currentMoveHandler)
+        document.removeEventListener('mouseup', handleMouseUp)
+        currentMoveHandler = null
+      }
+    }
+
+    let handleMouseDown = (event) => {
+      currentMoveHandler = handleMouseMove
+      document.addEventListener('mousemove', currentMoveHandler)
+      document.addEventListener('mouseup', handleMouseUp)
+      event.preventDefault()
+    }
+
+    thumb.addEventListener('mousedown', handleMouseDown)
+
+    slider.setValue = (value) => {
+      value = Math.max(slider.min, Math.min(slider.max, value))
+      let pathRect = element.getBoundingClientRect()
+      let leverHeight = thumb.offsetHeight
+      let maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
+      let minY = -(leverHeight * 0.1)
+      let y =
+        ((slider.max - value) / (slider.max - slider.min)) * (maxY - minY) +
+        minY
+
+      thumb.style.top = `${(y * 100) / window.innerWidth}vw`
+
+      thumb.style.left = '0.2vw'
+
+      slider.value = value
+    }
+
+    slider.getValue = () => slider.value
+    slider.getId = () => slider.element.id
+
+    return slider
+  }
+}
+
+function scroll_1024() {
+  let buttonStart = document.querySelector('.button-start-1024')
+
+  if (!buttonStart) return
+
+  buttonStart.addEventListener('click', () => {
+    let targetSection = document.getElementById('choose-character-1024')
+
+    let headerHeight = -830
+
+    window.scrollTo({
+      top: targetSection.offsetTop - headerHeight,
+      behavior: 'smooth'
+    })
   })
 }
