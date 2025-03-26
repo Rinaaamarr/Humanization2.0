@@ -427,4 +427,85 @@
     margin-top: 1.5vw;
     margin-left: 5.6vw;
   }
+  /* SECTION 3 */
+  .scan-robot-1024 {
+    width: 100vw;
+    height: 136.56vw;
+    background-color: #3e3e6b;
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+  }
+  .heading2-1024 {
+    width: 47.75vw;
+    height: 43.72vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -10.2vw;
+    margin-left: 7vw;
+    z-index: 1;
+  }
+  .do-scan-1024 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 4.97vw;
+    z-index: 2;
+    -webkit-text-fill-color: black;
+    margin-top: 9.2vw;
+    margin-left: -45.5vw;
+  }
+  .hint2-1024 {
+    width: 7vw;
+    height: 7vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 8.2vw;
+    margin-left: 5.9vw;
+    z-index: 1;
+  }
+  .question2-1024 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 4.9vw;
+    z-index: 2;
+    -webkit-text-fill-color: black;
+    margin-top: 9.2vw;
+    margin-left: 60.3vw;
+    position: absolute;
+  }
+  .scan-panel-1024 {
+    width: 73.73vw;
+    height: 90.23vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 24vw;
+    margin-left: 14.3vw;
+    z-index: 0;
+    position: absolute;
+  }
+  .scanner-1024 {
+    width: 73.73vw;
+    height: 18.46vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 23vw;
+    margin-left: 14.3vw;
+  }
+  .button-scan-1024 {
+    width: 42.97vw;
+    height: 9.86vw;
+    background-color: #a3a3a3;
+    border: black 4px solid;
+    border-radius: 300px;
+    margin-top: 121.3vw;
+    margin-left: -34.5vw;
+  }
+  .scan-1024 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 4.88vw;
+    -webkit-text-fill-color: black;
+    margin-top: 2.3vw;
+    margin-left: 8vw;
+  }
 }
