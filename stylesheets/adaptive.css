@@ -7,7 +7,7 @@
   .humanize-robot {
     display: none;
   }
-  /* body {
+  body {
     background-image: url('../images/Factory\ Final\ 1024.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,7 +15,7 @@
     margin-top: 0;
     margin-left: 0;
     opacity: 0.2;
-  } */
+  }
 
   /* SECTION 1 */
   .desk-1024 {
@@ -479,7 +479,7 @@
     background-size: cover;
     margin-top: 24vw;
     margin-left: 14.3vw;
-    z-index: 0;
+    z-index: 1;
     position: absolute;
   }
   .scanner-1024 {
@@ -487,7 +487,7 @@
     height: 18.46vw;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 2;
+    z-index: 3;
     position: absolute;
     margin-top: 23vw;
     margin-left: 14.3vw;
@@ -500,6 +500,7 @@
     border-radius: 300px;
     margin-top: 121.3vw;
     margin-left: -34.5vw;
+    z-index: 2;
   }
   .scan-1024 {
     font-family: 'Roboto Condensed Medium';
@@ -507,5 +508,441 @@
     -webkit-text-fill-color: black;
     margin-top: 2.3vw;
     margin-left: 8vw;
+  }
+  .boy-robo-1024 {
+    width: 43.5vw;
+    height: 67.03vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    margin-top: 36vw;
+    margin-left: -42.5vw;
+    position: absolute;
+    opacity: 0;
+  }
+  .girl-robo-1024 {
+    width: 43.5vw;
+    height: 67.03vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    margin-top: 37.35vw;
+    margin-left: -43vw;
+    position: absolute;
+    opacity: 0;
+  }
+  .dog-robo-1024 {
+    width: 50vw;
+    height: 60vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 40vw;
+    margin-left: -46vw;
+    opacity: 0;
+  }
+  .alien-robo-1024 {
+    width: 45vw;
+    height: 60vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 43vw;
+    margin-left: -44vw;
+    opacity: 0;
+  }
+  /* SECTION 4 */
+  .emotions-1024 {
+    width: 100vw;
+    height: 175.09vw;
+    background-color: #3e3e6b;
+    position: absolute;
+    display: flex;
+    overflow: hidden;
+    margin-top: 100vw;
+  }
+  .heading3-1024 {
+    width: 27.5vw;
+    height: 15vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    margin-top: 39.3vw;
+    margin-left: 6.6vw;
+  }
+  .emotions-head-1024 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 6.3vw;
+    -webkit-text-fill-color: black;
+    margin-top: 43.7vw;
+    margin-left: 10vw;
+    z-index: 2;
+  }
+  .hint3-1024 {
+    width: 8.5vw;
+    height: 8.5vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-top: 42.5vw;
+    margin-left: 7vw;
+    z-index: 1;
+  }
+  .question3-1024 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 4.9vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    margin-top: 44.4vw;
+    margin-left: -5.5vw;
+  }
+  .background-emotions-1024 {
+    width: 83.5vw;
+    height: 104.79vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    margin-top: 61.4vw;
+    margin-left: -34.5vw;
+  }
+  .preview1-1024 {
+    width: 73.73vw;
+    height: 51.76vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    margin-top: 65.3vw;
+    margin-left: -78.8vw;
+  }
+  .boy-1024,
+  .love-boy-1024,
+  .sad-boy-1024,
+  .blush-boy-1024,
+  .angry-boy-1024,
+  .surprised-boy-1024,
+  .disgusted-boy-1024 {
+    width: 30.29vw;
+    height: 48.07vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    margin-top: 67vw;
+    margin-left: -51.2vw;
+    position: absolute;
+    opacity: 0;
+  }
+  .girl-1024,
+  .love-girl-1024,
+  .sad-girl-1024,
+  .blush-girl-1024,
+  .angry-girl-1024,
+  .surprised-girl-1024,
+  .disgusted-girl-1024 {
+    width: 33vw;
+    height: 48.07vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 66.9vw;
+    margin-left: -53vw;
+    opacity: 0;
+  }
+  .doggie-1024,
+  .love-doggie-1024,
+  .sad-doggie-1024,
+  .blush-doggie-1024,
+  .angry-doggie-1024,
+  .surprised-doggie-1024,
+  .disgusted-doggie-1024 {
+    width: 45vw;
+    height: 47vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 67vw;
+    margin-left: -59vw;
+    opacity: 0;
+  }
+  .alien-1024,
+  .love-alien-1024,
+  .sad-alien-1024,
+  .blush-alien-1024,
+  .angry-alien-1024,
+  .surprised-alien-1024,
+  .disgusted-alien-1024 {
+    width: 35vw;
+    height: 45vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    margin-top: 70vw;
+    margin-left: -54vw;
+    position: absolute;
+    opacity: 0;
+  }
+  .e-button1-1024 {
+    width: 15.33vw;
+    height: 15.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 122.5vw;
+    margin-left: -71.5vw;
+  }
+  .e-button2-1024 {
+    width: 15.33vw;
+    height: 15.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 122.5vw;
+    margin-left: -43.7vw;
+  }
+  .e-button3-1024 {
+    width: 15.33vw;
+    height: 15.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 122.5vw;
+    margin-left: -16.9vw;
+  }
+  .e-button4-1024 {
+    width: 15.33vw;
+    height: 15.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 144.5vw;
+    margin-left: -71.5vw;
+  }
+  .e-button5-1024 {
+    width: 15.33vw;
+    height: 15.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 144.5vw;
+    margin-left: -43.7vw;
+  }
+  .e-button6-1024 {
+    width: 15.33vw;
+    height: 15.33vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 144.5vw;
+    margin-left: -16.9vw;
+  }
+  .love-1024 {
+    width: 10vw;
+    height: 4.59vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 128vw;
+    margin-left: -68.8vw;
+  }
+  .sadness-1024 {
+    width: 8.03vw;
+    height: 4.88vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 127.8vw;
+    margin-left: -40.1vw;
+  }
+  .blush-1024 {
+    width: 9.79vw;
+    height: 5.37vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 127.8vw;
+    margin-left: -14.15vw;
+  }
+  .anger-1024 {
+    width: 8.45vw;
+    height: 3.71vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 150.3vw;
+    margin-left: -68vw;
+  }
+  .surprise-1024 {
+    width: 5.86vw;
+    height: 4.79vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 149.95vw;
+    margin-left: -39vw;
+  }
+  .disgust-1024 {
+    width: 7.54vw;
+    height: 4.98vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 149.8vw;
+    margin-left: -13vw;
+  }
+  .heart1-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 64vw;
+    margin-left: -46.5vw;
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart2-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 68vw;
+    margin-left: -31vw;
+    z-index: 5;
+    animation: float 4s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart3-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 76vw;
+    margin-left: -44vw;
+    z-index: 5;
+    animation: float 3.5s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart4-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 67vw;
+    margin-left: -47.5vw;
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart5-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 74.5vw;
+    margin-left: -29.5vw;
+    z-index: 5;
+    animation: float 4s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart6-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 78vw;
+    margin-left: -44vw;
+    z-index: 5;
+    animation: float 3.5s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart7-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 68.5vw;
+    margin-left: -56vw;
+    z-index: 5;
+    animation: float 4s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart8-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 76vw;
+    margin-left: -48vw;
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart9-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 60vw;
+    margin-left: -47vw;
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart10-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 66.5vw;
+    margin-left: -31.8vw;
+    z-index: 5;
+    animation: float 4s ease-in-out infinite;
+    opacity: 0;
+  }
+  .heart11-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    width: 3.5vw;
+    height: 21.2vw;
+    margin-top: 71vw;
+    margin-left: -44vw;
+    z-index: 5;
+    animation: float 3.5s ease-in-out infinite;
+    opacity: 0;
+  }
+  /* SECTION 5 */
+  .humanize-robot-1024 {
+    width: 100vw;
+    height: 404vw;
+    display: flex;
+    overflow: hidden;
+    background-color: #3e3e6b;
+    margin-top: 100vw;
   }
 }

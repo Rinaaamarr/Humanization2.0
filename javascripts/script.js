@@ -271,11 +271,9 @@ function synchronization() {
   function startScan() {
     elements.scanner.classList.add('scanning')
     scanCount++
-    console.log('Scanning started!', `Scan Count: ${scanCount}`)
   }
 
   elements.scanner.addEventListener('animationend', () => {
-    console.log('Animation ended!')
     elements.scanner.classList.remove('scanning')
 
     if (scanCount === 1) {
@@ -294,7 +292,6 @@ function synchronization() {
     let selectedImage = document.querySelector('.characters img.selected')
 
     let selectedCharacter = selectedImage.dataset.character
-    console.log('Showing bugs for character:', selectedCharacter)
 
     document.querySelectorAll('.bug').forEach((bug) => {
       bug.style.opacity = '0'
@@ -308,7 +305,6 @@ function synchronization() {
             `.bug[data-character="${selectedCharacter}"]`
           ))
       bug.style.opacity = shouldShow ? '1' : '0'
-      console.log(`Bug ${bug.className}: ${shouldShow ? 'shown' : 'hidden'}`)
     })
 
     setupBugClickHandlers()
@@ -341,11 +337,9 @@ function synchronization() {
 
   function resetGame() {
     if (!elements.buttonRestart.classList.contains('active')) {
-      console.log('Reset button is not active')
       return
     }
 
-    console.log('Resetting game...')
     window.location.replace(window.location.pathname)
   }
 
@@ -660,12 +654,10 @@ function contenteditable() {
 
   blankSpace.setAttribute('contenteditable', 'false')
   blankSpace.style.cursor = 'not-allowed'
-  console.log('Initial state: contenteditable is disabled.')
 
   function enableContenteditable() {
     blankSpace.setAttribute('contenteditable', 'true')
     blankSpace.style.cursor = 'text'
-    console.log('contenteditable is now enabled after confirmation.')
   }
 
   window.enableContenteditable = enableContenteditable
@@ -677,18 +669,12 @@ function contenteditable() {
 
   function setupContenteditableCharacterSelection() {
     characters.forEach((character) => {
-      console.log(
-        `Adding click listener to character: ${character.dataset.character}`
-      )
-
       character.addEventListener('click', () => {
-        console.log(`Character clicked: ${character.dataset.character}`)
         document
           .querySelectorAll('#choose-character .characters img')
           .forEach((charachter) => charachter.classList.remove('selected'))
         character.classList.add('selected')
         selectedCharacter = character.dataset.character
-        console.log(`Selected character: ${selectedCharacter}`)
       })
     })
   }
@@ -728,9 +714,7 @@ function contenteditable() {
     blankSpace.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
         event.preventDefault()
-        console.log('"Enter" key pressed but suppressed.')
         blankSpace.blur()
-        console.log('Focus removed from .blank-space.')
       }
     })
   }
@@ -779,7 +763,6 @@ function chooseQualities() {
         )
         character.classList.add('selected')
         selectedCharacter = character.dataset.character
-        console.log(`Selected character: ${selectedCharacter}`)
         crosses.forEach((cross) => cross.classList.add('enabled'))
       })
     })
@@ -793,7 +776,6 @@ function chooseQualities() {
     crosses.forEach((cross) => {
       cross.addEventListener('click', () => {
         if (!cross.classList.contains('enabled')) {
-          console.log('Cross not enabled:', cross.className)
           return
         }
 
@@ -801,19 +783,13 @@ function chooseQualities() {
           c.classList.contains('visible')
         )
         let visibleCount = visibleCrosses.length
-        console.log('Currently visible crosses:', visibleCount)
 
         if (cross.classList.contains('visible')) {
           cross.classList.remove('visible')
-          console.log('Cross hidden:', cross.className)
-          console.log('New visible count:', visibleCount - 1)
         } else {
           if (visibleCount < 3) {
             cross.classList.add('visible')
-            console.log('Cross shown:', cross.className)
-            console.log('New visible count:', visibleCount + 1)
           } else {
-            console.log('Maximum qualities (3) already selected')
             alert('Вы можете выбрать только 3 качества.')
           }
         }
@@ -851,7 +827,6 @@ function backgrounds() {
         )
         character.classList.add('selected')
         isCharacterSelected = true
-        console.log(`Selected character: ${character.dataset.character}`)
         buttons.forEach((button) => button.classList.add('enabled'))
       })
     })
@@ -866,11 +841,9 @@ function backgrounds() {
     buttons.forEach((button, index) => {
       button.addEventListener('click', () => {
         if (!isCharacterSelected) {
-          console.log('No character selected. Please select a character first.')
           return
         }
 
-        console.log(`Button clicked: button${index + 1}`)
         backgrounds.forEach((background) =>
           background.classList.remove('visible')
         )
@@ -913,12 +886,6 @@ function placeOrder() {
       '.back-stripes.visible, .back-polka-dot.visible, .back-polygons.visible'
     )
     let hasBackground = !!selectedBackground
-
-    console.log('Order requirements check:')
-    console.log('- Name:', name)
-    console.log('- Total crosses found:', allCrosses.length)
-    console.log('- Visible crosses:', selectedQualities)
-    console.log('- Has background:', hasBackground)
 
     let missingRequirements = []
     if (!hasName) missingRequirements.push('имя робота')
