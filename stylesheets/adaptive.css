@@ -804,6 +804,9 @@
     margin-top: 149.8vw;
     margin-left: -13vw;
   }
+  .floating-1024 img {
+    transition: opacity 0.5s ease-in-out;
+  }
   .heart1-1024 {
     background-repeat: no-repeat;
     background-size: cover;
@@ -936,6 +939,521 @@
     animation: float 3.5s ease-in-out infinite;
     opacity: 0;
   }
+  .teardrops-1024 {
+    opacity: 0;
+    animation-play-state: paused;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .teardrops-1024 [data-emotion='crying-boy'],
+  .teardrops-1024 [data-emotion='crying-girl'],
+  .teardrops-1024 [data-emotion='crying-dog'],
+  .teardrops-1024 [data-emotion='crying-alien'] {
+    opacity: 1;
+  }
+  .tear1-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.94vw;
+    height: 2.5vw;
+    margin-left: -41.5vw;
+    margin-top: 82.1vw;
+    animation: drop-tear 2s ease-out infinite;
+  }
+  .tear2-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.94vw;
+    height: 2.5vw;
+    margin-left: -34.5vw;
+    margin-top: 84.1vw;
+    animation: drop-tear 2.8s ease-out infinite;
+  }
+  .tear3-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.94vw;
+    height: 2.5vw;
+    margin-left: -41.5vw;
+    margin-top: 83.7vw;
+    animation: drop-tear 2s ease-out infinite;
+  }
+  .tear4-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.94vw;
+    height: 2.5vw;
+    margin-left: -34.5vw;
+    margin-top: 84.1vw;
+    animation: drop-tear 3s ease-out infinite;
+  }
+  .tear5-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.94vw;
+    height: 2.5vw;
+    margin-left: -50.5vw;
+    margin-top: 84.7vw;
+    animation: drop-tear 2.5s ease-out infinite;
+  }
+  .tear6-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.94vw;
+    height: 2.5vw;
+    margin-left: -35.5vw;
+    margin-top: 76.7vw;
+    animation: drop-tear 3s ease-out infinite;
+  }
+  .left1-1024,
+  .left2-1024,
+  .left3-1024,
+  .left4-1024,
+  .left5-1024,
+  .left6-1024,
+  .left7-1024,
+  .left8-1024,
+  .left9-1024 {
+    animation: left-stick-rotate 1s ease-in-out infinite;
+  }
+  .right1-1024,
+  .right2-1024,
+  .right3-1024,
+  .right4-1024,
+  .right5-1024,
+  .right6-1024,
+  .right7-1024,
+  .right8-1024,
+  .right9-1024,
+  .right10-1024,
+  .right11-1024,
+  .right12-1024 {
+    animation: right-stick-rotate 1s ease-in-out infinite;
+  }
+  .blushing-1024 img {
+    transition: opacity 0.5s ease-in-out;
+  }
+  .left1-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 82.45vw;
+    margin-left: -41.3vw;
+    opacity: 0;
+  }
+  .left2-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 82.45vw;
+    margin-left: -40.5vw;
+    opacity: 0;
+  }
+  .left3-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 82.45vw;
+    margin-left: -42.2vw;
+    opacity: 0;
+  }
+  .right1-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 82.45vw;
+    margin-left: -34.7vw;
+    opacity: 0;
+  }
+  .right2-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 82.45vw;
+    margin-left: -33.8vw;
+    opacity: 0;
+  }
+  .right3-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 82.45vw;
+    margin-left: -32.9vw;
+    opacity: 0;
+  }
+  .left4-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 84.45vw;
+    margin-left: -41.3vw;
+    opacity: 0;
+  }
+  .left5-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 84.45vw;
+    margin-left: -42.3vw;
+    opacity: 0;
+  }
+  .left6-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 84.45vw;
+    margin-left: -43.3vw;
+    opacity: 0;
+  }
+  .right4-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 84.45vw;
+    margin-left: -32.7vw;
+    opacity: 0;
+  }
+  .right5-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 84.45vw;
+    margin-left: -31.7vw;
+    opacity: 0;
+  }
+  .right6-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 84.45vw;
+    margin-left: -30.7vw;
+    opacity: 0;
+  }
+  .right7-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 85vw;
+    margin-left: -50.7vw;
+    opacity: 0;
+  }
+  .right8-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 85vw;
+    margin-left: -49.7vw;
+    opacity: 0;
+  }
+  .right9-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 85vw;
+    margin-left: -48.7vw;
+    opacity: 0;
+  }
+  .left7-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 77.45vw;
+    margin-left: -40.3vw;
+    opacity: 0;
+  }
+  .left8-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 77.45vw;
+    margin-left: -41vw;
+    opacity: 0;
+  }
+  .left9-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 77.45vw;
+    margin-left: -41.7vw;
+    opacity: 0;
+  }
+  .right10-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 77.45vw;
+    margin-left: -34vw;
+    opacity: 0;
+  }
+  .right11-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 77.45vw;
+    margin-left: -33.3vw;
+    opacity: 0;
+  }
+  .right12-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 0.94vw;
+    height: 1.48vw;
+    margin-top: 77.45vw;
+    margin-left: -32.6vw;
+    opacity: 0;
+  }
+  .left-boy-1024,
+  .right-boy-1024,
+  .left-girl-1024,
+  .right-girl-1024,
+  .angry-dog-1024,
+  .curved-alien-1024 {
+    animation: eyebrow-move 1s ease-in-out infinite;
+    animation-play-state: paused;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .angry-boy-1024,
+  .angry-girl-1024,
+  .angry-alien-1024 {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .left-boy-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 2.33vw;
+    height: 2.03vw;
+    margin-top: 75.5vw;
+    margin-left: -41.3vw;
+    opacity: 0;
+  }
+  .right-boy-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 2.33vw;
+    height: 2.03vw;
+    margin-top: 75.5vw;
+    margin-left: -35.5vw;
+    opacity: 0;
+  }
+  .left-girl-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 2.33vw;
+    height: 2.03vw;
+    margin-top: 76.5vw;
+    margin-left: -41.3vw;
+    opacity: 0;
+  }
+  .right-girl-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 2.33vw;
+    height: 2.03vw;
+    margin-top: 76.5vw;
+    margin-left: -35vw;
+    opacity: 0;
+  }
+  .angry-dog-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 2.33vw;
+    height: 2.03vw;
+    margin-top: 78.6vw;
+    margin-left: -51vw;
+    opacity: 0;
+  }
+  .curved-alien-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 3.33vw;
+    height: 3.03vw;
+    margin-top: 69.5vw;
+    margin-left: -38.2vw;
+    opacity: 0;
+  }
+  .surprise-boy-1024,
+  .surprise-girl-1024,
+  .surprise-dog-1024,
+  .surprise-alien-1024 {
+    animation: surprise-scale 1.5s ease-in-out infinite;
+    animation-play-state: paused;
+    transition: opacity 0.5s ease-in-out;
+  }
+  .surprise-boy-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.17vw;
+    height: 1.17vw;
+    margin-top: 82.5vw;
+    margin-left: -37.85vw;
+    opacity: 0;
+  }
+  .surprise-girl-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.17vw;
+    height: 1.17vw;
+    margin-top: 84.5vw;
+    margin-left: -37.3vw;
+    opacity: 0;
+  }
+  .surprise-dog-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 1.17vw;
+    height: 1.17vw;
+    margin-top: 85.5vw;
+    margin-left: -55.3vw;
+    opacity: 0;
+  }
+  .surprise-alien-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 3.17vw;
+    height: 2.17vw;
+    margin-top: 78vw;
+    margin-left: -38.3vw;
+    opacity: 0;
+  }
+  .disgust-boy-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 6.39vw;
+    height: 1.78vw;
+    margin-top: 82.3vw;
+    margin-left: -40.35vw;
+    opacity: 0;
+  }
+  .disgust-girl-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 6.39vw;
+    height: 1.78vw;
+    margin-top: 84vw;
+    margin-left: -39.95vw;
+    opacity: 0;
+  }
+  .disgust-dog-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 6.39vw;
+    height: 1.78vw;
+    margin-top: 85vw;
+    margin-left: -58vw;
+    opacity: 0;
+  }
+  .disgust-alien-1024 {
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 5;
+    width: 6.39vw;
+    height: 1.78vw;
+    margin-top: 77.8vw;
+    margin-left: -39.95vw;
+    opacity: 0;
+  }
+
   /* SECTION 5 */
   .humanize-robot-1024 {
     width: 100vw;
