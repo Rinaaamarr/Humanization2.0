@@ -1033,6 +1033,7 @@ function drag_lever_1024() {
   }
 }
 
+// scroll
 function scroll_1024() {
   let buttonStart = document.querySelector('.button-start-1024')
 
@@ -1041,7 +1042,7 @@ function scroll_1024() {
   buttonStart.addEventListener('click', () => {
     let targetSection = document.getElementById('choose-character-1024')
 
-    let headerHeight = -1700
+    let headerHeight = -1060
 
     window.scrollTo({
       top: targetSection.offsetTop - headerHeight,

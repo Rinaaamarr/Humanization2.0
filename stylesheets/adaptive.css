@@ -7,15 +7,6 @@
   .humanize-robot {
     display: none;
   }
-  /* body {
-    background-image: url('../images/Factory\ Final\ 1024.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
-    margin-top: 0;
-    margin-left: 0;
-    opacity: 0.2;
-  } */
 
   /* SECTION 1 */
   .desk-1024 {
@@ -440,6 +431,20 @@
     margin-top: 254.3vw;
     margin-left: 32vw;
   }
+  .button-confirm-1024.active {
+    width: 36.13vw;
+    height: 8.3vw;
+    background-color: #45eded;
+    border: black 4px solid;
+    border-radius: 300px;
+    position: absolute;
+    margin-top: 254.3vw;
+    margin-left: 32vw;
+    cursor: pointer;
+  }
+  .button-confirm-1024.active:hover {
+    background-color: #38c2c2;
+  }
   .confirm-1024 {
     font-family: 'Roboto Condensed Medium';
     font-size: 4.39vw;
@@ -524,6 +529,14 @@
     margin-left: -34.5vw;
     z-index: 2;
   }
+  .button-scan-1024.active {
+    cursor: pointer;
+    background-color: #45eded;
+  }
+  .button-scan-1024.active:hover {
+    background-color: #38c2c2;
+    cursor: pointer;
+  }
   .scan-1024 {
     font-family: 'Roboto Condensed Medium';
     font-size: 4.88vw;
@@ -575,6 +588,45 @@
     margin-left: -44vw;
     opacity: 0;
   }
+  .bug-1024 {
+    position: absolute;
+    width: 4.95vw;
+    height: 4.95vw;
+    background-color: #a259ff;
+    border: black 2px solid;
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse 1.5s infinite;
+    z-index: 5;
+  }
+  .bug1-1024[data-character='default'] {
+    top: 62vw;
+    left: 44.5vw;
+  }
+  .bug2-1024[data-character='default'] {
+    top: 74vw;
+    left: 54vw;
+  }
+  .bug3-1024[data-character='default'] {
+    top: 43vw;
+    left: 51vw;
+  }
+  .bug4-1024[data-character='default'] {
+    top: 90vw;
+    left: 47vw;
+  }
+  .bug5-1024[data-character='dog'] {
+    top: 67vw;
+    left: 41vw;
+  }
+  .bug6-1024[data-character='dog'] {
+    top: 76vw;
+    left: 49vw;
+  }
+  .bug7-1024[data-character='dog'] {
+    top: 71vw;
+    left: 63.2vw;
+  }
   /* SECTION 4 */
   .emotions-1024 {
     width: 100vw;
@@ -593,6 +645,7 @@
     position: absolute;
     margin-top: 39.3vw;
     margin-left: 6.6vw;
+    z-index: 1;
   }
   .emotions-head-1024 {
     font-family: 'Roboto Condensed Bold';
@@ -1492,6 +1545,7 @@
     overflow: hidden;
     background-color: #3e3e6b;
     margin-top: 100vw;
+    position: relative;
   }
   .heading4-1024 {
     width: 45.21vw;
@@ -1898,6 +1952,27 @@
     margin-top: 349.6vw;
     margin-left: 23.5vw;
   }
+  .button-place_order-1024.active {
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+    background-color: #45eded;
+  }
+  .button-place_order-1024:active {
+    width: 52.83vw;
+    height: 12.5vw;
+    background-color: #45eded;
+    border: black 4px solid;
+    border-radius: 300px;
+    margin-top: 349.6vw;
+    margin-left: 23.5vw;
+    position: absolute;
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .button-place_order-1024.active:hover {
+    background-color: #38c2c2;
+  }
   .place-order-1024 {
     font-family: 'Roboto Condensed Medium';
     font-size: 4.88vw;
@@ -1916,6 +1991,26 @@
     margin-top: 364.5vw;
     margin-left: 23.7vw;
   }
+  .button-restart-1024:active {
+    width: 52.83vw;
+    height: 12.5vw;
+    background-color: #35355f;
+    border: #45eded 4px solid;
+    border-radius: 300px;
+    margin-top: 364.5vw;
+    margin-left: 23.7vw;
+    position: absolute;
+    pointer-events: auto;
+  }
+  .button-restart-1024.active {
+    background-color: #35355f;
+    border: #45eded 4px solid;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  .button-restart-1024.active:hover {
+    border-color: #38c2c2;
+  }
   .restart-1024 {
     font-family: 'Roboto Condensed Medium';
     font-size: 4.88vw;
@@ -1923,6 +2018,20 @@
     position: absolute;
     margin-top: 3.5vw;
     margin-left: 11vw;
+  }
+  .restart-1024:active {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 4.88vw;
+    -webkit-text-fill-color: #a3a3a3;
+    position: absolute;
+    margin-top: 3.5vw;
+    margin-left: 11vw;
+  }
+  .button-restart-1024.active .restart-1024 {
+    -webkit-text-fill-color: #45eded;
+  }
+  .button-restart-1024.active:hover .restart-1024 {
+    -webkit-text-fill-color: #38c2c2;
   }
   .basement-1024 {
     width: 100vw;
