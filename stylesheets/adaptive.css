@@ -1,4 +1,12 @@
 @media screen and (max-width: 1024px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
   .desk,
   .sides,
   #choose-character,
@@ -264,6 +272,8 @@
     margin-top: 103.4vw;
     margin-left: 37.7vw;
     z-index: 5;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   .button-start-1024:hover {
     background-color: #38c2c2;
@@ -430,6 +440,8 @@
     position: absolute;
     margin-top: 254.3vw;
     margin-left: 32vw;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
   }
   .button-confirm-1024.active {
     width: 36.13vw;
@@ -528,6 +540,8 @@
     margin-top: 121.3vw;
     margin-left: -34.5vw;
     z-index: 2;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
   }
   .button-scan-1024.active {
     cursor: pointer;
@@ -1719,10 +1733,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     position: absolute;
+    cursor: text;
+    transition: border-color 0.3s ease;
   }
-  /* .blank-space[contenteditable='true'] {
-  cursor: text;
-} */
   .blank-space::before {
     content: attr(placeholder);
     color: #aaa;
@@ -1854,6 +1867,7 @@
   .cross6-1024 {
     opacity: 0;
     transition: opacity 0.3s ease;
+    cursor: pointer;
   }
   .quality1 {
     font-family: 'Roboto Condensed';
@@ -1951,6 +1965,8 @@
     position: absolute;
     margin-top: 349.6vw;
     margin-left: 23.5vw;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
   }
   .button-place_order-1024.active {
     cursor: pointer;
@@ -1990,6 +2006,8 @@
     position: absolute;
     margin-top: 364.5vw;
     margin-left: 23.7vw;
+    cursor: not-allowed;
+    transition: border-color 0.3s ease;
   }
   .button-restart-1024:active {
     width: 52.83vw;
@@ -2152,5 +2170,47 @@
     position: absolute;
     margin-top: 7.7vw;
     margin-left: 95.8vw;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  body {
+    background-image: url('../images/Factory\ Final\ 414.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 1123.43vw;
+    opacity: 0.3;
+    display: flex;
+  }
+  .sides-1024,
+  .desk-1024,
+  #choose-character-1024,
+  .scan-robot-1024,
+  .emotions-1024,
+  .humanize-robot-1024 {
+    display: none;
+  }
+  .sidebar1-414 {
+    width: 3.14vw;
+    height: 1042.27vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 20;
+    overflow: hidden;
+    margin-left: 0vw;
+    margin-top: 0vw;
+  }
+  .sidebar2-414 {
+    width: 3.14vw;
+    height: 1042.27vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 20;
+    overflow: hidden;
+    margin-left: 96.8vw;
+    margin-top: 0vw;
   }
 }
