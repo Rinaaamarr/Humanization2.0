@@ -2405,3 +2405,13 @@ p6 {
 .humanize-robot-1024 {
   display: none;
 }
+
+/* 414 */
+.desk-414,
+.sides-414,
+#choose-character-414,
+.scan-robot-414,
+.emotions-414,
+.humanize-robot-414 {
+  display: none;
+}
