@@ -2174,7 +2174,7 @@
 }
 
 @media screen and (max-width: 414px) {
-  body {
+  /* body {
     background-image: url('../images/Factory\ Final\ 414.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -2182,7 +2182,8 @@
     height: 1123.43vw;
     opacity: 0.3;
     display: flex;
-  }
+    z-index: -20;
+  } */
   .sides-1024,
   .desk-1024,
   #choose-character-1024,
@@ -2190,6 +2191,10 @@
   .emotions-1024,
   .humanize-robot-1024 {
     display: none;
+  }
+  .sides-414 {
+    display: flex;
+    position: absolute;
   }
   .sidebar1-414 {
     width: 3.14vw;
@@ -2200,7 +2205,7 @@
     z-index: 20;
     overflow: hidden;
     margin-left: 0vw;
-    margin-top: 0vw;
+    margin-top: -1vw;
   }
   .sidebar2-414 {
     width: 3.14vw;
@@ -2211,6 +2216,321 @@
     z-index: 20;
     overflow: hidden;
     margin-left: 96.8vw;
+    margin-top: -1vw;
+  }
+  .desk-414 {
+    width: 100vw;
+    height: 192.75vw;
+    overflow: hidden;
+    display: flex;
+    position: absolute;
+  }
+  .desk-background-414 img {
+    width: 100vw;
+    height: 174.64vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -2;
+    position: absolute;
     margin-top: 0vw;
+    margin-left: 0vw;
+  }
+  .table-414 {
+    width: 118.04vw;
+    height: 211.75vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    position: absolute;
+    margin-top: -2vw;
+    margin-left: -9.18vw;
+    overflow: hidden;
+  }
+  .panel-414 {
+    width: 80.95vw;
+    height: 13.56vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 20vw;
+    margin-left: 9vw;
+  }
+  .desk-close-414 {
+    width: 100vw;
+    height: 18.12vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    margin-top: 174vw;
+    margin-left: 0vw;
+  }
+  .nails-414 {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .nail-1-414 {
+    width: 6.52vw;
+    height: 6.52vw;
+    position: absolute;
+    z-index: 21;
+    margin-top: 171.5vw;
+    margin-left: -98.5vw;
+  }
+  .nail-2-414 {
+    width: 6.52vw;
+    height: 6.52vw;
+    position: absolute;
+    z-index: 21;
+    margin-top: 185.5vw;
+    margin-left: -98.5vw;
+  }
+  .nail-3-414 {
+    width: 6.52vw;
+    height: 6.52vw;
+    position: absolute;
+    z-index: 21;
+    margin-top: 171.5vw;
+    margin-left: -7.5vw;
+  }
+  .nail-4-414 {
+    width: 6.52vw;
+    height: 6.52vw;
+    position: absolute;
+    z-index: 21;
+    margin-top: 185.5vw;
+    margin-left: -7.5vw;
+  }
+  .path-back-414 {
+    width: 16.43vw;
+    height: 44.44vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 45vw;
+    margin-left: -94.5vw;
+  }
+  .path-moving-414 {
+    width: 4.14vw;
+    height: 44vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 3;
+    margin-top: 45.4vw;
+    margin-left: -88vw;
+  }
+  .lever-414 {
+    width: 15.73vw;
+    height: 6.31vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 4;
+    position: absolute;
+    margin-top: 52vw;
+    margin-left: 6.5vw;
+  }
+  .mechanism1-414 {
+    width: 20.57vw;
+    height: 19.6vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 43.6vw;
+    margin-left: -36.5vw;
+    animation: rotate1 1.5s infinite linear;
+    animation-play-state: paused;
+  }
+  .mechanism1-414:hover {
+    animation-play-state: running;
+  }
+  .mechanism2-414 {
+    width: 17.67vw;
+    height: 16.7vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 55.4vw;
+    margin-left: -23vw;
+    animation: rotate2 2s infinite linear;
+    animation-play-state: paused;
+  }
+  .mechanism2-414:hover {
+    animation-play-state: running;
+  }
+  .mechanism3-414 {
+    width: 18.25vw;
+    height: 25.77vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: 2;
+    margin-top: 64.4vw;
+    margin-left: -25vw;
+    animation: rotate3 2.5s infinite linear;
+    animation-play-state: paused;
+  }
+  .mechanism3-414:hover {
+    animation-play-state: running;
+  }
+  .name-414 {
+    font-family: 'Roboto Condensed SemiBold';
+    font-size: 13.23vw;
+    -webkit-text-fill-color: white;
+    letter-spacing: 0.05vw;
+    z-index: 2;
+    position: absolute;
+    margin-top: 113vw;
+    margin-left: 10.9vw;
+  }
+  .create-414 {
+    font-family: 'Roboto Condensed';
+    font-size: 7.25vw;
+    -webkit-text-fill-color: white;
+    z-index: 2;
+    position: absolute;
+    margin-top: 126.5vw;
+    margin-left: 16vw;
+  }
+  .button-start-414 {
+    width: 41.3vw;
+    height: 13.29vw;
+    background-color: #45eded;
+    border: black 3px solid;
+    border-radius: 300px;
+    z-index: 2;
+    position: absolute;
+    margin-top: 144.7vw;
+    margin-left: 29.5vw;
+  }
+  .button-start-414:hover {
+    background-color: #38c2c2;
+  }
+  .press-start-414 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 6.04vw;
+    -webkit-text-fill-color: black;
+    z-index: 3;
+    position: absolute;
+    margin-top: 3vw;
+    margin-left: 11vw;
+  }
+  #typewriter-414 {
+    font-family: 'Arame Mono Stencil', sans-serif;
+    font-size: 14vw;
+    color: #00ff7f;
+    white-space: nowrap;
+    position: absolute;
+    top: 14%;
+    left: 51.3%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+  #choose-character-414 {
+    width: 100vw;
+    height: 211.24vw;
+    background-color: #3e3e6b;
+    display: flex;
+    position: absolute;
+    overflow: hidden;
+    z-index: -2;
+    margin-top: 192vw;
+  }
+  .heading1-414 {
+    width: 57.97vw;
+    height: 16.91vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: 9vw;
+    margin-left: 6vw;
+  }
+  .choose-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7.5vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    position: absolute;
+    margin-top: 13.5vw;
+    margin-left: 10.7vw;
+  }
+  .hint-414 {
+    width: 10.87vw;
+    height: 10.87vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: 11.5vw;
+    margin-left: 3.2vw;
+  }
+  .question1-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7.25vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    position: absolute;
+    margin-top: 13.5vw;
+    margin-left: 71vw;
+  }
+  .robo-girl-414 {
+    width: 39.61vw;
+    height: 58.21vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: 37vw;
+    margin-left: -70.7vw;
+  }
+  .robo-boy-414 {
+    width: 34.78vw;
+    height: 58.21vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: 37vw;
+    margin-left: 5.3vw;
+  }
+  .dog-414 {
+    width: 30.19vw;
+    height: 26.09vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: 49.8vw;
+    margin-left: -65.7vw;
+    display: block;
+  }
+  .robo-alien-414 {
+    width: 43.96vw;
+    height: 60.39vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: -60vw;
+    margin-left: -28.7vw;
+    display: block;
+  }
+  .button-confirm-414 {
+    width: 62.08vw;
+    height: 14.25vw;
+    background-color: #a3a3a3;
+    border: black 3px solid;
+    border-radius: 300px;
+    z-index: 1;
+    margin-top: 183vw;
+    margin-left: -74.5vw;
+  }
+  .confirm-414 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 6.04vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    position: absolute;
+    margin-top: 3.2vw;
+    margin-left: 13.9vw;
   }
 }

@@ -9,9 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
   backgrounds()
   placeOrder()
   //  Adaptives' functions
+  // 1024
   typewriter_1024()
   drag_lever_1024()
   scroll_1024()
+  // 414
+  typewriter_414()
+  drag_lever_414()
 })
 
 // typewriter
@@ -941,7 +945,7 @@ function placeOrder() {
 }
 
 // ADAPTIVES
-// typewriter-adaptives
+// typewriter-adaptive-1024
 function typewriter_1024() {
   let typed = new Typed('#typewriter-1024', {
     strings: ['Hi!', 'Welcome!'],
@@ -952,7 +956,7 @@ function typewriter_1024() {
   })
 }
 
-// drag lever-adaptives
+// drag lever-adaptive-1024
 function drag_lever_1024() {
   let slider = createSlider(
     0,
@@ -1033,7 +1037,7 @@ function drag_lever_1024() {
   }
 }
 
-// scroll-adaptives
+// scroll-adaptive-1024
 function scroll_1024() {
   let buttonStart = document.querySelector('.button-start-1024')
 
@@ -1052,3 +1056,112 @@ function scroll_1024() {
 }
 
 // Остальной JS, завязанный на синхронизации, не работает, как бы я не старалась :(
+
+// typewriter-adaptive-414
+function typewriter_414() {
+  let typed = new Typed('#typewriter-414', {
+    strings: ['Hi!', 'Welcome!'],
+    typeSpeed: 200,
+    backSpeed: 100,
+    backDelay: 1000,
+    loop: true
+  })
+}
+// drag lever-adaptive-414 — FIX (touch)
+function drag_lever_414() {
+  let slider = createSlider(
+    0,
+    100,
+    document.querySelector('.path-moving-414'),
+    document.querySelector('.lever-414')
+  )
+  slider.setValue(100)
+
+  function createSlider(min, max, element, thumb) {
+    let slider = {
+      min: 0,
+      max: 100,
+      value: min,
+      element: document.querySelector('.path-moving-414'),
+      thumb: document.querySelector('.lever-414')
+    }
+
+    // let enableDragDropTouch = (handleMouseMove, handleMouseUp, handleMouseDown)
+    let currentMoveHandler = null
+
+    let handleMouseMove = (event) => {
+      let pathRect = element.getBoundingClientRect()
+
+      let y = event.clientY - pathRect.top
+
+      let leverHeight = thumb.offsetHeight
+      let maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
+      let minY = -(leverHeight * 1.2)
+      y = Math.max(minY, Math.min(maxY, y))
+
+      thumb.style.top = `${(y * 100) / window.innerWidth}vw`
+
+      thumb.style.left = '0.2vw'
+
+      slider.value = max - ((y - minY) / (maxY - minY)) * (max - min)
+
+      event.preventDefault()
+    }
+
+    let handleMouseUp = () => {
+      if (currentMoveHandler) {
+        document.removeEventListener('mousemove', currentMoveHandler)
+        document.removeEventListener('mouseup', handleMouseUp)
+        currentMoveHandler = null
+      }
+    }
+
+    let handleMouseDown = (event) => {
+      currentMoveHandler = handleMouseMove
+      document.addEventListener('mousemove', currentMoveHandler)
+      document.addEventListener('mouseup', handleMouseUp)
+      event.preventDefault()
+    }
+
+    thumb.addEventListener('mousedown', handleMouseDown)
+
+    slider.setValue = (value) => {
+      value = Math.max(slider.min, Math.min(slider.max, value))
+      let pathRect = element.getBoundingClientRect()
+      let leverHeight = thumb.offsetHeight
+      let maxY = pathRect.height - leverHeight + (4 * window.innerWidth) / 100
+      let minY = -(leverHeight * 1.2)
+      let y =
+        ((slider.max - value) / (slider.max - slider.min)) * (maxY - minY) +
+        minY
+
+      thumb.style.top = `${(y * 100) / window.innerWidth}vw`
+
+      thumb.style.left = '0.2vw'
+
+      slider.value = value
+    }
+
+    slider.getValue = () => slider.value
+    slider.getId = () => slider.element.id
+
+    return slider
+  }
+}
+// scroll-adaptive-414 — FIX(touch)
+function scroll_414() {
+  let buttonStart = document.querySelector('.button-start-414')
+
+  if (!buttonStart) return
+
+  buttonStart.addEventListener('click', () => {
+    let targetSection = document.getElementById('choose-character-414')
+
+    let headerHeight = -1700
+
+    window.scrollTo({
+      top: targetSection.offsetTop - headerHeight,
+      behavior: 'smooth'
+    })
+  })
+}
