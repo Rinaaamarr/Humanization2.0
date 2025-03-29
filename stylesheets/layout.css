@@ -896,60 +896,67 @@ body {
 .emotions-buttons {
   z-index: 3;
 }
-.e-button1 {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 12.5vw;
-  height: 12.5vw;
-  margin-top: 22.2vw;
-  margin-left: 3vw;
-}
-.e-button2 {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 12.5vw;
-  height: 12.5vw;
-  margin-top: 21.2vw;
-  margin-left: 3vw;
-}
-.e-button3 {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 12.5vw;
-  height: 12.5vw;
-  margin-top: 20.2vw;
-  margin-left: 3vw;
-}
-.e-button4 {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 12.5vw;
-  height: 12.5vw;
-  margin-top: 2.9vw;
-  margin-left: 3vw;
-  overflow-wrap: break-word;
-}
-.e-button5 {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 12.5vw;
-  height: 12.5vw;
-  margin-top: 2.9vw;
-  margin-left: 3vw;
-  overflow-wrap: break-word;
-}
+.emotions-buttons .e-button1,
+.e-button2,
+.e-button3,
+.e-button4,
+.e-button5,
 .e-button6 {
   background-repeat: no-repeat;
   background-size: cover;
   width: 12.5vw;
   height: 12.5vw;
-  margin-top: 2.9vw;
   margin-left: 3vw;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.emotions-buttons .e-button1.active,
+.e-button2.active,
+.e-button3.active,
+.e-button4.active,
+.e-button5.active,
+.e-button6.active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
+}
+.emotions-buttons .e-button1 {
+  margin-top: 22.2vw;
+}
+.emotions-buttons .e-button2 {
+  margin-top: 21.2vw;
+}
+.emotions-buttons .e-button3 {
+  margin-top: 20.2vw;
+}
+.emotions-buttons .e-button4 {
+  margin-top: 2.9vw;
+  overflow-wrap: break-word;
+}
+.emotions-buttons .e-button5 {
+  margin-top: 2.9vw;
+  overflow-wrap: break-word;
+}
+.emotions-buttons .e-button6 {
+  margin-top: 2.9vw;
   overflow-wrap: break-word;
 }
 .emoji {
   z-index: 4;
   cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.love,
+.sadness,
+.blush,
+.anger,
+.surprise,
+.disgust {
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.love.active,
+.sadness.active,
+.blush.active,
+.anger.active,
+.surprise.active,
+.disgust.active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .love {
   background-repeat: no-repeat;
@@ -958,10 +965,6 @@ body {
   height: 8vw;
   margin-top: 24.7vw;
   margin-left: -49vw;
-  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
-}
-.love:active {
-  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .sadness {
   background-repeat: no-repeat;
@@ -970,10 +973,6 @@ body {
   height: 8vw;
   margin-top: 22.7vw;
   margin-left: 8.5vw;
-  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
-}
-.sadness:active {
-  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .blush {
   background-repeat: no-repeat;
@@ -982,10 +981,6 @@ body {
   height: 8vw;
   margin-top: 24.7vw;
   margin-left: 8.5vw;
-  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
-}
-.blush:active {
-  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .anger {
   background-repeat: no-repeat;
@@ -995,10 +990,6 @@ body {
   margin-top: 7vw;
   margin-left: -48vw;
   display: block;
-  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
-}
-.anger:active {
-  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .surprise {
   background-repeat: no-repeat;
@@ -1008,10 +999,6 @@ body {
   margin-top: -19.3vw;
   margin-left: -31.7vw;
   overflow: hidden;
-  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
-}
-.surprise:active {
-  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .disgust {
   background-repeat: no-repeat;
@@ -1020,10 +1007,6 @@ body {
   height: 10vw;
   margin-top: -8.3vw;
   margin-left: 10vw;
-  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
-}
-.disgust:active {
-  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .floating img {
   transition: opacity 0.5s ease-in-out;

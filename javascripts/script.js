@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOMContentLoaded: Initializing functions')
 
-  // Setup preloader
+  // preloader
   const preloader = document.getElementById('preloader')
   const content = document.getElementById('content')
   window.addEventListener('load', () => {
@@ -397,11 +397,30 @@ function setupEmotions() {
     disgust: document.querySelector('.disgust')
   }
 
-  Object.values(emotionButtons).forEach((button) => {
-    if (button) {
-      button.classList.add('active')
-    }
-  })
+  function updateEmotionButtonsState() {
+    const selectedCharacter = document.querySelector(
+      '.characters3 .character-display.selected'
+    )
+    Object.values(emotionButtons).forEach((button) => {
+      if (button) {
+        if (selectedCharacter) {
+          button.classList.add('active')
+        } else {
+          button.classList.remove('active')
+        }
+      }
+    })
+  }
+
+  updateEmotionButtonsState()
+
+  document
+    .querySelectorAll('.characters3 .character-display')
+    .forEach((character) => {
+      character.addEventListener('click', () => {
+        setTimeout(updateEmotionButtonsState, 0) // Run after the selection is processed
+      })
+    })
 
   function resetAllEmotions() {
     let selectedCharacter = document.querySelector(
