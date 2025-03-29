@@ -1,3 +1,21 @@
+@keyframes changecolor {
+  0% {
+    -webkit-text-fill-color: white;
+  }
+  25% {
+    -webkit-text-fill-color: #fced9c;
+  }
+  50% {
+    -webkit-text-fill-color: #45eded;
+  }
+  75% {
+    -webkit-text-fill-color: #a259ff;
+  }
+  100% {
+    -webkit-text-fill-color: white;
+  }
+}
+
 @keyframes rotate1 {
   0% {
     transform: rotate(0deg);

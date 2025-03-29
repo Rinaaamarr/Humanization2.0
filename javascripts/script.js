@@ -18,6 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
   drag_lever_414()
 })
 
+document.addEventListener('DOMContentLoaded', () => {
+  const preloader = document.getElementById('preloader')
+  const content = document.getElementById('content')
+  window.addEventListener('load', () => {
+    preloader.style.display = 'none'
+    content.style.display = 'block'
+  })
+})
+
 // typewriter
 function typewriter() {
   let typed = new Typed('#typewriter', {
@@ -143,9 +152,6 @@ function synchronization() {
     scanner: document.querySelector('.scanner')
   }
 
-  elements.buttonPlaceOrder.style.cursor = 'not-allowed'
-  elements.buttonRestart.style.cursor = 'not-allowed'
-
   function setupCharacter(characterClass, selectionClass) {
     let character = document.querySelector(`.${characterClass}`)
     let selection = document.querySelector(`.${selectionClass}`)
@@ -175,7 +181,6 @@ function synchronization() {
       currentlySelected = selection
 
       elements.buttonConfirm.classList.add('active')
-      elements.confirmText.style.cursor = 'pointer'
 
       let characterMap = {
         select1: 'girl',
@@ -244,17 +249,14 @@ function synchronization() {
 
   function enableButtons() {
     elements.buttonScan.classList.add('active')
-    elements.buttonScan.style.cursor = 'pointer'
     elements.buttonPlaceOrder.classList.add('active')
-    elements.buttonPlaceOrder.style.cursor = 'pointer'
     elements.buttonRestart.classList.add('active')
-    elements.buttonRestart.style.cursor = 'pointer'
 
     document
       .querySelectorAll('.love, .sadness, .blush, .anger, .surprise, .disgust')
       .forEach((button) => {
         if (button) {
-          button.style.cursor = 'pointer'
+          button.classList.add('active')
         }
       })
     isCharacterConfirmed = true
@@ -349,11 +351,8 @@ function synchronization() {
 
   function resetButtons() {
     elements.buttonScan.classList.add('active')
-    elements.buttonScan.style.cursor = 'pointer'
     elements.buttonPlaceOrder.classList.remove('active')
-    elements.buttonPlaceOrder.style.cursor = 'not-allowed'
     elements.buttonRestart.classList.add('active')
-    elements.buttonRestart.style.cursor = 'pointer'
   }
 
   function resetCharacterSelection() {
@@ -370,7 +369,6 @@ function synchronization() {
     })
 
     elements.buttonConfirm.classList.remove('active')
-    elements.confirmText.style.cursor = 'not-allowed'
   }
 
   elements.buttonRestart?.addEventListener('click', resetGame)
@@ -389,7 +387,7 @@ function setupEmotions() {
 
   Object.values(emotionButtons).forEach((button) => {
     if (button) {
-      button.style.cursor = 'not-allowed'
+      button.classList.add('active')
     }
   })
 
@@ -657,7 +655,7 @@ function contenteditable() {
   let selectedCharacter = null
 
   blankSpace.setAttribute('contenteditable', 'false')
-  blankSpace.style.cursor = 'not-allowed'
+  // blankSpace.style.cursor = 'not-allowed'
 
   function enableContenteditable() {
     blankSpace.setAttribute('contenteditable', 'true')
@@ -911,7 +909,6 @@ function placeOrder() {
     isCharacterSelected = true
     placeOrderButton.classList.remove('disabled')
     placeOrderButton.classList.add('active')
-    placeOrderButton.style.cursor = 'pointer'
   })
 
   placeOrderButton.addEventListener('click', () => {

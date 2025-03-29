@@ -1,6 +1,38 @@
 * {
   box-sizing: border-box;
 }
+body {
+  cursor: url('../images/cursor.svg'), auto;
+}
+#preloader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  z-index: 9999;
+  justify-content: center;
+  background-color: #1c1c32;
+}
+.preloader-text {
+  font-family: 'Roboto Condensed Bold';
+  font-size: 7vw;
+  -webkit-text-fill-color: white;
+  margin-top: 41vw;
+  position: absolute;
+  margin-left: 34.5vw;
+  animation: changecolor 4s infinite linear;
+  animation-play-state: running;
+}
+.loading-mechanism {
+  width: 24.88vw;
+  height: 85.88vw;
+  animation: rotate1 2s linear infinite;
+  animation-play-state: running;
+  margin-top: -22vw;
+  margin-left: 36.5vw;
+}
 .desk {
   width: 100vw;
   height: 68.5vw;
@@ -128,7 +160,7 @@
   position: absolute;
   margin-left: 5.2vw;
   margin-top: 1.4vw;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .container-drag {
   position: relative;
@@ -168,11 +200,11 @@
   z-index: 3;
   background-repeat: no-repeat;
   background-size: cover;
-  cursor: grab;
+  cursor: url('../images/cursor-grab.svg'), grab;
   user-select: none;
 }
 .lever:active {
-  cursor: grabbing;
+  cursor: url('../images/cursor-grab.svg'), grabbing;
 }
 .panel {
   width: 58vw;
@@ -331,7 +363,7 @@
   margin-top: 59.2vw;
   margin-left: -3.6vw;
   opacity: 1;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
   position: relative;
   z-index: 2;
   transition: opacity 0.1s ease;
@@ -471,7 +503,7 @@
   margin-left: -3.65vw;
   opacity: 1;
   transition: opacity 0.1s ease;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .question2:hover {
   opacity: 0;
@@ -647,7 +679,7 @@
   margin-left: -3.65vw;
   opacity: 1;
   transition: opacity 0.1s ease;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .question3:hover {
   opacity: 0;
@@ -917,7 +949,7 @@
 }
 .emoji {
   z-index: 4;
-  cursor: not-allowed;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
 }
 .love {
   background-repeat: no-repeat;
@@ -926,7 +958,10 @@
   height: 8vw;
   margin-top: 24.7vw;
   margin-left: -49vw;
-  cursor: pointer;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.love:active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .sadness {
   background-repeat: no-repeat;
@@ -935,7 +970,10 @@
   height: 8vw;
   margin-top: 22.7vw;
   margin-left: 8.5vw;
-  cursor: pointer;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.sadness:active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .blush {
   background-repeat: no-repeat;
@@ -944,7 +982,10 @@
   height: 8vw;
   margin-top: 24.7vw;
   margin-left: 8.5vw;
-  cursor: pointer;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.blush:active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .anger {
   background-repeat: no-repeat;
@@ -954,7 +995,10 @@
   margin-top: 7vw;
   margin-left: -48vw;
   display: block;
-  cursor: pointer;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.anger:active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .surprise {
   background-repeat: no-repeat;
@@ -964,7 +1008,10 @@
   margin-top: -19.3vw;
   margin-left: -31.7vw;
   overflow: hidden;
-  cursor: pointer;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.surprise:active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .disgust {
   background-repeat: no-repeat;
@@ -973,7 +1020,10 @@
   height: 10vw;
   margin-top: -8.3vw;
   margin-left: 10vw;
-  cursor: pointer;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
+}
+.disgust:active {
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .floating img {
   transition: opacity 0.5s ease-in-out;
@@ -1641,7 +1691,7 @@
   margin-left: -3.7vw;
   opacity: 1;
   transition: opacity 0.1s ease;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .question4:hover {
   opacity: 0;
@@ -1684,7 +1734,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  cursor: not-allowed;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
 }
 .blank-space[contenteditable='true'] {
   cursor: text;
@@ -1768,9 +1818,9 @@
   position: absolute;
   opacity: 0;
   transition: opacity 0.3s ease;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
   pointer-events: auto;
-  cursor: not-allowed;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
 }
 .cross1.enabled,
 .cross2.enabled,
@@ -1778,7 +1828,7 @@
 .cross4.enabled,
 .cross5.enabled,
 .cross6.enabled {
-  cursor: pointer !important;
+  cursor: url('../images/cursor-pointer.svg'), pointer !important;
   pointer-events: auto;
 }
 .cross1.visible,
@@ -2011,13 +2061,13 @@ p6 {
 .stripes,
 .polka-dot,
 .polygons {
-  cursor: not-allowed;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
   opacity: 0.5;
 }
 .stripes.enabled,
 .polka-dot.enabled,
 .polygons.enabled {
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
   opacity: 1;
 }
 .back-stripes {
@@ -2225,7 +2275,7 @@ p6 {
   margin-left: 35.5vw;
   margin-top: 107.5vw;
   position: absolute;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .button-confirm.active:hover {
   background-color: #38c2c2;
@@ -2249,12 +2299,12 @@ p6 {
   position: absolute;
 }
 .button-scan:active {
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
   background-color: #45eded;
 }
 .button-scan.active:hover {
   background-color: #38c2c2;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .scan {
   font-family: 'Roboto Condensed Medium', sans-serif;
@@ -2276,7 +2326,7 @@ p6 {
   transition: opacity 0.3s ease, cursor 0.3s ease;
 }
 .button-place_order.active {
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
   opacity: 1;
   pointer-events: auto;
   background-color: #45eded;
@@ -2313,6 +2363,7 @@ p6 {
   margin-left: 52.2vw;
   margin-top: 55.1vw;
   position: absolute;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
 }
 .button-restart:active {
   width: 35.63vw;
@@ -2328,7 +2379,7 @@ p6 {
 .button-restart.active {
   background-color: #35355f;
   border: #45eded 4px solid;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
   pointer-events: auto;
 }
 .button-restart.active:hover {
@@ -2383,13 +2434,13 @@ p6 {
 .button-place_order {
   background-color: #a3a3a3;
   border: black 4px solid;
-  cursor: not-allowed;
+  cursor: url('../images/cursor-not-allowed.svg'), not-allowed;
 }
 .button-scan.active,
 .button-place_order.active {
   background-color: #45eded;
   border: black 4px solid;
-  cursor: pointer;
+  cursor: url('../images/cursor-pointer.svg'), pointer;
 }
 .button-restart.active .restart {
   -webkit-text-fill-color: #45eded;

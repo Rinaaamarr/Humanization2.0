@@ -16,6 +16,24 @@
     display: none;
   }
 
+  /* Preloader */
+  .loading-mechanism {
+    width: 24.88vw;
+    height: 85.88vw;
+    animation: rotate1 1s linear infinite;
+    animation-play-state: running;
+    margin-top: 30vw;
+    margin-left: 36.5vw;
+  }
+  .preloader-text {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7vw;
+    -webkit-text-fill-color: white;
+    margin-top: 91vw;
+    position: absolute;
+    margin-left: 34vw;
+  }
+
   /* SECTION 1 */
   .desk-1024 {
     width: 100vw;
@@ -692,7 +710,7 @@
     height: 104.79vw;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 0;
+    z-index: 1;
     margin-top: 61.4vw;
     margin-left: -34.5vw;
   }
@@ -2182,6 +2200,25 @@
   .humanize-robot-1024 {
     display: none;
   }
+
+  /* Preloader */
+  .loading-mechanism {
+    width: 24.88vw;
+    height: 85.88vw;
+    animation: rotate1 1s linear infinite;
+    animation-play-state: running;
+    margin-top: 30vw;
+    margin-left: 36.5vw;
+  }
+  .preloader-text {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7vw;
+    -webkit-text-fill-color: white;
+    margin-top: 91vw;
+    position: absolute;
+    margin-left: 34vw;
+  }
+
   .sides-414 {
     display: flex;
     position: absolute;
