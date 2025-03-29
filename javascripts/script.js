@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded: Initializing functions')
+
+  // Setup preloader
+  const preloader = document.getElementById('preloader')
+  const content = document.getElementById('content')
+  window.addEventListener('load', () => {
+    preloader.style.display = 'none'
+    content.style.display = 'block'
+  })
+
+  // Initialize functions
   drag_lever()
   typewriter()
   scroll()
@@ -8,25 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
   chooseQualities()
   backgrounds()
   placeOrder()
+
   //  Adaptives' functions
   // 1024
-  typewriter_1024()
-  drag_lever_1024()
-  scroll_1024()
-  synchronization_1024()
-  // 414
-  typewriter_414()
-  drag_lever_414()
-})
+  if (window.innerWidth <= 1024) {
+    console.log('Initializing 1024px functions')
+    typewriter_1024()
+    drag_lever_1024()
+    scroll_1024()
+    synchronization_1024()
+  }
 
-// preloader
-document.addEventListener('DOMContentLoaded', () => {
-  const preloader = document.getElementById('preloader')
-  const content = document.getElementById('content')
-  window.addEventListener('load', () => {
-    preloader.style.display = 'none'
-    content.style.display = 'block'
-  })
+  // 414
+  if (window.innerWidth <= 414) {
+    console.log('Initializing 414px functions')
+    typewriter_414()
+    drag_lever_414()
+    scroll_414()
+  }
 })
 
 // typewriter
@@ -1054,8 +1064,10 @@ function scroll_1024() {
   })
 }
 
+// DOES NOT WORK
 // choosing, synchronization, scan, button state
 function synchronization_1024() {
+  console.log('Initializing synchronization_1024')
   let currentlySelected = null
   let isCharacterConfirmed = false
   let scanCount = 0
@@ -1069,52 +1081,108 @@ function synchronization_1024() {
     scanner: document.querySelector('.scanner-1024')
   }
 
+  function handleCharacterSelect(character, selection, event) {
+    console.log('Handling character select:', character.className)
+
+    if (isCharacterConfirmed) {
+      alert(
+        'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
+      )
+      return
+    }
+
+    console.log('Clearing previous selections')
+    document
+      .querySelectorAll(
+        '.select1-1024, .select2-1024, .select3-1024, .select4-1024'
+      )
+      .forEach((select) => {
+        select.style.opacity = '0'
+      })
+
+    console.log('Setting selection opacity to 1')
+    selection.style.opacity = '1'
+
+    console.log('Removing selected class from all characters')
+    document
+      .querySelectorAll(
+        '.robo-girl-1024, .robo-boy-1024, .dog-1024, .robo-alien-1024'
+      )
+      .forEach((char) => {
+        char.classList.remove('selected')
+      })
+
+    console.log('Adding selected class to clicked character')
+    character.classList.add('selected')
+    currentlySelected = selection
+
+    if (elements.buttonConfirm) {
+      console.log('Activating confirm button')
+      elements.buttonConfirm.classList.add('active')
+    }
+
+    handleCharacterChange(character.dataset.character)
+
+    if (event) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+  }
+
   function setupCharacter(characterClass, selectionClass) {
     let character = document.querySelector(`.${characterClass}`)
     let selection = document.querySelector(`.${selectionClass}`)
 
-    character.addEventListener('click', () => {
-      if (isCharacterConfirmed) {
-        alert(
-          'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
-        )
+    console.log(
+      'Setting up character:',
+      characterClass,
+      !!character,
+      'selection:',
+      !!selection
+    )
+    console.log('Character element:', character)
+    console.log('Selection element:', selection)
+
+    if (!character || !selection) {
+      console.log(
+        'Character or selection not found:',
+        characterClass,
+        selectionClass
+      )
+      return
+    }
+
+    character.style.pointerEvents = 'all'
+    character.style.cursor = 'pointer'
+
+    character.addEventListener('click', (event) =>
+      handleCharacterSelect(character, selection, event)
+    )
+    character.addEventListener('mousedown', (event) =>
+      handleCharacterSelect(character, selection, event)
+    )
+  }
+
+  console.log('Setting up all characters')
+  setupCharacter('robo-girl-1024', 'select1-1024')
+  setupCharacter('robo-boy-1024', 'select2-1024')
+  setupCharacter('dog-1024', 'select3-1024')
+  setupCharacter('robo-alien-1024', 'select4-1024')
+
+  if (elements.buttonConfirm) {
+    elements.buttonConfirm.addEventListener('click', () => {
+      if (!currentlySelected) {
+        alert('Пожалуйста, выберите персонажа.')
         return
       }
-      document
-        .querySelectorAll(
-          '.select1-1024, .select2-1024, .select3-1024, .select4-1024'
-        )
-        .forEach((select) => {
-          select.style.opacity = '0'
-        })
 
-      selection.style.opacity = '1'
-
-      document
-        .querySelectorAll(
-          '.robo-girl-1024, .robo-boy-1024, .dog-1024, .robo-alien-1024'
-        )
-        .forEach((character) => {
-          character.classList.remove('selected')
-        })
-
-      character.classList.add('selected')
-      currentlySelected = selection
-
-      elements.buttonConfirm.classList.add('active')
-
-      let characterMap = {
-        select1: 'girl-1024',
-        select2: 'boy-1024',
-        select3: 'dog-1024',
-        select4: 'alien-1024'
-      }
-      let newCharacter = characterMap[selectionClass]
-      handleCharacterChange(newCharacter)
+      isCharacterConfirmed = true
+      elements.buttonConfirm.classList.remove('active')
+      elements.buttonScan.classList.add('active')
     })
   }
 
-  function handleCharacterChange(newCharacter) {
+  function handleCharacterChange(characterType) {
     document.querySelectorAll('.character-display-1024').forEach((img) => {
       if (img.closest('#choose-character-1024')) {
         img.style.opacity = '1'
@@ -1124,37 +1192,6 @@ function synchronization_1024() {
       }
     })
   }
-
-  let characterSelections = [
-    ['robo-girl-1024', 'select1-1024'],
-    ['robo-boy-1024', 'select2-1024'],
-    ['dog-1024', 'select3-1024'],
-    ['robo-alien-1024', 'select4-1024']
-  ]
-  characterSelections.forEach(([character, selection]) =>
-    setupCharacter(character, selection)
-  )
-
-  elements.buttonConfirm.addEventListener('click', () => {
-    if (!currentlySelected) {
-      alert('Пожалуйста, выберите персонажа!')
-      return
-    }
-
-    let characterMap = {
-      select1: 'girl-1024',
-      select2: 'boy-1024',
-      select3: 'dog-1024',
-      select4: 'alien-1024'
-    }
-    let selectedCharacterAttribute =
-      characterMap[currentlySelected.classList[0]]
-
-    updateCharacterDisplays(selectedCharacterAttribute)
-    enableButtons()
-    scrollToScanSection()
-    enableContenteditable()
-  })
 
   function updateCharacterDisplays(selectedCharacterAttribute) {
     document.querySelectorAll('.character-display-1024').forEach((img) => {
@@ -1169,9 +1206,20 @@ function synchronization_1024() {
   }
 
   function enableButtons() {
-    elements.buttonScan.classList.add('active')
-    elements.buttonPlaceOrder.classList.add('active')
-    elements.buttonRestart.classList.add('active')
+    if (elements.buttonScan) {
+      elements.buttonScan.classList.add('active')
+      elements.buttonScan.style.backgroundColor = '#45eded'
+      elements.buttonScan.style.cursor = 'pointer'
+    }
+    if (elements.buttonPlaceOrder) {
+      elements.buttonPlaceOrder.classList.add('active')
+      elements.buttonPlaceOrder.style.backgroundColor = '#45eded'
+      elements.buttonPlaceOrder.style.cursor = 'pointer'
+    }
+    if (elements.buttonRestart) {
+      elements.buttonRestart.classList.add('active')
+      elements.buttonRestart.style.cursor = 'pointer'
+    }
 
     document
       .querySelectorAll(
@@ -1180,6 +1228,7 @@ function synchronization_1024() {
       .forEach((button) => {
         if (button) {
           button.classList.add('active')
+          button.style.cursor = 'pointer'
         }
       })
     isCharacterConfirmed = true
@@ -1198,42 +1247,44 @@ function synchronization_1024() {
   })
 
   function startScan() {
-    elements.scanner.classList.add('scanning')
-    scanCount++
+    if (elements.scanner) {
+      elements.scanner.classList.add('scanning')
+      scanCount++
+    }
   }
 
-  elements.scanner.addEventListener('animationend', () => {
-    elements.scanner.classList.remove('scanning')
+  if (elements.scanner) {
+    elements.scanner.addEventListener('animationend', () => {
+      elements.scanner.classList.remove('scanning')
 
-    if (scanCount === 1) {
-      showBugs()
-      alert(
-        'Внимание! Были обнаружены неполадки в системе. Устраните их как можно скорее!'
-      )
-    } else if (scanCount === 2) {
-      alert('Неполадки устранены! Можно двигаться дальше.')
-      hideAllBugs()
-      scanCount = 0
-    }
-  })
+      if (scanCount === 1) {
+        showBugs()
+        alert(
+          'Внимание! Были обнаружены неполадки в системе. Устраните их как можно скорее!'
+        )
+      } else if (scanCount === 2) {
+        alert('Неполадки устранены! Можно двигаться дальше.')
+        hideAllBugs()
+        scanCount = 0
+      }
+    })
+  }
 
   function showBugs() {
     let selectedImage = document.querySelector(
-      '#choose-character-1024 .character-display.selected'
+      '#choose-character-1024 .character-display-1024.selected'
     )
 
     if (!selectedImage) return
 
     let selectedCharacter = selectedImage.dataset.character
 
-    // First hide all bugs in the 1024px layout
     document
       .querySelectorAll('[class*="bug"][class*="1024"]')
       .forEach((bug) => {
         bug.style.opacity = '0'
       })
 
-    // Show relevant bugs in the 1024px layout
     document
       .querySelectorAll('[class*="bug"][class*="1024"]')
       .forEach((bug) => {
@@ -1278,40 +1329,13 @@ function synchronization_1024() {
     }
   }
 
-  function resetGame() {
-    if (!elements.buttonRestart.classList.contains('active')) {
-      return
-    }
-
-    window.location.replace(window.location.pathname)
-  }
-
-  function resetButtons() {
-    elements.buttonScan.classList.add('active')
-    elements.buttonPlaceOrder.classList.remove('active')
-    elements.buttonRestart.classList.add('active')
-  }
-
-  function resetCharacterSelection() {
-    currentlySelected = null
-    isCharacterConfirmed = false
-
-    document.querySelectorAll('.character-display-1024').forEach((img) => {
-      img.style.opacity = '1'
-      img.classList.remove('selected')
+  if (elements.buttonRestart) {
+    elements.buttonRestart.addEventListener('click', () => {
+      window.location.replace(window.location.pathname)
     })
-
-    document.querySelectorAll('.select-1024').forEach((selection) => {
-      selection.style.opacity = '0'
-    })
-
-    elements.buttonConfirm.classList.remove('active')
   }
-
-  elements.buttonRestart?.addEventListener('click', resetGame)
 }
-
-// Остальной JS, завязанный на синхронизации, не работает, как бы я не старалась :(
+// И остальной JS, завязанный на синхронизации, не работает, как бы я не старалась :(
 
 // typewriter-adaptive-414
 function typewriter_414() {

@@ -365,89 +365,104 @@
     margin-left: -4.8vw;
     z-index: 5;
   }
+  .characters-1024 {
+    position: relative;
+    width: 100%;
+    height: auto;
+    justify-content: space-around;
+    margin-top: 1vw;
+    z-index: 111;
+  }
   .robo-girl-1024 {
     width: 29.71vw;
     height: 43.07vw;
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: 154.6vw;
-    margin-left: -40.49vw;
-    z-index: 2;
+    margin-left: -42.49vw;
+    z-index: 11;
+    position: absolute;
   }
   .robo-boy-1024 {
     width: 26.2vw;
     height: 43.07vw;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 154vw;
-    margin-left: 12.5vw;
-    z-index: 2;
+    margin-top: 154.6vw;
+    margin-left: 6.8vw;
+    z-index: 11;
+    position: absolute;
   }
   .dog-1024 {
     width: 21.58vw;
     height: 18.65vw;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 29vw;
-    margin-left: -36.49vw;
-    z-index: 2;
+    margin-top: 228vw;
+    margin-left: -37.49vw;
+    z-index: 11;
     display: block;
+    position: absolute;
   }
   .robo-alien-1024 {
     width: 28.81vw;
     height: 39.45vw;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: -39vw;
-    margin-left: 0.5vw;
-    z-index: 2;
+    margin-top: 208vw;
+    margin-left: 5.5vw;
+    z-index: 11;
     display: block;
+    position: absolute;
+  }
+  .selection-1024 {
+    width: 100%;
+    height: auto;
+    margin-top: 2vw;
+    z-index: 9;
+    position: relative;
   }
   .select1-1024 {
     width: 24.12vw;
     height: 45.31vw;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
-    margin-top: 155vw;
-    margin-left: -67vw;
-    position: absolute;
+    margin-top: 154vw;
+    margin-left: -62vw;
     opacity: 0;
+    z-index: 8;
   }
   .select2-1024 {
     width: 24.12vw;
     height: 45.31vw;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
-    position: absolute;
-    margin-top: 155vw;
-    margin-left: -26.5vw;
+    margin-top: 154vw;
+    margin-left: 22vw;
     opacity: 0;
+    z-index: 8;
   }
   .select3-1024 {
     width: 24.12vw;
     height: 45.31vw;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
-    margin-top: 204vw;
-    margin-left: -67vw;
+    margin-top: 4vw;
+    margin-left: -62vw;
     display: block;
-    position: absolute;
     opacity: 0;
+    z-index: 8;
   }
   .select4-1024 {
     width: 24.12vw;
     height: 45.31vw;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1;
-    margin-top: 204vw;
-    margin-left: -26.45vw;
+    margin-top: -45vw;
+    margin-left: -15.4vw;
     display: block;
-    position: absolute;
     opacity: 0;
+    z-index: 8;
   }
   .button-confirm-1024 {
     width: 36.13vw;
