@@ -1148,7 +1148,7 @@ function drag_lever_414() {
     return slider
   }
 }
-// scroll-adaptive-414 — FIX(touch)
+// scroll-adaptive-414 — FIX (touch)
 function scroll_414() {
   let buttonStart = document.querySelector('.button-start-414')
 

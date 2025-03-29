@@ -2174,16 +2174,6 @@
 }
 
 @media screen and (max-width: 414px) {
-  /* body {
-    background-image: url('../images/Factory\ Final\ 414.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100vw;
-    height: 1123.43vw;
-    opacity: 0.3;
-    display: flex;
-    z-index: -20;
-  } */
   .sides-1024,
   .desk-1024,
   #choose-character-1024,
@@ -2458,24 +2448,6 @@
     margin-top: 13.5vw;
     margin-left: 10.7vw;
   }
-  .hint-414 {
-    width: 10.87vw;
-    height: 10.87vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: 1;
-    margin-top: 11.5vw;
-    margin-left: 3.2vw;
-  }
-  .question1-414 {
-    font-family: 'Roboto Condensed Bold';
-    font-size: 7.25vw;
-    -webkit-text-fill-color: black;
-    z-index: 2;
-    position: absolute;
-    margin-top: 13.5vw;
-    margin-left: 71vw;
-  }
   .robo-girl-414 {
     width: 39.61vw;
     height: 58.21vw;
@@ -2483,7 +2455,8 @@
     background-size: cover;
     z-index: 1;
     margin-top: 37vw;
-    margin-left: -70.7vw;
+    margin-left: -59.7vw;
+    position: absolute;
   }
   .robo-boy-414 {
     width: 34.78vw;
@@ -2492,7 +2465,8 @@
     background-size: cover;
     z-index: 1;
     margin-top: 37vw;
-    margin-left: 5.3vw;
+    margin-left: -7.7vw;
+    position: absolute;
   }
   .dog-414 {
     width: 30.19vw;
@@ -2500,9 +2474,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
-    margin-top: 49.8vw;
-    margin-left: -65.7vw;
+    margin-top: 146.8vw;
+    margin-left: -55.7vw;
     display: block;
+    position: absolute;
   }
   .robo-alien-414 {
     width: 43.96vw;
@@ -2510,9 +2485,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
-    margin-top: -60vw;
-    margin-left: -28.7vw;
+    margin-top: 112vw;
+    margin-left: -12.7vw;
     display: block;
+    position: absolute;
   }
   .button-confirm-414 {
     width: 62.08vw;
@@ -2522,7 +2498,8 @@
     border-radius: 300px;
     z-index: 1;
     margin-top: 183vw;
-    margin-left: -74.5vw;
+    margin-left: 19vw;
+    position: absolute;
   }
   .confirm-414 {
     font-family: 'Roboto Condensed Medium';
@@ -2532,5 +2509,564 @@
     position: absolute;
     margin-top: 3.2vw;
     margin-left: 13.9vw;
+  }
+  .scan-robot-414 {
+    width: 100vw;
+    height: 180.24vw;
+    overflow: hidden;
+    display: flex;
+    background-color: #3e3e6b;
+    margin-top: 403vw;
+    position: absolute;
+  }
+  .heading2-414 {
+    width: 75.67vw;
+    height: 18vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0.5vw;
+    margin-left: 5vw;
+  }
+  .do-scan-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7.45vw;
+    -webkit-text-fill-color: black;
+    letter-spacing: 0.02vw;
+    z-index: 2;
+    position: absolute;
+    margin-top: 5.7vw;
+    margin-left: 11vw;
+  }
+  .scan-panel-414 {
+    width: 90.82vw;
+    height: 111.59vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    margin-top: 29.7vw;
+    margin-left: 4.5vw;
+    position: absolute;
+  }
+  .scanner-414 {
+    width: 90.82vw;
+    height: 13.77vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 28.9vw;
+    margin-left: 4.5vw;
+  }
+  .button-scan-414 {
+    width: 62.08vw;
+    height: 14.25vw;
+    background-color: #a3a3a3;
+    border: black 3px solid;
+    border-radius: 300px;
+    margin-top: 153.5vw;
+    margin-left: -60.5vw;
+  }
+  .scan-414 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 6.04vw;
+    -webkit-text-fill-color: black;
+    z-index: 1;
+    position: absolute;
+    margin-top: 3.5vw;
+    margin-left: 14vw;
+  }
+  .emotions-414 {
+    width: 100vw;
+    height: 212.24vw;
+    overflow: hidden;
+    display: flex;
+    background-color: #3e3e6b;
+    position: absolute;
+    margin-top: 581vw;
+  }
+  .heading3-414 {
+    width: 37.71vw;
+    height: 18vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0.5vw;
+    margin-left: 5.5vw;
+  }
+  .emotions-head-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7.5vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    position: absolute;
+    margin-top: 6vw;
+    margin-left: 12.2vw;
+  }
+  .background-emotions-414 {
+    width: 84.78vw;
+    height: 184.06vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    margin-top: 24vw;
+    margin-left: -35vw;
+  }
+  .preview1-414 {
+    width: 78.74vw;
+    height: 86.96vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 30.5vw;
+    margin-left: 11vw;
+  }
+  .e-button1-414 {
+    width: 25.36vw;
+    height: 25.36vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 120.7vw;
+    margin-left: -73.6vw;
+  }
+  .e-button2-414 {
+    width: 25.36vw;
+    height: 25.36vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 120.7vw;
+    margin-left: -36.6vw;
+  }
+  .e-button3-414 {
+    width: 25.36vw;
+    height: 25.36vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 149vw;
+    margin-left: -73.6vw;
+  }
+  .e-button4-414 {
+    width: 25.36vw;
+    height: 25.36vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 149vw;
+    margin-left: -36.6vw;
+  }
+  .e-button5-414 {
+    width: 25.36vw;
+    height: 25.36vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 178vw;
+    margin-left: -36.6vw;
+  }
+  .e-button6-414 {
+    width: 25.36vw;
+    height: 25.36vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 178vw;
+    margin-left: -73.6vw;
+  }
+  .love-414 {
+    width: 16.22vw;
+    height: 8.49vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 130.5vw;
+    margin-left: -69vw;
+  }
+  .sadness-414 {
+    width: 16.22vw;
+    height: 8.49vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 130.5vw;
+    margin-left: -32vw;
+  }
+  .blush-414 {
+    width: 16.22vw;
+    height: 8.49vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 158.5vw;
+    margin-left: -69vw;
+  }
+  .anger-414 {
+    width: 12.22vw;
+    height: 8.49vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 156.5vw;
+    margin-left: -30vw;
+  }
+  .shocked-414 {
+    width: 16.22vw;
+    height: 8.49vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 187.5vw;
+    margin-left: -69vw;
+  }
+  .disgust-414 {
+    width: 16.22vw;
+    height: 8.49vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 3;
+    position: absolute;
+    margin-top: 186.5vw;
+    margin-left: -32vw;
+  }
+  .humanize-robot-414 {
+    width: 100vw;
+    height: 331vw;
+    overflow: hidden;
+    display: flex;
+    background-color: #3e3e6b;
+    position: absolute;
+    margin-top: 793vw;
+  }
+  .heading4-414 {
+    width: 67.39vw;
+    height: 18.5vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 1.5vw;
+    margin-left: 7vw;
+  }
+  .humanize-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 7.3vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    position: absolute;
+    margin-top: 7.3vw;
+    margin-left: 12.6vw;
+  }
+  .button1-414 {
+    width: 14.01vw;
+    height: 14.01vw;
+    background-color: #9a8977;
+    border: #252234 2px solid;
+    border-radius: 10px;
+    margin-top: 25vw;
+    margin-left: -64.5vw;
+    z-index: 1;
+  }
+  .button2-414 {
+    width: 14.01vw;
+    height: 14.01vw;
+    background-color: #9a8977;
+    border: #252234 2px solid;
+    border-radius: 10px;
+    margin-top: -14vw;
+    margin-left: -31.5vw;
+    z-index: 1;
+  }
+  .button3-414 {
+    width: 14.01vw;
+    height: 14.01vw;
+    background-color: #9a8977;
+    border: #252234 2px solid;
+    border-radius: 10px;
+    margin-top: -14vw;
+    margin-left: 1.5vw;
+    z-index: 1;
+  }
+  .stripes-414 {
+    width: 13vw;
+    height: 13vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 25.5vw;
+    margin-left: -79.5vw;
+  }
+  .polka-dot-414 {
+    width: 10.63vw;
+    height: 12.32vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 26vw;
+    margin-left: -45vw;
+  }
+  .polygons-414 {
+    width: 11.35vw;
+    height: 10.87vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 26.6vw;
+    margin-left: -12.7vw;
+  }
+  .preview-final-414 {
+    width: 84.06vw;
+    height: 78.99vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 44vw;
+    margin-left: -81vw;
+  }
+  .choose-name-414 {
+    font-family: 'Roboto Condensed SemiBold';
+    font-size: 4.83vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: white;
+    margin-top: 126.5vw;
+    margin-left: -82vw;
+  }
+  .blank-space-414 {
+    width: 80.92vw;
+    height: 8.21vw;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 2vw;
+    margin-left: -82vw;
+  }
+  .quality-414 {
+    font-family: 'Roboto Condensed SemiBold';
+    font-size: 5vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: white;
+    margin-top: 149vw;
+    margin-left: -82vw;
+  }
+  .block1-414,
+  .block2-414,
+  .block3-414,
+  .block4-414,
+  .block5-414,
+  .block6-414 {
+    width: 6.04vw;
+    height: 6.04vw;
+    background-color: white;
+    border-radius: 5px;
+  }
+  .block1-414 {
+    margin-top: 3.5vw;
+    margin-left: -80.5vw;
+  }
+  .block2-414 {
+    margin-top: 7.8vw;
+    margin-left: -80.5vw;
+  }
+  .block3-414 {
+    margin-top: 8vw;
+    margin-left: -80.5vw;
+  }
+  .block4-414 {
+    margin-top: -33.6vw;
+    margin-left: -33.2vw;
+  }
+  .block5-414 {
+    margin-top: 7.7vw;
+    margin-left: -33.2vw;
+  }
+  .block6-414 {
+    margin-top: 7.9vw;
+    margin-left: -33.2vw;
+  }
+  .quality1-414,
+  .quality2-414,
+  .quality3-414,
+  .quality4-414,
+  .quality5-414,
+  .quality6-414 {
+    font-family: 'Roboto Condensed';
+    font-size: 3.62vw;
+    -webkit-text-fill-color: white;
+    letter-spacing: 0.02vw;
+  }
+  .quality1-414 {
+    margin-top: 158.7vw;
+    margin-left: -72.8vw;
+  }
+  .quality2-414 {
+    margin-top: 10.3vw;
+    margin-left: -72.8vw;
+  }
+  .quality3-414 {
+    margin-top: 10.4vw;
+    margin-left: -72.8vw;
+  }
+  .quality4-414 {
+    margin-top: -31.5vw;
+    margin-left: -25vw;
+  }
+  .quality5-414 {
+    margin-top: 10.3vw;
+    margin-left: -25vw;
+  }
+  .quality6-414 {
+    margin-top: 10.4vw;
+    margin-left: -25vw;
+  }
+  .button-place_order-414 {
+    width: 67.63vw;
+    height: 12.56vw;
+    background-color: #a3a3a3;
+    border: black 3px solid;
+    border-radius: 300px;
+    margin-top: 200vw;
+    margin-left: -76vw;
+  }
+  .place-order-414 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 6.04vw;
+    -webkit-text-fill-color: black;
+    z-index: 2;
+    position: absolute;
+    margin-top: 2.4vw;
+    margin-left: 10.3vw;
+  }
+  .button-restart-414 {
+    width: 67.63vw;
+    height: 12.56vw;
+    background-color: #35355f;
+    border: #a3a3a3 3px solid;
+    border-radius: 300px;
+    margin-top: 215vw;
+    margin-left: -67vw;
+  }
+  .restart-414 {
+    font-family: 'Roboto Condensed Medium';
+    font-size: 6.04vw;
+    -webkit-text-fill-color: #a3a3a3;
+    z-index: 2;
+    position: absolute;
+    margin-top: 2.4vw;
+    margin-left: 14.3vw;
+  }
+  .basement-414 {
+    width: 100vw;
+    height: 89.13vw;
+    background-color: #2a2a4e;
+    margin-top: 241vw;
+    margin-left: -85vw;
+    z-index: 1;
+  }
+  .basement-card1 {
+    width: 79.32vw;
+    height: 37.37vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 7vw;
+    margin-left: 10.5vw;
+  }
+  .basement-card2 {
+    width: 79.32vw;
+    height: 37.37vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+    position: absolute;
+    margin-top: 48vw;
+    margin-left: 10.5vw;
+  }
+  .author-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 6.04vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: #fced9c;
+    z-index: 3;
+    position: absolute;
+    margin-top: 15vw;
+    margin-left: 43vw;
+    rotate: 3deg;
+  }
+  .curators-414 {
+    font-family: 'Roboto Condensed Bold';
+    font-size: 6.04vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: #fced9c;
+    z-index: 3;
+    position: absolute;
+    margin-top: 55.6vw;
+    margin-left: 36.5vw;
+    rotate: -3deg;
+  }
+  .A-414 {
+    font-family: 'Roboto Condensed';
+    font-size: 3.86vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: white;
+    z-index: 3;
+    position: absolute;
+    rotate: 3deg;
+    margin-top: 24vw;
+    margin-left: 36.4vw;
+    text-align: center;
+    line-height: 6vw;
+  }
+  .B-414 {
+    font-family: 'Roboto Condensed';
+    font-size: 3.86vw;
+    letter-spacing: 0.02vw;
+    -webkit-text-fill-color: white;
+    z-index: 3;
+    position: absolute;
+    rotate: -3deg;
+    margin-top: 65.4vw;
+    margin-left: 38vw;
+    text-align: center;
+    line-height: 5vw;
+  }
+  .nail1-414,
+  .nail2-414,
+  .nail3-414,
+  .nail4-414 {
+    width: 4.59vw;
+    height: 4.59vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 4;
+    position: absolute;
+  }
+  .nail1-414 {
+    margin-top: 21.1vw;
+    margin-left: 16.3vw;
+  }
+  .nail2-414 {
+    margin-top: 26.1vw;
+    margin-left: 79.3vw;
+  }
+  .nail3-414 {
+    margin-top: 66.1vw;
+    margin-left: 16.3vw;
+  }
+  .nail4-414 {
+    margin-top: 61.1vw;
+    margin-left: 79.3vw;
   }
 }
