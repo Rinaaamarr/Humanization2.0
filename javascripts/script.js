@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded: Initializing functions')
-
   // preloader
   const preloader = document.getElementById('preloader')
   const content = document.getElementById('content')
@@ -171,7 +169,7 @@ function synchronization() {
     character.addEventListener('click', () => {
       if (isCharacterConfirmed) {
         alert(
-          'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
+          'К сожалению, ты не можешь изменить персонажа после выбора. Ты можешь обновить страницу, чтобы выбрать другого персонажа.'
         )
         return
       }
@@ -228,7 +226,7 @@ function synchronization() {
 
   elements.buttonConfirm.addEventListener('click', () => {
     if (!currentlySelected) {
-      alert('Пожалуйста, выберите персонажа!')
+      alert('Пожалуйста, выбери персонажа!')
       return
     }
 
@@ -297,7 +295,7 @@ function synchronization() {
     if (scanCount === 1) {
       showBugs()
       alert(
-        'Внимание! Были обнаружены неполадки в системе. Устраните их как можно скорее!'
+        'Внимание! Были обнаружены неполадки в системе. Устрани их как можно скорее!'
       )
     } else if (scanCount === 2) {
       alert('Неполадки устранены! Можно двигаться дальше.')
@@ -349,7 +347,7 @@ function synchronization() {
     )
 
     if (remainingBugs.length === 0) {
-      alert('Отлично! Попробуйте просканировать персонажа снова.')
+      alert('Отлично! Попробуй просканировать персонажа снова.')
     }
   }
 
@@ -418,7 +416,7 @@ function setupEmotions() {
     .querySelectorAll('.characters3 .character-display')
     .forEach((character) => {
       character.addEventListener('click', () => {
-        setTimeout(updateEmotionButtonsState, 0) // Run after the selection is processed
+        setTimeout(updateEmotionButtonsState, 0)
       })
     })
 
@@ -686,7 +684,6 @@ function contenteditable() {
   let selectedCharacter = null
 
   blankSpace.setAttribute('contenteditable', 'false')
-  // blankSpace.style.cursor = 'not-allowed'
 
   function enableContenteditable() {
     blankSpace.setAttribute('contenteditable', 'true')
@@ -823,7 +820,7 @@ function chooseQualities() {
           if (visibleCount < 3) {
             cross.classList.add('visible')
           } else {
-            alert('Вы можете выбрать только 3 качества.')
+            alert('Ты можешь выбрать только 3 качества.')
           }
         }
       })
@@ -892,11 +889,6 @@ function placeOrder() {
   let blankSpace = document.querySelector('.blank-space')
   let isCharacterSelected = false
 
-  if (!placeOrderButton || !blankSpace) {
-    console.error('Required elements not found for place order functionality')
-    return
-  }
-
   function detectLanguage(name) {
     let russianRegex = /[а-яА-Я]/
     return russianRegex.test(name) ? 'ru' : 'en'
@@ -954,7 +946,7 @@ function placeOrder() {
 
     if (!isComplete) {
       alert(
-        `Для оформления заказа не забудьте указать: ${missingRequirements.join(
+        `Для оформления заказа не забудь указать: ${missingRequirements.join(
           ', '
         )}!`
       )
@@ -965,7 +957,7 @@ function placeOrder() {
     let language = detectLanguage(name)
     let alertMessage =
       language === 'ru'
-        ? `Спасибо за заказ! Ваш робот ${name} отправлен на сборку. Мы с вами свяжемся. С любовью, А.`
+        ? `Спасибо за заказ! Твой робот ${name} отправлен на сборку. Мы с тобой свяжемся. С любовью, А.`
         : `Thank you for your order! Your robot ${name} has been sent for assembly. We will contact you soon. With love, A.`
 
     alert(alertMessage)
@@ -1105,7 +1097,7 @@ function synchronization_1024() {
 
     if (isCharacterConfirmed) {
       alert(
-        'К сожалению, вы не можете изменить персонажа после выбора. Вы можете обновить страницу, чтобы выбрать другого персонажа.'
+        'К сожалению, ты не можешь изменить персонажа после выбора. Ты можешь обновить страницу, чтобы выбрать другого персонажа.'
       )
       return
     }
@@ -1191,7 +1183,7 @@ function synchronization_1024() {
   if (elements.buttonConfirm) {
     elements.buttonConfirm.addEventListener('click', () => {
       if (!currentlySelected) {
-        alert('Пожалуйста, выберите персонажа.')
+        alert('Пожалуйста, выбери персонажа.')
         return
       }
 
@@ -1279,7 +1271,7 @@ function synchronization_1024() {
       if (scanCount === 1) {
         showBugs()
         alert(
-          'Внимание! Были обнаружены неполадки в системе. Устраните их как можно скорее!'
+          'Внимание! Были обнаружены неполадки в системе. Устрани их как можно скорее!'
         )
       } else if (scanCount === 2) {
         alert('Неполадки устранены! Можно двигаться дальше.')
@@ -1344,7 +1336,7 @@ function synchronization_1024() {
     ).filter((bug) => bug.style.opacity === '1')
 
     if (remainingBugs.length === 0) {
-      alert('Отлично! Попробуйте просканировать персонажа снова.')
+      alert('Отлично! Попробуй просканировать персонажа снова.')
     }
   }
 
