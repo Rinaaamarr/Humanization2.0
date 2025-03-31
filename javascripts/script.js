@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     content.style.display = 'block'
   })
 
-  // Initialize functions
+  //  main functions
   drag_lever()
   typewriter()
   scroll()
@@ -18,23 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
   backgrounds()
   placeOrder()
 
-  //  Adaptives' functions
+  //  adaptives' functions
   // 1024
-  if (window.innerWidth <= 1024) {
-    console.log('Initializing 1024px functions')
-    typewriter_1024()
-    drag_lever_1024()
-    scroll_1024()
-    synchronization_1024()
-  }
+  typewriter_1024()
+  drag_lever_1024()
+  scroll_1024()
 
   // 414
-  if (window.innerWidth <= 414) {
-    console.log('Initializing 414px functions')
-    typewriter_414()
-    drag_lever_414()
-    scroll_414()
-  }
+  typewriter_414()
+  drag_lever_414()
+  scroll_414()
 })
 
 // typewriter
@@ -965,6 +958,7 @@ function placeOrder() {
 }
 
 // ADAPTIVES
+// 1024
 // typewriter-adaptive-1024
 function typewriter_1024() {
   let typed = new Typed('#typewriter-1024', {
@@ -1075,279 +1069,9 @@ function scroll_1024() {
   })
 }
 
-// DOES NOT WORK
-// choosing, synchronization, scan, button state
-function synchronization_1024() {
-  console.log('Initializing synchronization_1024')
-  let currentlySelected = null
-  let isCharacterConfirmed = false
-  let scanCount = 0
+// Остальной JS, завязанный на синхронизации, не работает, как бы я не старалась :(
 
-  let elements = {
-    buttonConfirm: document.querySelector('.button-confirm-1024'),
-    confirmText: document.querySelector('.confirm-1024'),
-    buttonScan: document.querySelector('.button-scan-1024'),
-    buttonPlaceOrder: document.querySelector('.button-place_order-1024'),
-    buttonRestart: document.querySelector('.button-restart-1024'),
-    scanner: document.querySelector('.scanner-1024')
-  }
-
-  function handleCharacterSelect(character, selection, event) {
-    console.log('Handling character select:', character.className)
-
-    if (isCharacterConfirmed) {
-      alert(
-        'К сожалению, ты не можешь изменить персонажа после выбора. Ты можешь обновить страницу, чтобы выбрать другого персонажа.'
-      )
-      return
-    }
-
-    console.log('Clearing previous selections')
-    document
-      .querySelectorAll(
-        '.select1-1024, .select2-1024, .select3-1024, .select4-1024'
-      )
-      .forEach((select) => {
-        select.style.opacity = '0'
-      })
-
-    console.log('Setting selection opacity to 1')
-    selection.style.opacity = '1'
-
-    console.log('Removing selected class from all characters')
-    document
-      .querySelectorAll(
-        '.robo-girl-1024, .robo-boy-1024, .dog-1024, .robo-alien-1024'
-      )
-      .forEach((char) => {
-        char.classList.remove('selected')
-      })
-
-    console.log('Adding selected class to clicked character')
-    character.classList.add('selected')
-    currentlySelected = selection
-
-    if (elements.buttonConfirm) {
-      console.log('Activating confirm button')
-      elements.buttonConfirm.classList.add('active')
-    }
-
-    handleCharacterChange(character.dataset.character)
-
-    if (event) {
-      event.preventDefault()
-      event.stopPropagation()
-    }
-  }
-
-  function setupCharacter(characterClass, selectionClass) {
-    let character = document.querySelector(`.${characterClass}`)
-    let selection = document.querySelector(`.${selectionClass}`)
-
-    console.log(
-      'Setting up character:',
-      characterClass,
-      !!character,
-      'selection:',
-      !!selection
-    )
-    console.log('Character element:', character)
-    console.log('Selection element:', selection)
-
-    if (!character || !selection) {
-      console.log(
-        'Character or selection not found:',
-        characterClass,
-        selectionClass
-      )
-      return
-    }
-
-    character.style.pointerEvents = 'all'
-    character.style.cursor = 'pointer'
-
-    character.addEventListener('click', (event) =>
-      handleCharacterSelect(character, selection, event)
-    )
-    character.addEventListener('mousedown', (event) =>
-      handleCharacterSelect(character, selection, event)
-    )
-  }
-
-  console.log('Setting up all characters')
-  setupCharacter('robo-girl-1024', 'select1-1024')
-  setupCharacter('robo-boy-1024', 'select2-1024')
-  setupCharacter('dog-1024', 'select3-1024')
-  setupCharacter('robo-alien-1024', 'select4-1024')
-
-  if (elements.buttonConfirm) {
-    elements.buttonConfirm.addEventListener('click', () => {
-      if (!currentlySelected) {
-        alert('Пожалуйста, выбери персонажа.')
-        return
-      }
-
-      isCharacterConfirmed = true
-      elements.buttonConfirm.classList.remove('active')
-      elements.buttonScan.classList.add('active')
-    })
-  }
-
-  function handleCharacterChange(characterType) {
-    document.querySelectorAll('.character-display-1024').forEach((img) => {
-      if (img.closest('#choose-character-1024')) {
-        img.style.opacity = '1'
-      } else {
-        img.style.opacity = '0'
-        img.classList.remove('selected')
-      }
-    })
-  }
-
-  function updateCharacterDisplays(selectedCharacterAttribute) {
-    document.querySelectorAll('.character-display-1024').forEach((img) => {
-      if (img.closest('#choose-character-1024')) {
-        img.style.opacity = '1'
-      } else {
-        let isSelected = img.dataset.character === selectedCharacterAttribute
-        img.style.opacity = isSelected ? '1' : '0'
-        img.classList.toggle('selected', isSelected)
-      }
-    })
-  }
-
-  function enableButtons() {
-    if (elements.buttonScan) {
-      elements.buttonScan.classList.add('active')
-      elements.buttonScan.style.backgroundColor = '#45eded'
-      elements.buttonScan.style.cursor = 'pointer'
-    }
-    if (elements.buttonPlaceOrder) {
-      elements.buttonPlaceOrder.classList.add('active')
-      elements.buttonPlaceOrder.style.backgroundColor = '#45eded'
-      elements.buttonPlaceOrder.style.cursor = 'pointer'
-    }
-    if (elements.buttonRestart) {
-      elements.buttonRestart.classList.add('active')
-      elements.buttonRestart.style.cursor = 'pointer'
-    }
-
-    document
-      .querySelectorAll(
-        '.love-1024, .sadness-1024, .blush-1024, .anger-1024, .surprise-1024, .disgust-1024'
-      )
-      .forEach((button) => {
-        if (button) {
-          button.classList.add('active')
-          button.style.cursor = 'pointer'
-        }
-      })
-    isCharacterConfirmed = true
-  }
-
-  function scrollToScanSection() {
-    let scanRobotSection = document.querySelector('.scan-robot-1024')
-    scanRobotSection?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  document.body.addEventListener('click', (event) => {
-    let buttonScan = event.target.closest('.button-scan-1024.active')
-    if (buttonScan && isCharacterConfirmed) {
-      startScan()
-    }
-  })
-
-  function startScan() {
-    if (elements.scanner) {
-      elements.scanner.classList.add('scanning')
-      scanCount++
-    }
-  }
-
-  if (elements.scanner) {
-    elements.scanner.addEventListener('animationend', () => {
-      elements.scanner.classList.remove('scanning')
-
-      if (scanCount === 1) {
-        showBugs()
-        alert(
-          'Внимание! Были обнаружены неполадки в системе. Устрани их как можно скорее!'
-        )
-      } else if (scanCount === 2) {
-        alert('Неполадки устранены! Можно двигаться дальше.')
-        hideAllBugs()
-        scanCount = 0
-      }
-    })
-  }
-
-  function showBugs() {
-    let selectedImage = document.querySelector(
-      '#choose-character-1024 .character-display-1024.selected'
-    )
-
-    if (!selectedImage) return
-
-    let selectedCharacter = selectedImage.dataset.character
-
-    document
-      .querySelectorAll('[class*="bug"][class*="1024"]')
-      .forEach((bug) => {
-        bug.style.opacity = '0'
-      })
-
-    document
-      .querySelectorAll('[class*="bug"][class*="1024"]')
-      .forEach((bug) => {
-        let shouldShow =
-          bug.dataset.character === selectedCharacter ||
-          (bug.dataset.character === 'default' &&
-            !document.querySelector(
-              `[class*="bug"][class*="1024"][data-character="${selectedCharacter}"]`
-            ))
-        bug.style.opacity = shouldShow ? '1' : '0'
-      })
-
-    setupBugClickHandlers()
-  }
-
-  function hideAllBugs() {
-    document
-      .querySelectorAll('[class*="bug"][class*="1024"]')
-      .forEach((bug) => {
-        bug.style.opacity = '0'
-      })
-  }
-
-  function setupBugClickHandlers() {
-    document
-      .querySelectorAll('[class*="bug"][class*="1024"]')
-      .forEach((bug) => {
-        bug.addEventListener('click', () => {
-          bug.style.opacity = '0'
-          checkAllBugsFixed()
-        })
-      })
-  }
-
-  function checkAllBugsFixed() {
-    let remainingBugs = Array.from(
-      document.querySelectorAll('[class*="bug"][class*="1024"]')
-    ).filter((bug) => bug.style.opacity === '1')
-
-    if (remainingBugs.length === 0) {
-      alert('Отлично! Попробуй просканировать персонажа снова.')
-    }
-  }
-
-  if (elements.buttonRestart) {
-    elements.buttonRestart.addEventListener('click', () => {
-      window.location.replace(window.location.pathname)
-    })
-  }
-}
-// И остальной JS, завязанный на синхронизации, не работает, как бы я не старалась :(
-
+// 414
 // typewriter-adaptive-414
 function typewriter_414() {
   let typed = new Typed('#typewriter-414', {
